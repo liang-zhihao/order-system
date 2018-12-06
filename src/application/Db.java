@@ -7,18 +7,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-public class DbUtil {
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.ArrayListHandler;
+
+public class Db {
 
 	// 数据库连接地址
-	public static String URL = "jdbc:mysql://127.0.0.1:3306/ordersystemby(yyandlzh)?useSSL=false&serverTimezone=GMT";
+	public static String URL;
 	// 用户名
-	public static String USERNAME = "root";
+	public static String USERNAME;
 	// 密码
-	public static String PASSWORD = "123456";
+	public static String PASSWORD;
 	// mysql的驱动类
-	public static String DRIVER = "com.mysql.cj.jdbc.Driver";
+	public static String DRIVER;
 
-	private static ResourceBundle rb = ResourceBundle.getBundle("com.util.db.db-config");
+	private static ResourceBundle rb = ResourceBundle.getBundle("db-config");
 
 	// 使用静态块加载驱动程序
 	static {
@@ -59,8 +62,19 @@ public class DbUtil {
 		}
 	}
 
-	public static void main(String[] args) {
-		DbUtil db = new DbUtil();
+	public static void main(String[] args) throws SQLException {
+
+		String sql = "select * from customer";
+		QueryRunner qr = new QueryRunner();
+
+		java.util.List<Object[]> list = qr.query(Db.getConnection(), sql, new ArrayListHandler());
+		for (int i = 0; i < list.size(); i++) {
+			Object[] ob = list.get(i);
+			for (int j = 0; j < ob.length; j++) {
+				System.out.println(ob[j]);
+			}
+		}
+		System.out.println(list);
 
 	}
 
