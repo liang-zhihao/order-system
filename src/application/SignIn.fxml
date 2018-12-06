@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TitledPane animated="false" prefHeight="19.0" prefWidth="1184.0" text="Please sign in" textFill="#104918">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+         </content>
+      </TitledPane>
+      <AnchorPane layoutX="286.0" layoutY="168.0" prefHeight="440.0" prefWidth="613.0">
+         <children>
+            <Button layoutX="65.0" layoutY="232.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="143.0" text="Customer sign in" textFill="#104918" />
+            <Button layoutX="258.0" layoutY="232.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="137.0" text="Business sign in" textFill="#104918" />
+            <Button layoutX="437.0" layoutY="232.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="82.0" text="Register" textFill="#104918" />
+            <Label alignment="CENTER" layoutX="65.0" layoutY="70.0" prefHeight="48.0" prefWidth="110.0" text="ID" textFill="#104918" />
+            <Label alignment="CENTER" layoutX="65.0" layoutY="147.0" prefHeight="48.0" prefWidth="110.0" text="PASSWORD" textFill="#104918" />
+            <TextField layoutX="271.0" layoutY="70.0" prefHeight="48.0" prefWidth="248.0" />
+            <PasswordField layoutX="271.0" layoutY="147.0" prefHeight="48.0" prefWidth="248.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

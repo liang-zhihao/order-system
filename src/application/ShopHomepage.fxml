@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="776.0" prefWidth="1193.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TitledPane animated="false" layoutY="-30.0" prefHeight="30.0" prefWidth="1193.0" text="Homepage" textFill="#104918">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+         </content>
+      </TitledPane>
+      <MenuBar prefHeight="30.0" prefWidth="1193.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="User Name">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Updated" />
+                  <MenuItem mnemonicParsing="false" text="Address" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Items" />
+            <Menu mnemonicParsing="false" text="Orders" />
+            <Menu mnemonicParsing="false" text="Log Out" />
+         </menus>
+      </MenuBar>
+      <TextField layoutX="284.0" layoutY="401.0" prefHeight="48.0" prefWidth="248.0" />
+      <TextField layoutX="284.0" layoutY="475.0" prefHeight="48.0" prefWidth="248.0" />
+      <Label alignment="CENTER" layoutX="125.0" layoutY="254.0" prefHeight="48.0" prefWidth="110.0" text="User Name" textFill="#104918" />
+      <Label alignment="CENTER" layoutX="125.0" layoutY="401.0" prefHeight="48.0" prefWidth="110.0" text="Phone Number" textFill="#104918" />
+      <Label alignment="CENTER" layoutX="125.0" layoutY="475.0" prefHeight="48.0" prefWidth="110.0" text="Email" textFill="#104918" />
+      <TextField layoutX="284.0" layoutY="330.0" prefHeight="48.0" prefWidth="248.0" />
+      <Label alignment="CENTER" layoutX="125.0" layoutY="330.0" prefHeight="48.0" prefWidth="110.0" text="ID" textFill="#104918" />
+      <TextField layoutX="284.0" layoutY="254.0" prefHeight="48.0" prefWidth="248.0" />
+      <Label alignment="CENTER" layoutX="125.0" layoutY="76.0" lineSpacing="5.0" prefHeight="130.0" prefWidth="407.0" text="WELCOME!" textFill="#104918">
+         <font>
+            <Font size="67.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
