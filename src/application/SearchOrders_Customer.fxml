@@ -27,7 +27,7 @@
       </MenuBar>
       <TextField fx:id="txEnterBnsID" layoutX="64.0" layoutY="68.0" prefHeight="48.0" prefWidth="248.0" />
       <Button fx:id="btSearchBnsID" layoutX="342.0" layoutY="68.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="87.0" text="Search" />
-      <AnchorPane fx:id="pnResult" layoutX="64.0" layoutY="262.0" prefHeight="515.0" prefWidth="1060.0">
+      <AnchorPane fx:id="pnResult" layoutX="20.0" layoutY="232.0" prefHeight="515.0" prefWidth="1060.0">
          <children>
             <GridPane fx:id="tableOrdersFORCustomer" layoutY="14.0" prefHeight="480.0" prefWidth="1060.0">
                <children>

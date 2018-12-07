@@ -1,16 +1,11 @@
-package application;
+package application.ControllerClass;
 
 import javafx.fxml.FXML;
-
-import javafx.scene.control.TextField;
-
-import javafx.scene.control.MenuBar;
-
 import javafx.scene.control.Label;
-
-import javafx.scene.layout.AnchorPane;
-
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class ShopHomepageController {
 	@FXML
