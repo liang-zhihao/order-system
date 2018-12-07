@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="ShopHomepage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="776.0" prefWidth="1193.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.ShopHomepageController">
+   <children>
+      <TitledPane animated="false" layoutY="-30.0" prefHeight="30.0" prefWidth="1193.0" text="Homepage" textFill="#104918">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+         </content>
+      </TitledPane>
+      <MenuBar fx:id="mnBar" prefHeight="30.0" prefWidth="1193.0">
+         <menus>
+            <Menu fx:id="mnUserName" mnemonicParsing="false" text="User Name">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Updated" />
+                  <MenuItem mnemonicParsing="false" text="Address" />
+               </items>
+            </Menu>
+            <Menu fx:id="mnItems" mnemonicParsing="false" text="Items" />
+            <Menu fx:id="mnOrders" mnemonicParsing="false" text="Orders" />
+            <Menu fx:id="mnLogOut" mnemonicParsing="false" text="Log Out" />
+         </menus>
+      </MenuBar>
+      <TextField fx:id="txPhoneNum" layoutX="284.0" layoutY="401.0" prefHeight="48.0" prefWidth="248.0" />
+      <TextField fx:id="txEmail" layoutX="284.0" layoutY="475.0" prefHeight="48.0" prefWidth="248.0" />
+      <Label fx:id="lbUserName" alignment="CENTER" layoutX="125.0" layoutY="254.0" prefHeight="48.0" prefWidth="110.0" text="User Name" textFill="#104918" />
+      <Label fx:id="lbPhoneNum" alignment="CENTER" layoutX="125.0" layoutY="401.0" prefHeight="48.0" prefWidth="110.0" text="Phone Number" textFill="#104918" />
+      <Label fx:id="lbEmail" alignment="CENTER" layoutX="125.0" layoutY="475.0" prefHeight="48.0" prefWidth="110.0" text="Email" textFill="#104918" />
+      <TextField fx:id="txID" layoutX="284.0" layoutY="330.0" prefHeight="48.0" prefWidth="248.0" />
+      <Label fx:id="lbID" alignment="CENTER" layoutX="125.0" layoutY="330.0" prefHeight="48.0" prefWidth="110.0" text="ID" textFill="#104918" />
+      <TextField fx:id="txUserName" layoutX="284.0" layoutY="254.0" prefHeight="48.0" prefWidth="248.0" />
+      <Label alignment="CENTER" layoutX="125.0" layoutY="76.0" lineSpacing="5.0" prefHeight="130.0" prefWidth="407.0" text="WELCOME!" textFill="#104918">
+         <font>
+            <Font size="67.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

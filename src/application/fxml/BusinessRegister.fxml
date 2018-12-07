@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="RegisterAsBusiness" prefHeight="601.0" prefWidth="533.0"  xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.controllerClass.BusinessRegisterController" >
+   <children>
+      <Button fx:id="btRegister" layoutX="215.0" layoutY="504.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="104.0" text="Register" textFill="#104918" />
+      <TextField fx:id="txUserName" layoutX="215.0" layoutY="65.0" prefHeight="50.0" prefWidth="257.0" />
+      <TextField fx:id="txPhoneNum" layoutX="215.0" layoutY="294.0" prefHeight="50.0" prefWidth="257.0" />
+      <TextField fx:id="txEmail" layoutX="215.0" layoutY="372.0" prefHeight="50.0" prefWidth="257.0" />
+      <Label fx:id="lbUserName" alignment="CENTER" layoutX="50.0" layoutY="65.0" prefHeight="50.0" prefWidth="128.0" text="User Name" textFill="#104918" />
+      <Label fx:id="lbPsw" alignment="CENTER" layoutX="50.0" layoutY="140.0" prefHeight="50.0" prefWidth="128.0" text="Password" textFill="#104918" />
+      <Label fx:id="lbConfirm" alignment="CENTER" layoutX="50.0" layoutY="216.0" prefHeight="50.0" prefWidth="128.0" text="Confirm" textFill="#104918" />
+      <Label fx:id="lbPhoneNum" alignment="CENTER" layoutX="50.0" layoutY="294.0" prefHeight="50.0" prefWidth="128.0" text="Phone Number" textFill="#104918" />
+      <Label fx:id="lbEmail" alignment="CENTER" layoutX="50.0" layoutY="372.0" prefHeight="50.0" prefWidth="128.0" text="Email" textFill="#104918" />
+      <PasswordField fx:id="txPsw" layoutX="215.0" layoutY="140.0" prefHeight="50.0" prefWidth="257.0" />
+      <PasswordField fx:id="txPswConfirm" layoutX="215.0" layoutY="216.0" prefHeight="50.0" prefWidth="257.0" />
+   </children>
+</AnchorPane>
