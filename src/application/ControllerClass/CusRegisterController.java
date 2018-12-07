@@ -1,28 +1,25 @@
-package application;
+package application.ControllerClass;
 
 import javafx.fxml.FXML;
-
 import javafx.scene.control.Button;
-
-import javafx.scene.control.TextField;
-
 import javafx.scene.control.Label;
-
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-import javafx.scene.control.PasswordField;
-
-public class BusinessRegisterController {
+public class CusRegisterController {
 	@FXML
-	private AnchorPane RegisterAsBusiness;
+	private AnchorPane RegisterAsCustomer;
 	@FXML
-	private Button btRegister;
-	@FXML
-	private TextField txUserName;
+	private TextField txEmail;
 	@FXML
 	private TextField txPhoneNum;
 	@FXML
-	private TextField txEmail;
+	private PasswordField lbPawConfirm;
+	@FXML
+	private PasswordField txPsw;
+	@FXML
+	private TextField txUserName;
 	@FXML
 	private Label lbUserName;
 	@FXML
@@ -34,8 +31,6 @@ public class BusinessRegisterController {
 	@FXML
 	private Label lbEmail;
 	@FXML
-	private PasswordField txPsw;
-	@FXML
-	private PasswordField txPswConfirm;
+	private Button btRegister;
 
 }

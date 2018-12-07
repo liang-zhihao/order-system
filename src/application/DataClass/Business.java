@@ -1,4 +1,6 @@
-package application;
+package application.DataClass;
+
+import application.Db;
 
 public class Business {
 	private int id;
@@ -10,6 +12,7 @@ public class Business {
 	private String address;
 
 	public String getAddress() {
+		new Db();
 		return address;
 	}
 

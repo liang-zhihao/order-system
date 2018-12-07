@@ -1,4 +1,4 @@
-package application;
+package application.DataClass;
 
 public class Customer {
 	private int id;
