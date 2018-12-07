@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="Result" prefHeight="411.0" prefWidth="693.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CusMiniOrderSearchController">
+   <children>
+      <Label layoutX="41.0" layoutY="58.0" prefHeight="61.0" prefWidth="247.0" text="Here`s the result:" textFill="#0a5e34">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbBusinessID" alignment="CENTER" layoutX="41.0" layoutY="119.0" prefHeight="43.0" prefWidth="105.0" text="BusinessID" textFill="#107543" />
+      <Label fx:id="lbOrderInformation" alignment="CENTER" layoutX="2.0" layoutY="162.0" prefHeight="43.0" prefWidth="183.0" text="Order Information" textFill="#107543" />
+      <Label fx:id="lbCreationTime" alignment="CENTER" layoutX="41.0" layoutY="206.0" prefHeight="43.0" prefWidth="105.0" text="Creation Time" textFill="#107543" />
+      <Label fx:id="lbCondition" alignment="CENTER" layoutX="41.0" layoutY="249.0" prefHeight="43.0" prefWidth="105.0" text="Condition" textFill="#107543" />
+      <TextField fx:id="txBusinessID" layoutX="223.0" layoutY="119.0" prefHeight="43.0" prefWidth="247.0" />
+      <TextField fx:id="txOrderInformation" layoutX="223.0" layoutY="162.0" prefHeight="43.0" prefWidth="247.0" />
+      <TextField fx:id="txCreationTime" layoutX="223.0" layoutY="205.0" prefHeight="43.0" prefWidth="247.0" />
+      <TextField fx:id="txCondition" layoutX="223.0" layoutY="248.0" prefHeight="43.0" prefWidth="129.0" />
+      <Button fx:id="btReceived" layoutX="350.0" layoutY="248.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" text="Received" textFill="#107543" />
+   </children>
+</AnchorPane>
