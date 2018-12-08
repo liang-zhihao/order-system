@@ -8,33 +8,47 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 public class CustomerHomepageController {
-	@FXML
-	private AnchorPane CusHomepage;
+
 	@FXML
 	private MenuBar mnBar;
-	@FXML
-	private Menu mnUserName;
-	@FXML
-	private Menu mnItems;
-	@FXML
-	private Menu mnOrders;
+
 	@FXML
 	private Menu mnLogOut;
-	@FXML
-	private Label lbUserName;
-	@FXML
-	private Label lbID;
-	@FXML
-	private Label lbPhoneNum;
-	@FXML
-	private Label lbEmail;
-	@FXML
-	private TextField txUserName;
-	@FXML
-	private TextField txID;
+
 	@FXML
 	private TextField txPhoneNumber;
+
+	@FXML
+	private Label lbID;
+
+	@FXML
+	private Menu mnItems;
+
+	@FXML
+	private TextField txID;
+
+	@FXML
+	private TextField txUserName;
+
+	@FXML
+	private Label lbUserName;
+
 	@FXML
 	private TextField txEmail;
+
+	@FXML
+	private Menu mnUserName;
+
+	@FXML
+	private Label lbPhoneNum;
+
+	@FXML
+	private Menu mnOrders;
+
+	@FXML
+	private AnchorPane CusHomepage;
+
+	@FXML
+	private Label lbEmail;
 
 }

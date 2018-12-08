@@ -8,9 +8,13 @@ import javafx.stage.Stage;
 public class BusinessRegisterFrame {
 	public BusinessRegisterFrame() {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("BusinessRegister.fxml"));
+			Parent root = FXMLLoader
+					.load(getClass().getClassLoader().getResource("application//fxml//BusinessRegister.fxml"));
 			Scene scene = new Scene(root, 800, 600);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			// scene.getStylesheets().add(getClass().getResource("//application.css").toExternalForm());
+			scene.getStylesheets()
+					.add(getClass().getClassLoader().getResource("application//application.css").toExternalForm());
+
 			Stage stage = new Stage();
 			stage.setTitle("Business Register");
 			stage.setScene(scene);

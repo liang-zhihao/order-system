@@ -5,12 +5,17 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ResourceBundle;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ArrayListHandler;
 
 /*
+ * public Object query(Connection conn, String sql, Object[] params, ResultSetHandler rsh) throws SQLException：执行一个查询操作，在这个查询中，对象数组中的每个元素值被用来作为查询语句的置换参数。该方法会自行处理 PreparedStatement 和 ResultSet 的创建和关闭。
+　　public Object query(String sql, Object[] params, ResultSetHandler rsh) throws SQLException:　几乎与第一种方法一样；唯一的不同在于它不将数据库连接提供给方法，并且它是从提供给构造方法的数据源(DataSource) 或使用的setDataSource 方法中重新获得 Connection。
+　　public Object query(Connection conn, String sql, ResultSetHandler rsh) throws SQLException : 执行一个不需要置换参数的查询操作。
+　　public int update(Connection conn, String sql, Object[] params) throws SQLException:用来执行一个更新（插入、更新或删除）操作。
+　　public int update(Connection conn, String sql) throws SQLException：用来执行一个不需要置换参数的更新操作。
+ * 
  * ①ArrayHandler：     将查询结果的第一行数据，保存到Object数组中
       ②ArrayListHandler     将查询的结果，每一行先封装到Object数组中，然后将数据存入List集合
       ③BeanHandler     将查询结果的第一行数据，封装到user对象
@@ -24,35 +29,26 @@ import org.apache.commons.dbutils.handlers.ArrayListHandler;
  * */
 public class Db {
 
-	// 数据库连接地址
-	public static String URL;
-	// 用户名
-	public static String USERNAME;
-	// 密码
-	public static String PASSWORD;
-	// mysql的驱动类
-	public static String DRIVER;
+	public static String url = "jdbc:mysql://127.0.0.1:3306/ordersystemby(yyandlzh)?useSSL=false&serverTimezone=GMT";
+	public static String user = "root";
+	public static String passwd = "123456";
+	public static String driver = "com.mysql.cj.jdbc.Driver";
 
-	private static ResourceBundle rb = ResourceBundle.getBundle("db-config");
-
-	// 使用静态块加载驱动程序
-	static {
-		URL = rb.getString("jdbc.url");
-		USERNAME = rb.getString("jdbc.username");
-		PASSWORD = rb.getString("jdbc.password");
-		DRIVER = rb.getString("jdbc.driver");
+	public Db() {
 		try {
-			Class.forName(DRIVER);
+			Class.forName(driver);
 		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	// 使用静态块加载驱动程序
 	// 定义一个获取数据库连接的方法
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			conn = DriverManager.getConnection(url, user, passwd);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("获取连接失败");
@@ -77,8 +73,8 @@ public class Db {
 	public static void main(String[] args) throws SQLException {
 		String sql = "select * from customer";
 		QueryRunner qr = new QueryRunner();
-
-		java.util.List<Object[]> list = qr.query(Db.getConnection(), sql, new ArrayListHandler());
+		Db db = new Db();
+		java.util.List<Object[]> list = qr.query(db.getConnection(), sql, new ArrayListHandler());
 		for (int i = 0; i < list.size(); i++) {
 			Object[] ob = list.get(i);
 			for (int j = 0; j < ob.length; j++) {

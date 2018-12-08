@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -7,20 +8,22 @@
 
 <AnchorPane fx:id="SignIn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.SignInController">
    <children>
-      <TitledPane animated="false" prefHeight="19.0" prefWidth="1184.0" text="Please sign in" textFill="#104918">
+      <TitledPane animated="false" layoutX="-69.0" layoutY="-25.0" prefHeight="19.0" prefWidth="1184.0" text="Please sign in" textFill="#104918">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
          </content>
       </TitledPane>
-      <AnchorPane layoutX="286.0" layoutY="168.0" prefHeight="440.0" prefWidth="613.0">
+      <AnchorPane layoutX="286.0" layoutY="174.0" prefHeight="440.0" prefWidth="613.0">
          <children>
-            <Button fx:id="btCusSignIn" layoutX="65.0" layoutY="232.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="143.0" text="Customer sign in" textFill="#104918" />
-            <Button fx:id="btBnsSignIn" layoutX="258.0" layoutY="232.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="137.0" text="Business sign in" textFill="#104918" />
+            <Button fx:id="btSignIn" layoutX="120.0" layoutY="232.0" mnemonicParsing="false" onMousePressed="#btSign" prefHeight="48.0" prefWidth="143.0" text=" sign in" textFill="#104918" />
             <Button fx:id="btRegister" layoutX="437.0" layoutY="232.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="82.0" text="Register" textFill="#104918" />
             <Label fx:id="lbID" alignment="CENTER" layoutX="65.0" layoutY="70.0" prefHeight="48.0" prefWidth="110.0" text="ID" textFill="#104918" />
             <Label fx:id="lbPsw" alignment="CENTER" layoutX="65.0" layoutY="147.0" prefHeight="48.0" prefWidth="110.0" text="PASSWORD" textFill="#104918" />
-            <TextField fx:id="txID" layoutX="271.0" layoutY="70.0" prefHeight="48.0" prefWidth="248.0" />
-            <PasswordField fx:id="txPsw" layoutX="271.0" layoutY="147.0" prefHeight="48.0" prefWidth="248.0" />
+            <TextField fx:id="txID" layoutX="271.0" layoutY="70.0" prefHeight="48.0" prefWidth="248.0" text="ff14" />
+            <PasswordField fx:id="txPsw" layoutX="271.0" layoutY="147.0" prefHeight="48.0" prefWidth="248.0" text="123456" />
+            <RadioButton fx:id="raCus" layoutX="213.0" layoutY="212.0" mnemonicParsing="false" onAction="#selectRaCus" selected="true" text="Customer" />
+            <RadioButton fx:id="raBus" layoutX="329.0" layoutY="212.0" mnemonicParsing="false" onAction="#selectRaBus" text="Business" />
+            <Label fx:id="labError" layoutX="175.0" layoutY="306.0" text="Login error" textFill="#f50f0f" visible="false" />
          </children>
       </AnchorPane>
    </children>

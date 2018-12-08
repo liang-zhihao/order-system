@@ -8,9 +8,11 @@ import javafx.stage.Stage;
 public class CusRegisterFrame {
 	public CusRegisterFrame() {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("CusRegister.fxml"));
+			Parent root = FXMLLoader
+					.load(getClass().getClassLoader().getResource("application//fxml//CusRegister.fxml"));
 			Scene scene = new Scene(root, 800, 600);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets()
+					.add(getClass().getClassLoader().getResource("application//application.css").toExternalForm());
 			Stage stage = new Stage();
 			stage.setTitle("Customer Register");
 			stage.setScene(scene);
