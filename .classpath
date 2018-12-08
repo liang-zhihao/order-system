@@ -7,36 +7,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Document/GitHub/orderSystem/libs/commons-dbutils-1.7.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="E:/Document/GitHub/orderSystem/libs/commons-dbutils-1.7-javadoc.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="E:/Document/GitHub/orderSystem/libs/commons-dbutils-1.7-sources.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="E:/Document/GitHub/orderSystem/libs/commons-dbutils-1.7-tests.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="E:/Document/GitHub/orderSystem/libs/commons-dbutils-1.7-test-sources.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="E:/mysql-connector-java-8.0.13.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="D:/编程/Java 实践/MySQL JDBC驱动/mysql-connector-java-8.0.11/mysql-connector-java-8.0.11.jar"/>
+	<classpathentry kind="lib" path="J:/Eclipse/commons-dbutils-1.7/commons-dbutils-1.7.jar"/>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
