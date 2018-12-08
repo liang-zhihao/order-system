@@ -110,7 +110,6 @@ public class SignInController {
 			}
 		}else if(flag == 2) {
 			if (a == 1) {
-				
 				new CustomerHomepageFrame();
 				SignIn.setVisible(false);
 				Stage stage = (Stage) btSignIn.getScene().getWindow();
