@@ -22,7 +22,7 @@
             <TextField fx:id="txID" layoutX="270.0" layoutY="67.0" prefHeight="48.0" prefWidth="248.0" text="ff14" />
             <PasswordField fx:id="txPsw" layoutX="270.0" layoutY="137.0" prefHeight="48.0" prefWidth="248.0" text="123456" />
             <RadioButton fx:id="raCus" layoutX="144.0" layoutY="222.0" mnemonicParsing="false" onAction="#selectRaCus" selected="true" text="Customer" />
-            <RadioButton fx:id="raBus" layoutX="342.0" layoutY="212.0" mnemonicParsing="false" onAction="#selectRaBus" text="Business" />
+            <RadioButton fx:id="raBus" layoutX="340.0" layoutY="222.0" mnemonicParsing="false" onAction="#selectRaBus" text="Business" />
             <Label fx:id="labError" layoutX="175.0" layoutY="306.0" text="Login error" textFill="#f50f0f" visible="false" />
          </children>
       </AnchorPane>

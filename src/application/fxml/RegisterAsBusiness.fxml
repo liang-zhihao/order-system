@@ -11,16 +11,16 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
          </content>
       </TitledPane>
-      <TextField layoutX="228.0" layoutY="50.0" prefHeight="48.0" prefWidth="248.0" />
-      <Label alignment="CENTER" layoutX="64.0" layoutY="50.0" prefHeight="48.0" prefWidth="110.0" text="User Name" textFill="#104918" />
-      <Label alignment="CENTER" layoutX="64.0" layoutY="116.0" prefHeight="48.0" prefWidth="110.0" text="Password" textFill="#104918" />
+      <TextField fx:id="txUserName" layoutX="228.0" layoutY="50.0" prefHeight="48.0" prefWidth="248.0" />
+      <Label fx:id="lbUserName" alignment="CENTER" layoutX="64.0" layoutY="50.0" prefHeight="48.0" prefWidth="110.0" text="User Name" textFill="#104918" />
+      <Label fx:id="lbPsw" alignment="CENTER" layoutX="64.0" layoutY="116.0" prefHeight="48.0" prefWidth="110.0" text="Password" textFill="#104918" />
       <Button fx:id="btnReg" layoutX="214.0" layoutY="457.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="82.0" text="Register" textFill="#104918" />
-      <Label alignment="CENTER" layoutX="64.0" layoutY="255.0" prefHeight="48.0" prefWidth="110.0" text="Phone Number" textFill="#104918" />
-      <Label alignment="CENTER" layoutX="64.0" layoutY="324.0" prefHeight="48.0" prefWidth="110.0" text="Email" textFill="#104918" />
-      <TextField layoutX="228.0" layoutY="255.0" prefHeight="48.0" prefWidth="248.0" />
-      <TextField layoutX="228.0" layoutY="324.0" prefHeight="48.0" prefWidth="248.0" />
-      <PasswordField layoutX="228.0" layoutY="186.0" prefHeight="48.0" prefWidth="248.0" />
-      <PasswordField layoutX="228.0" layoutY="116.0" prefHeight="48.0" prefWidth="248.0" />
-      <Label alignment="CENTER" layoutX="64.0" layoutY="186.0" prefHeight="48.0" prefWidth="110.0" text="Confirm" textFill="#104918" />
+      <Label fx:id="lbPhoneNumber" alignment="CENTER" layoutX="64.0" layoutY="255.0" prefHeight="48.0" prefWidth="110.0" text="Phone Number" textFill="#104918" />
+      <Label fx:id="lbEmail" alignment="CENTER" layoutX="64.0" layoutY="324.0" prefHeight="48.0" prefWidth="110.0" text="Email" textFill="#104918" />
+      <TextField fx:id="txPhoneNumber" layoutX="228.0" layoutY="255.0" prefHeight="48.0" prefWidth="248.0" />
+      <TextField fx:id="txEmail" layoutX="228.0" layoutY="324.0" prefHeight="48.0" prefWidth="248.0" />
+      <PasswordField fx:id="txPswConfirm" layoutX="228.0" layoutY="186.0" prefHeight="48.0" prefWidth="248.0" />
+      <PasswordField fx:id="txPsw" layoutX="228.0" layoutY="116.0" prefHeight="48.0" prefWidth="248.0" />
+      <Label fx:id="lbConfirm" alignment="CENTER" layoutX="64.0" layoutY="186.0" prefHeight="48.0" prefWidth="110.0" text="Confirm" textFill="#104918" />
    </children>
 </AnchorPane>
