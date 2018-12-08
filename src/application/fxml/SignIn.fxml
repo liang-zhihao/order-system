@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="SignIn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.SignInController">
+<AnchorPane fx:id="pane" prefHeight="440.0" prefWidth="613.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.SignInController">
    <children>
-      <TitledPane animated="false" layoutY="-30.0" prefHeight="30.0" prefWidth="746.0" text="Please sign in" textFill="#104918">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-         </content>
-      </TitledPane>
-      <AnchorPane layoutX="67.0" layoutY="44.0" prefHeight="440.0" prefWidth="613.0">
-         <children>
-            <Button fx:id="btSignIn" layoutX="127.0" layoutY="268.0" mnemonicParsing="false" onAction="#btSign" onMousePressed="#btSign" prefHeight="48.0" prefWidth="143.0" text=" sign in" textFill="#104918" />
-            <Button fx:id="btRegister" layoutX="369.0" layoutY="268.0" mnemonicParsing="false" onAction="#btRegister" prefHeight="48.0" prefWidth="82.0" text="Register" textFill="#104918" />
-            <Label fx:id="lbID" alignment="CENTER" layoutX="106.0" layoutY="67.0" prefHeight="48.0" prefWidth="110.0" text="ID" textFill="#104918" />
-            <Label fx:id="lbPsw" alignment="CENTER" layoutX="106.0" layoutY="137.0" prefHeight="48.0" prefWidth="110.0" text="PASSWORD" textFill="#104918" />
-            <TextField fx:id="txID" layoutX="270.0" layoutY="67.0" prefHeight="48.0" prefWidth="248.0" text="ff14" />
-            <PasswordField fx:id="txPsw" layoutX="270.0" layoutY="137.0" prefHeight="48.0" prefWidth="248.0" text="123456" />
-            <RadioButton fx:id="raCus" layoutX="144.0" layoutY="222.0" mnemonicParsing="false" onAction="#selectRaCus" selected="true" text="Customer" />
-            <RadioButton fx:id="raBus" layoutX="340.0" layoutY="222.0" mnemonicParsing="false" onAction="#selectRaBus" text="Business" />
-            <Label fx:id="labError" layoutX="175.0" layoutY="306.0" text="Login error" textFill="#f50f0f" visible="false" />
-         </children>
-      </AnchorPane>
+      <Label fx:id="lbID" alignment="CENTER" layoutX="120.0" layoutY="82.0" prefHeight="48.0" prefWidth="110.0" text="ID" textFill="#104918" />
+      <Label fx:id="lbPsw" alignment="CENTER" layoutX="120.0" layoutY="147.0" prefHeight="48.0" prefWidth="110.0" text="PASSWORD" textFill="#104918" />
+      <TextField fx:id="txID" layoutX="271.0" layoutY="82.0" prefHeight="48.0" prefWidth="248.0" text="ff14" />
+      <PasswordField fx:id="txPsw" layoutX="271.0" layoutY="147.0" prefHeight="48.0" prefWidth="248.0" text="123456" />
+      <RadioButton fx:id="raCus" layoutX="213.0" layoutY="212.0" mnemonicParsing="false" onAction="#selectRaCus" selected="true" text="Customer" />
+      <RadioButton fx:id="raBus" layoutX="329.0" layoutY="212.0" mnemonicParsing="false" onAction="#selectRaBus" text="Business" />
+      <Label fx:id="labError" layoutX="175.0" layoutY="306.0" text="Login error" textFill="#f50f0f" visible="false" />
+      <JFXButton fx:id="btSignIn" layoutX="160.0" layoutY="242.0" onAction="#btSign" prefHeight="48.0" prefWidth="90.0" text="Login" />
+      <JFXButton fx:id="btRegister" layoutX="388.0" layoutY="253.0" prefHeight="33.0" prefWidth="84.0" text="Register" />
    </children>
 </AnchorPane>
