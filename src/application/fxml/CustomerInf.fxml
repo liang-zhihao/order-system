@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="162.0" layoutY="-1.0" prefHeight="506.0" prefWidth="640.0">
+         <children>
+            <VBox layoutX="160.0" layoutY="55.0" prefHeight="396.0" prefWidth="321.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="99.0" prefWidth="118.0" text="UserName" />
+                        <JFXTextField prefHeight="79.0" prefWidth="207.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="99.0" prefWidth="118.0" text="Password" />
+                        <JFXTextField prefHeight="79.0" prefWidth="207.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="99.0" prefWidth="118.0" text="NickName" />
+                        <JFXTextField prefHeight="79.0" prefWidth="207.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="99.0" prefWidth="118.0" text="PhoneNumber" />
+                        <JFXTextField prefHeight="79.0" prefWidth="207.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children></Pane>
+      <JFXButton layoutX="533.0" layoutY="531.0" prefHeight="25.0" prefWidth="164.0" text="Add a address" />
+      <JFXButton layoutX="222.0" layoutY="531.0" prefHeight="25.0" prefWidth="164.0" text="Save Information" />
+      <VBox alignment="TOP_CENTER" layoutX="-2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="607.0" prefWidth="164.0" style="-fx-background-color: green;">
+         <children>
+            <JFXButton prefHeight="157.0" prefWidth="164.0" text="User" />
+            <JFXButton prefHeight="144.0" prefWidth="192.0" text="Order" />
+            <JFXButton prefHeight="164.0" prefWidth="219.0" text="Item" />
+            <JFXButton prefHeight="257.0" prefWidth="219.0" text="Setting" />
+            <JFXButton prefHeight="110.0" prefWidth="195.0" text="Logout" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -101,7 +101,7 @@ public class SignInController {
 			if (a == 1) {
 				System.out.println("��¼�ɹ�");
 				new application.frameClass.ShopHomepageFrame();
-				SignIn.setVisible(false);
+
 				Stage stage = (Stage) btSignIn.getScene().getWindow();
 				stage.close();
 				labError.setVisible(false);
@@ -113,7 +113,7 @@ public class SignInController {
 			if (a == 1) {
 				System.out.println("��¼�ɹ�");
 				new CustomerHomepageFrame();
-				SignIn.setVisible(false);
+
 				Stage stage = (Stage) btSignIn.getScene().getWindow();
 				stage.close();
 				labError.setVisible(false);

@@ -7,19 +7,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <AnchorPane prefHeight="597.0" prefWidth="900.0">
+      <AnchorPane>
          <children>
             <Pane layoutY="-3.0" prefHeight="600.0" prefWidth="155.0">
                <children>
-                  <VBox alignment="TOP_CENTER" layoutX="-7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="164.0" style="-fx-background-color: green;">
+                  <VBox alignment="TOP_CENTER" layoutX="-9.0" layoutY="-3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="607.0" prefWidth="164.0" style="-fx-background-color: green;">
                      <children>
-                        <JFXButton />
-                        <JFXButton />
-                        <JFXButton />
-                        <JFXButton />
-                        <JFXButton />
+                        <JFXButton prefHeight="157.0" prefWidth="164.0" text="User" />
+                        <JFXButton prefHeight="144.0" prefWidth="192.0" text="Order" />
+                        <JFXButton prefHeight="164.0" prefWidth="219.0" text="Item" />
+                        <JFXButton prefHeight="257.0" prefWidth="219.0" text="Setting" />
+                        <JFXButton prefHeight="110.0" prefWidth="195.0" text="Logout" />
                      </children>
                   </VBox>
                </children>
@@ -37,7 +37,7 @@
                   </MenuButton>
                </children>
             </Pane>
-            <TableView layoutX="155.0" layoutY="129.0" prefHeight="460.0" prefWidth="623.0">
+            <TableView layoutX="155.0" layoutY="129.0" prefHeight="460.0" prefWidth="645.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />
