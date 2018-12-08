@@ -15,8 +15,8 @@
       </TitledPane>
       <AnchorPane layoutX="67.0" layoutY="44.0" prefHeight="440.0" prefWidth="613.0">
          <children>
-            <Button fx:id="btSignIn" layoutX="127.0" layoutY="268.0" mnemonicParsing="false" onMousePressed="#btSign" prefHeight="48.0" prefWidth="143.0" text=" sign in" textFill="#104918" />
-            <Button fx:id="btRegister" layoutX="369.0" layoutY="268.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="82.0" text="Register" textFill="#104918" />
+            <Button fx:id="btSignIn" layoutX="127.0" layoutY="268.0" mnemonicParsing="false" onAction="#btSign" onMousePressed="#btSign" prefHeight="48.0" prefWidth="143.0" text=" sign in" textFill="#104918" />
+            <Button fx:id="btRegister" layoutX="369.0" layoutY="268.0" mnemonicParsing="false" onAction="#btRegister" prefHeight="48.0" prefWidth="82.0" text="Register" textFill="#104918" />
             <Label fx:id="lbID" alignment="CENTER" layoutX="106.0" layoutY="67.0" prefHeight="48.0" prefWidth="110.0" text="ID" textFill="#104918" />
             <Label fx:id="lbPsw" alignment="CENTER" layoutX="106.0" layoutY="137.0" prefHeight="48.0" prefWidth="110.0" text="PASSWORD" textFill="#104918" />
             <TextField fx:id="txID" layoutX="270.0" layoutY="67.0" prefHeight="48.0" prefWidth="248.0" text="ff14" />

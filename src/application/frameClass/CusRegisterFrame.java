@@ -10,7 +10,7 @@ public class CusRegisterFrame {
 		try {
 			Parent root = FXMLLoader
 					.load(getClass().getClassLoader().getResource("application//fxml//CusRegister.fxml"));
-			Scene scene = new Scene(root, 800, 600);
+			Scene scene = new Scene(root, 533, 734);
 			scene.getStylesheets()
 					.add(getClass().getClassLoader().getResource("application//application.css").toExternalForm());
 			Stage stage = new Stage();
