@@ -5,40 +5,51 @@ import java.sql.SQLException;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ArrayHandler;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+
 import application.dataClass.Db;
 import application.frameClass.CustomerHomepageFrame;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class SignInController {
-	@FXML
-	private AnchorPane SignIn;
-	@FXML
-	private Button btSignIn;
-	@FXML
-	private Button btRegister;
-	@FXML
-	private Label lbID;
-	@FXML
-	private Label lbPsw;
-	@FXML
-	private TextField txID;
-	@FXML
-	private PasswordField txPsw;
-	@FXML
-	private RadioButton raCus;
-	@FXML
-	private RadioButton raBus;
-	@FXML
-	private Label labError;
 
-	public void selectRaCus() {
+    @FXML
+    private Label lbPsw;
+
+    @FXML
+    private RadioButton raCus;
+
+    @FXML
+    private RadioButton raBus;
+
+    @FXML
+    private Label lbID;
+
+    @FXML
+    private Label labError;
+
+    @FXML
+    private JFXButton btRegister;
+
+    @FXML
+    private JFXButton btSignIn;
+
+    @FXML
+    private AnchorPane SignIn;
+
+    @FXML
+    private JFXTextField txID;
+
+    @FXML
+    private JFXPasswordField txPsw;
+
+    public void selectRaCus() {
 		raBus.setSelected(false);
 		raCus.setSelected(true);
 
@@ -87,7 +98,7 @@ public class SignInController {
 		int a = Integer.parseInt(rs[0].toString());
 		if(flag == 1) {
 			if (a == 1) {
-				System.out.println("µÇÂ¼³É¹¦");
+				
 				new application.frameClass.ShopHomepageFrame();
 				SignIn.setVisible(false);
 				Stage stage = (Stage) btSignIn.getScene().getWindow();
@@ -95,11 +106,11 @@ public class SignInController {
 				labError.setVisible(false);
 			} else {
 				labError.setVisible(true);
-				System.out.println("µÇÂ¼Ê§°Ü");
+				
 			}
 		}else if(flag == 2) {
 			if (a == 1) {
-				System.out.println("µÇÂ¼³É¹¦");
+				
 				new CustomerHomepageFrame();
 				SignIn.setVisible(false);
 				Stage stage = (Stage) btSignIn.getScene().getWindow();
@@ -107,7 +118,7 @@ public class SignInController {
 				labError.setVisible(false);
 			} else {
 				labError.setVisible(true);
-				System.out.println("µÇÂ¼Ê§°Ü");
+				
 			}
 		}
 		
@@ -122,5 +133,6 @@ public class SignInController {
 
 		}
 	}
-	
+
 }
+
