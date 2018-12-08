@@ -85,7 +85,7 @@ public class SignInController {
 		}
 		// object对象 转成String 用tostring
 		int a = Integer.parseInt(rs[0].toString());
-		if(flag == 1) {
+		if (flag == 1) {
 			if (a == 1) {
 				System.out.println("登录成功");
 				new application.frameClass.ShopHomepageFrame();
@@ -97,7 +97,7 @@ public class SignInController {
 				labError.setVisible(true);
 				System.out.println("登录失败");
 			}
-		}else if(flag == 2) {
+		} else if (flag == 2) {
 			if (a == 1) {
 				System.out.println("登录成功");
 				new CustomerHomepageFrame();
@@ -110,10 +110,9 @@ public class SignInController {
 				System.out.println("登录失败");
 			}
 		}
-		
 
 	}
-	
+
 	public void btRegister() {
 		if (raBus.isSelected()) {
 			new application.frameClass.BusinessRegisterFrame();
@@ -122,5 +121,5 @@ public class SignInController {
 
 		}
 	}
-	
+
 }
