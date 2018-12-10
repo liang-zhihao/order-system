@@ -6,50 +6,50 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ArrayHandler;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 
 import application.dataClass.Db;
 import application.frameClass.CustomerHomepageFrame;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class SignInController {
 
-	@FXML
-	private Label lbPsw;
+    @FXML
+    private Label lbPsw;
 
-	@FXML
-	private RadioButton raCus;
+    @FXML
+    private RadioButton raCus;
 
-	@FXML
-	private RadioButton raBus;
+    @FXML
+    private RadioButton raBus;
 
-	@FXML
-	private Label lbID;
+    @FXML
+    private Label lbID;
 
-	@FXML
-	private Label labError;
+    @FXML
+    private Label labError;
 
-	@FXML
-	private JFXButton btRegister;
+    @FXML
+    private JFXButton btRegister;
 
-	@FXML
-	private JFXButton btSignIn;
+    @FXML
+    private JFXButton btSignIn;
 
-	@FXML
-	private TextField txID;
+    @FXML
+    private AnchorPane SignIn;
 
-	@FXML
-	private PasswordField txPsw;
+    @FXML
+    private JFXTextField txID;
 
-	@FXML
-	private AnchorPane pane;
+    @FXML
+    private JFXPasswordField txPsw;
 
-	public void selectRaCus() {
+    public void selectRaCus() {
 		raBus.setSelected(false);
 		raCus.setSelected(true);
 
@@ -99,7 +99,7 @@ public class SignInController {
 		int a = Integer.parseInt(rs[0].toString());
 		if (flag == 1) {
 			if (a == 1) {
-				System.out.println("��¼�ɹ�");
+				
 				new application.frameClass.ShopHomepageFrame();
 
 				Stage stage = (Stage) btSignIn.getScene().getWindow();
@@ -107,11 +107,10 @@ public class SignInController {
 				labError.setVisible(false);
 			} else {
 				labError.setVisible(true);
-				System.out.println("��¼ʧ��");
+				
 			}
 		} else if (flag == 2) {
 			if (a == 1) {
-				System.out.println("��¼�ɹ�");
 				new CustomerHomepageFrame();
 
 				Stage stage = (Stage) btSignIn.getScene().getWindow();
@@ -119,7 +118,7 @@ public class SignInController {
 				labError.setVisible(false);
 			} else {
 				labError.setVisible(true);
-				System.out.println("��¼ʧ��");
+				
 			}
 		}
 
@@ -135,3 +134,4 @@ public class SignInController {
 	}
 
 }
+
