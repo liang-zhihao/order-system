@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -7,43 +11,131 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <content>
-      <AnchorPane>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #BDC0BA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="-4.0" layoutY="-3.0">
          <children>
-            <Pane layoutY="-3.0" prefHeight="600.0" prefWidth="155.0">
+            <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="164.0" spacing="11.0" style="-fx-background-color: #64363C;">
                <children>
-                  <VBox alignment="TOP_CENTER" layoutX="-9.0" layoutY="-3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="607.0" prefWidth="164.0" style="-fx-background-color: green;">
-                     <children>
-                        <JFXButton prefHeight="157.0" prefWidth="164.0" text="User" />
-                        <JFXButton prefHeight="144.0" prefWidth="192.0" text="Order" />
-                        <JFXButton prefHeight="164.0" prefWidth="219.0" text="Item" />
-                        <JFXButton prefHeight="257.0" prefWidth="219.0" text="Setting" />
-                        <JFXButton prefHeight="110.0" prefWidth="195.0" text="Logout" />
-                     </children>
-                  </VBox>
+                  <Label prefHeight="85.0" prefWidth="164.0" text="Best Order System">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btUser" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="164.0" style="-fx-border-bottom-color: white;" text="User" textFill="#fcfcfc" wrapText="true" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Arial" size="25.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btOrder" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" prefHeight="50.0" prefWidth="192.0" text="Order" textAlignment="CENTER" textFill="#fcf9f9">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DISAPPEAR" />
+                     </cursor>
+                     <effect>
+                        <SepiaTone />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton fx:id="btItem" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="219.0" style="-fx-background-color: blue;" text="Item" textOverrun="CLIP">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btCart" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="219.0" text="Cart">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btLogout" alignment="TOP_LEFT" prefHeight="51.0" prefWidth="164.0" text="Logout" textOverrun="CLIP">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </JFXButton>
                </children>
-            </Pane>
-            <Pane layoutX="155.0" layoutY="14.0" prefHeight="115.0" prefWidth="660.0" style="-fx-background-color: gray;">
-               <children>
-                  <Label layoutX="66.0" layoutY="14.0" prefHeight="89.0" prefWidth="145.0" text="Label" />
-                  <JFXTextField layoutX="156.0" layoutY="45.0" prefHeight="25.0" prefWidth="288.0" />
-                  <JFXButton layoutX="263.0" layoutY="71.0" />
-                  <MenuButton layoutX="460.0" layoutY="46.0" mnemonicParsing="false" text="MenuButton">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                  </MenuButton>
-               </children>
-            </Pane>
-            <TableView layoutX="155.0" layoutY="129.0" prefHeight="460.0" prefWidth="645.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
-              </columns>
-            </TableView>
+            </VBox>
          </children>
       </AnchorPane>
-   </content>
-</ScrollPane>
+      <Pane fx:id="itemPane" layoutX="183.0" prefHeight="600.0" prefWidth="660.0" style="-fx-background-color: gray;" visible="false">
+         <children>
+            <TableView fx:id="btTableItem" layoutX="15.0" layoutY="138.0" prefHeight="415.0" prefWidth="630.0">
+              <columns>
+                <TableColumn fx:id="btItem" prefWidth="150.0" text="Name" />
+                <TableColumn minWidth="0.0" prefWidth="0.0" text="C2" />
+                  <TableColumn prefWidth="85.0" text="Business" />
+                  <TableColumn prefWidth="85.0" text="Cost" />
+                  <TableColumn prefWidth="85.0" text="Product" />
+                  <TableColumn editable="false" prefWidth="209.0" text="Detail" />
+              </columns>
+            </TableView>
+            <Pane layoutX="15.0" layoutY="-2.0" prefHeight="140.0" prefWidth="660.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="96.0" prefHeight="36.0" prefWidth="132.0" text="Product">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="tfSearch" layoutX="123.0" layoutY="101.0" prefHeight="25.0" prefWidth="288.0" />
+                  <MenuButton layoutX="455.0" layoutY="99.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="98.0" text="Sort By">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Name" />
+                      <MenuItem mnemonicParsing="false" text="Business" />
+                    </items>
+                  </MenuButton>
+                  <Label layoutX="3.0" layoutY="14.0" prefHeight="66.0" prefWidth="390.0" style="-fx-border-color: white;" text="Username/Item(wait to css)">
+                     <font>
+                        <Font name="Ebrima" size="31.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btSearch" layoutX="575.0" layoutY="101.0" style="-fx-background-color: white;" text="Search" />
+               </children>
+            </Pane>
+            <JFXButton fx:id="btAddCart" layoutX="527.0" layoutY="567.0" prefHeight="29.0" prefWidth="119.0" style="-fx-background-color: white;" text="Add to cart" textFill="#0a2c0b">
+               <font>
+                  <Font name="Bell MT" size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <AnchorPane layoutX="160.0" layoutY="6.0" prefHeight="600.0" prefWidth="682.0">
+         <children>
+            <TableView fx:id="btTableItem1" layoutX="14.0" layoutY="160.0" prefHeight="415.0" prefWidth="630.0">
+               <columns>
+                  <TableColumn fx:id="btItem1" prefWidth="150.0" text="Name" />
+                  <TableColumn minWidth="0.0" prefWidth="0.0" text="C2" />
+                  <TableColumn prefWidth="85.0" text="Business" />
+                  <TableColumn prefWidth="85.0" text="Cost" />
+                  <TableColumn prefWidth="85.0" text="Product" />
+                  <TableColumn editable="false" prefWidth="209.0" text="Detail" />
+               </columns>
+            </TableView>
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="140.0" prefWidth="660.0">
+               <children>
+                  <Label layoutX="6.0" layoutY="96.0" prefHeight="36.0" prefWidth="152.0" text="OrderMange">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="tfSearch1" layoutX="156.0" layoutY="101.0" prefHeight="25.0" prefWidth="255.0" />
+                  <MenuButton layoutX="455.0" layoutY="99.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="98.0" text="Sort By">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Name" />
+                        <MenuItem mnemonicParsing="false" text="Business" />
+                     </items>
+                  </MenuButton>
+                  <Label layoutX="3.0" layoutY="14.0" prefHeight="66.0" prefWidth="390.0" style="-fx-border-color: white;" text="Username/Order(wait to css)">
+                     <font>
+                        <Font name="Ebrima" size="31.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btSearch1" layoutX="575.0" layoutY="101.0" style="-fx-background-color: white;" text="Search" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

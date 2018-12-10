@@ -1,54 +1,71 @@
 package application.controllerClass;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+
+import application.dataClass.Db;
+import application.dataClass.Product;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class CustomerHomepageController {
 
 	@FXML
-	private MenuBar mnBar;
+	private TableColumn<?, ?> btItem;
 
 	@FXML
-	private Menu mnLogOut;
+	private TableView<?> btTableItem;
 
 	@FXML
-	private TextField txPhoneNumber;
+	private JFXButton btUser;
 
 	@FXML
-	private Label lbID;
+	private JFXTextField tfSearch;
 
 	@FXML
-	private Menu mnItems;
+	private JFXButton btAddCart;
 
 	@FXML
-	private TextField txID;
+	private JFXButton btOrder;
 
 	@FXML
-	private TextField txUserName;
+	private JFXButton btCart;
 
 	@FXML
-	private Label lbUserName;
+	private JFXButton btLogout;
 
 	@FXML
-	private TextField txEmail;
+	private JFXButton btSearch;
 
 	@FXML
-	private Menu mnUserName;
+	void fcfcfc(ActionEvent event) {
+
+	}
 
 	@FXML
-	private Label lbPhoneNum;
+	void fcf9f9(ActionEvent event) {
 
-	@FXML
-	private Menu mnOrders;
+	}
 
-	@FXML
-	private AnchorPane CusHomepage;
+	public static void initialize() throws SQLException {
 
-	@FXML
-	private Label lbEmail;
+	}
+
+	public static void main(String[] args) throws SQLException {
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		String sql = "select * from Product";
+		ArrayList<Product> list = (ArrayList<Product>) qr.query(db.getConnection(), sql,
+				new BeanListHandler<Product>(Product.class));
+		System.out.println(list.get(0).getBusinessID());
+	}
 
 }
