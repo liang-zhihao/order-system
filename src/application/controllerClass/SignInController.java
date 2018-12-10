@@ -7,49 +7,49 @@ import org.apache.commons.dbutils.handlers.ArrayHandler;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
 import application.dataClass.Db;
 import application.frameClass.CustomerHomepageFrame;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class SignInController {
 
-    @FXML
-    private Label lbPsw;
+	@FXML
+	private Label lbPsw;
 
-    @FXML
-    private RadioButton raCus;
+	@FXML
+	private JFXRadioButton raCus;
 
-    @FXML
-    private RadioButton raBus;
+	@FXML
+	private JFXRadioButton raBus;
 
-    @FXML
-    private Label lbID;
+	@FXML
+	private Label lbID;
 
-    @FXML
-    private Label labError;
+	@FXML
+	private Label labError;
 
-    @FXML
-    private JFXButton btRegister;
+	@FXML
+	private JFXButton btRegister;
 
-    @FXML
-    private JFXButton btSignIn;
+	@FXML
+	private JFXButton btSignIn;
 
-    @FXML
-    private AnchorPane SignIn;
+	@FXML
+	private AnchorPane SignIn;
 
-    @FXML
-    private JFXTextField txID;
+	@FXML
+	private JFXTextField txID;
 
-    @FXML
-    private JFXPasswordField txPsw;
+	@FXML
+	private JFXPasswordField txPsw;
 
-    public void selectRaCus() {
+	public void selectRaCus() {
 		raBus.setSelected(false);
 		raCus.setSelected(true);
 
@@ -99,7 +99,7 @@ public class SignInController {
 		int a = Integer.parseInt(rs[0].toString());
 		if (flag == 1) {
 			if (a == 1) {
-				
+
 				new application.frameClass.ShopHomepageFrame();
 
 				Stage stage = (Stage) btSignIn.getScene().getWindow();
@@ -107,7 +107,7 @@ public class SignInController {
 				labError.setVisible(false);
 			} else {
 				labError.setVisible(true);
-				
+
 			}
 		} else if (flag == 2) {
 			if (a == 1) {
@@ -118,7 +118,7 @@ public class SignInController {
 				labError.setVisible(false);
 			} else {
 				labError.setVisible(true);
-				
+
 			}
 		}
 
@@ -134,4 +134,3 @@ public class SignInController {
 	}
 
 }
-
