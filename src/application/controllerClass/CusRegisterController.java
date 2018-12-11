@@ -103,6 +103,8 @@ public class CusRegisterController {
 						+ "values(?, ?, ?, ?, ?, ?, ?)", ID, UserName, Psw, Nickname, PhoneNum, Email, Bio);
 				
 				System.out.println("Registration Successful");
+				lbErrorPassword.setVisible(false);
+				lbErrorUserName2.setVisible(false);
 			}else {
 				lbErrorPassword.setVisible(true);
 			}

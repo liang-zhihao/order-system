@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="RegisterAsCustomer" prefHeight="769.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.CusRegisterController">
+<AnchorPane fx:id="RegisterAsCustomer" prefHeight="769.0" prefWidth="550.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.CusRegisterController">
    <children>
-      <Label fx:id="lbUserName" alignment="CENTER" layoutX="66.0" layoutY="83.0" prefHeight="50.0" prefWidth="128.0" text="User Name" textFill="#104918" />
-      <Label fx:id="lbPsw" alignment="CENTER" layoutX="66.0" layoutY="154.0" prefHeight="50.0" prefWidth="128.0" text="Password" textFill="#104918" />
-      <Label fx:id="lbConfirm" alignment="CENTER" layoutX="66.0" layoutY="218.0" prefHeight="50.0" prefWidth="128.0" text="Confirm" textFill="#104918" />
-      <Label fx:id="lbPhoneNum" alignment="CENTER" layoutX="73.0" layoutY="352.0" prefHeight="50.0" prefWidth="128.0" text="Phone Number" textFill="#104918" />
-      <Label fx:id="lbEmail" alignment="CENTER" layoutX="66.0" layoutY="418.0" prefHeight="50.0" prefWidth="128.0" text="Email" textFill="#104918" />
-      <Label fx:id="lbNickname" alignment="CENTER" layoutX="66.0" layoutY="287.0" prefHeight="50.0" prefWidth="128.0" text="Nickname" textFill="#104918" />
-      <Label fx:id="lbBio" alignment="CENTER" layoutX="66.0" layoutY="509.0" prefHeight="50.0" prefWidth="128.0" text="Bio" textFill="#104918" />
+      <Label fx:id="lbUserName" alignment="CENTER" layoutX="66.0" layoutY="83.0" prefHeight="50.0" prefWidth="128.0" text="User Name" textFill="#0a3f32" />
+      <Label fx:id="lbPsw" alignment="CENTER" layoutX="66.0" layoutY="154.0" prefHeight="50.0" prefWidth="128.0" text="Password" textFill="#0a3f32" />
+      <Label fx:id="lbConfirm" alignment="CENTER" layoutX="66.0" layoutY="218.0" prefHeight="50.0" prefWidth="128.0" text="Confirm" textFill="#0a3f32" />
+      <Label fx:id="lbPhoneNum" alignment="CENTER" layoutX="73.0" layoutY="352.0" prefHeight="50.0" prefWidth="128.0" text="Phone Number" textFill="#0a3f32" />
+      <Label fx:id="lbEmail" alignment="CENTER" layoutX="66.0" layoutY="418.0" prefHeight="50.0" prefWidth="128.0" text="Email" textFill="#0a3f32" />
+      <Label fx:id="lbNickname" alignment="CENTER" layoutX="66.0" layoutY="287.0" prefHeight="50.0" prefWidth="128.0" text="Nickname" textFill="#0a3f32" />
+      <Label fx:id="lbBio" alignment="CENTER" layoutX="66.0" layoutY="509.0" prefHeight="50.0" prefWidth="128.0" text="Bio" textFill="#0a3f32" />
       <Label fx:id="lbErrorUserName2" layoutX="173.0" layoutY="610.0" prefHeight="43.0" prefWidth="225.0" text="Please change a user name" textFill="#f50f0f" visible="false" />
       <Label fx:id="lbErrorUserName" layoutX="173.0" layoutY="32.0" prefHeight="43.0" prefWidth="225.0" text="Please enter a UserName" textFill="#f50f0f" visible="false" />
       <Label fx:id="lbErrorPassword" layoutX="173.0" layoutY="610.0" prefHeight="43.0" prefWidth="225.0" text="Please check the password" textFill="#f50f0f" visible="false" />
-      <JFXButton fx:id="btRegister" layoutX="223.0" layoutY="662.0" onAction="#btRegister" prefHeight="43.0" prefWidth="104.0" text="Register" textFill="#104918" />
-      <JFXTextArea fx:id="txBio" focusColor="#104918" layoutX="223.0" layoutY="479.0" prefHeight="109.0" prefWidth="257.0" unFocusColor="#148a23" />
-      <JFXTextField fx:id="txEmail" focusColor="#104918" layoutX="225.0" layoutY="418.0" prefHeight="50.0" prefWidth="257.0" unFocusColor="#148a23" />
-      <JFXTextField fx:id="txPhoneNum" focusColor="#104918" layoutX="225.0" layoutY="352.0" prefHeight="50.0" prefWidth="257.0" unFocusColor="#148a23" />
-      <JFXTextField fx:id="txNickname" focusColor="#104918" layoutX="225.0" layoutY="287.0" prefHeight="50.0" prefWidth="257.0" unFocusColor="#148a23" />
-      <JFXPasswordField fx:id="txPsw" focusColor="#104918" layoutX="225.0" layoutY="154.0" prefHeight="50.0" prefWidth="257.0" unFocusColor="#148a23" />
-      <JFXPasswordField fx:id="txPswConfirm" focusColor="#104918" layoutX="225.0" layoutY="218.0" prefHeight="50.0" prefWidth="257.0" unFocusColor="#148a23" />
-      <JFXTextField fx:id="txUserName" focusColor="#104918" layoutX="225.0" layoutY="83.0" prefHeight="50.0" prefWidth="257.0" unFocusColor="#148a23" />
+      <JFXButton fx:id="btRegister" layoutX="201.0" layoutY="661.0" onAction="#btRegister" prefHeight="43.0" prefWidth="104.0" text="Register" textFill="#0a3f32" />
+      <JFXTextArea fx:id="txBio" focusColor="#5a3a2b" layoutX="223.0" layoutY="479.0" prefHeight="109.0" prefWidth="257.0" unFocusColor="#0a3f32" />
+      <JFXTextField fx:id="txEmail" focusColor="#5a3a2b" layoutX="225.0" layoutY="418.0" prefHeight="50.0" prefWidth="257.0" unFocusColor="#0a3f32" />
+      <JFXTextField fx:id="txPhoneNum" focusColor="#5a3a2b" layoutX="225.0" layoutY="352.0" prefHeight="50.0" prefWidth="257.0" unFocusColor="#0a3f32" />
+      <JFXTextField fx:id="txNickname" focusColor="#5a3a2b" layoutX="225.0" layoutY="287.0" prefHeight="50.0" prefWidth="257.0" unFocusColor="#0a3f32" />
+      <JFXPasswordField fx:id="txPsw" focusColor="#5a3a2b" layoutX="225.0" layoutY="154.0" prefHeight="50.0" prefWidth="257.0" unFocusColor="#0a3f32" />
+      <JFXPasswordField fx:id="txPswConfirm" focusColor="#5a3a2b" layoutX="225.0" layoutY="218.0" prefHeight="50.0" prefWidth="257.0" unFocusColor="#0a3f32" />
+      <JFXTextField fx:id="txUserName" focusColor="#5a3a2b" layoutX="225.0" layoutY="83.0" prefHeight="50.0" prefWidth="257.0" unFocusColor="#0a3f32" />
    </children>
 </AnchorPane>
