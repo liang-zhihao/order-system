@@ -6,34 +6,30 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class DeliveryAddress {
-	private int addressId;
+	private int deliveryAddressId;
 	private int customerId;
 	private StringProperty consignee;
-	private IntegerProperty phone;
+	private IntegerProperty phoneNumber;
 	private StringProperty detail;
 
-	public int getAddressId() {
-		return addressId;
-	}
-
-	public StringProperty getConsignee() {
-		return consignee;
+	public String getConsignee() {
+		return consignee.get();
 	}
 
 	public int getCustomerId() {
 		return customerId;
 	}
 
-	public StringProperty getDetail() {
-		return detail;
+	public int getDeliveryAddressId() {
+		return deliveryAddressId;
 	}
 
-	public IntegerProperty getPhone() {
-		return phone;
+	public String getDetail() {
+		return detail.get();
 	}
 
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
+	public int getPhoneNumber() {
+		return phoneNumber.get();
 	}
 
 	public void setConsignee(String consignee) {
@@ -44,11 +40,15 @@ public class DeliveryAddress {
 		this.customerId = customerId;
 	}
 
+	public void setDeliveryAddressId(int deliveryAddressId) {
+		this.deliveryAddressId = deliveryAddressId;
+	}
+
 	public void setDetail(String detail) {
 		this.detail = new SimpleStringProperty(detail);
 	}
 
-	public void setPhone(int phone) {
-		this.phone = new SimpleIntegerProperty(phone);
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = new SimpleIntegerProperty(phoneNumber);
 	}
 }

@@ -7,10 +7,10 @@ public class Product {
 	private int Standardcost;
 	private String Detail;
 	private Double Weight;
-	private int BusinessID;// 通过id连接
+	private int businessiD;// 通过id连接
 
 	public void setBusinessID(int businessID) {
-		BusinessID = businessID;
+		this.businessiD = businessID;
 	}
 
 	public void setDetail(String detail) {
@@ -38,7 +38,7 @@ public class Product {
 	}
 
 	public int getBusinessID() {
-		return BusinessID;
+		return businessiD;
 	}
 
 	public String getDetail() {

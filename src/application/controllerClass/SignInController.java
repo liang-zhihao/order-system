@@ -4,13 +4,17 @@ import java.sql.SQLException;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ArrayHandler;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
+import application.dataClass.Business;
+import application.dataClass.Customer;
 import application.dataClass.Db;
+import application.dataClass.NowInf;
 import application.frameClass.CustomerHomepageFrame;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -65,61 +69,52 @@ public class SignInController {
 		String name = txID.getText();
 		String pwd = txPsw.getText();
 		int flag = 0;
-		String[] para = new String[2];
+		Object[] para = new Object[2];
 		System.out.println(name + " " + pwd);
 		para[0] = name;
 		para[1] = pwd;
 		Db db = new Db();
 		Object[] rs = null;
-		if (raBus.isSelected()) {
-			flag = 1;
-			String sql = "Select count(*) from business where UserName =? and Password=?";
-			QueryRunner qr = new QueryRunner();
-			try {
+		QueryRunner qr = new QueryRunner();
+		int a;
+		try {
+			if (raBus.isSelected()) {
+				String sql2 = "Select * from Business where UserName =? and Password=?";
+				String sql = "Select count(*) from business where UserName =? and Password=?";
 				rs = qr.query(db.getConnection(), sql, para, new ArrayHandler());
+				a = Integer.parseInt(rs[0].toString());
+				if (a == 1) {
+					NowInf.business = qr.query(db.getConnection(), sql2, para,
+							new BeanHandler<Business>(Business.class));
+					new application.frameClass.ShopHomepageFrame();
+					Stage stage = (Stage) btSignIn.getScene().getWindow();
+					stage.close();
+					labError.setVisible(false);
+				} else {
+					labError.setVisible(true);
+				}
 
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			flag = 2;
-			String sql = "select count(*) from Customer where UserName =? and Password=?";
-			QueryRunner qr = new QueryRunner();
-
-			try {
+			} else {
+				String sql2 = "Select * from Customer where UserName =? and Password=?";
+				String sql = "select count(*) from Customer where UserName =? and Password=?";
 				rs = qr.query(db.getConnection(), sql, para, new ArrayHandler());
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				a = Integer.parseInt(rs[0].toString());
+				if (a == 1) {
+					NowInf.customer = qr.query(db.getConnection(), sql2, para,
+							new BeanHandler<Customer>(Customer.class));
+					new CustomerHomepageFrame();
+					Stage stage = (Stage) btSignIn.getScene().getWindow();
+					stage.close();
+					labError.setVisible(false);
+				} else {
+					labError.setVisible(true);
 
-		}
-		// object���� ת��String ��tostring
-		int a = Integer.parseInt(rs[0].toString());
-		if (flag == 1) {
-			if (a == 1) {
-
-				new application.frameClass.ShopHomepageFrame();
-
-				Stage stage = (Stage) btSignIn.getScene().getWindow();
-				stage.close();
-				labError.setVisible(false);
-			} else {
-				labError.setVisible(true);
+				}
 
 			}
-		} else if (flag == 2) {
-			if (a == 1) {
-				new CustomerHomepageFrame();
-
-				Stage stage = (Stage) btSignIn.getScene().getWindow();
-				stage.close();
-				labError.setVisible(false);
-			} else {
-				labError.setVisible(true);
-
-			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
@@ -129,7 +124,6 @@ public class SignInController {
 			new application.frameClass.BusinessRegisterFrame();
 		} else {
 			new application.frameClass.CusRegisterFrame();
-
 		}
 	}
 

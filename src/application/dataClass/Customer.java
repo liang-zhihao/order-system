@@ -1,14 +1,24 @@
 package application.dataClass;
 
 public class Customer {
-	private int id;
+	private int customerId;
 	private String username;
 	private String password;
 	private String nickname;
-	private int phone;
+	private int phoneNumber;
+	private String email;
+	private String bio;
 
-	public int getId() {
-		return id;
+	public String getBio() {
+		return bio;
+	}
+
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public String getEmail() {
+		return email;
 	}
 
 	public String getNickname() {
@@ -19,20 +29,24 @@ public class Customer {
 		return password;
 	}
 
-	public int getPhone() {
-		return phone;
+	public int getPhoneNumber() {
+		return phoneNumber;
 	}
 
 	public String getUsername() {
 		return username;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setBio(String bio) {
+		this.bio = bio;
 	}
 
-	public void setPhone(int phone) {
-		this.phone = phone;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public void setNickname(String nickname) {
@@ -43,7 +57,12 @@ public class Customer {
 		this.password = password;
 	}
 
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 }
