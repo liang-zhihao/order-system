@@ -8,6 +8,7 @@ import org.apache.commons.dbutils.handlers.ArrayHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
 import application.dataClass.CustomerOrderTable;
@@ -94,7 +95,10 @@ public class CustomerHomepageController {
 
 	@FXML
 	private JFXButton btLogout;
-
+	@FXML
+	private JFXRadioButton orderBusinessRad;
+	@FXML
+	private JFXRadioButton orderItemRad;
 	@FXML
 	private JFXButton btSearch;
 	@FXML
@@ -108,6 +112,7 @@ public class CustomerHomepageController {
 	// public static void initialize() throws SQLException {
 	//
 	// }
+	ObservableList<CustomerOrderTable> cellData = FXCollections.observableArrayList();
 
 	public static void main(String[] args) throws SQLException {
 		Db db = new Db();
@@ -117,10 +122,10 @@ public class CustomerHomepageController {
 				new BeanListHandler<SalesOrder>(SalesOrder.class));
 		System.out.println(list.get(0).getOrderDate());
 		// initOrderSearch();
+
 	}
 
 	public void initOrderSearch() {
-		ObservableList<CustomerOrderTable> cellData = FXCollections.observableArrayList();
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 		String sql = "select * from salesorder where customerid =" + NowInf.customer.getCustomerId();
@@ -128,15 +133,6 @@ public class CustomerHomepageController {
 			ArrayList<SalesOrder> orderlist = (ArrayList<SalesOrder>) qr.query(db.getConnection(), sql,
 					new BeanListHandler<SalesOrder>(SalesOrder.class));
 			CustomerOrderTable[] t = convertToCustomerOrderTable(orderlist);
-			// private IntegerProperty salesOrderNumber;
-			// private IntegerProperty quantity;
-			// private StringProperty status;
-			// private StringProperty orderDate;
-			// private StringProperty comment;
-			// private IntegerProperty subTotal;
-			// private StringProperty itemName;
-			// private StringProperty Business;
-
 			orderNumberCol
 					.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("salesOrderNumber"));
 			orderQuantityCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("quantity"));
@@ -185,6 +181,43 @@ public class CustomerHomepageController {
 			e.printStackTrace();
 		}
 		return t;
+	}
+
+	public void orderSearch() {
+		try {
+			String key = tfSearchOrder.getText();
+			key = "%" + key + "%";
+			Object[] para = new Object[2];
+			para[0] = key;
+			para[1] = NowInf.customer.getCustomerId();
+			Db db = new Db();
+			QueryRunner qr = new QueryRunner();
+			String sql = "";
+			if (orderBusinessRad.isSelected()) {
+				sql = "SELECT salesOrderId,business.businessId,productId,customerId,deliveryAddressId,salesOrderNumber,quantity ,status,orderDate,comment,subTotal FROM business , salesorder WHERE businessName LIKE ? AND business.BusinessID =salesorder.BusinessID and CustomerID=?";
+
+			} else {
+				sql = "SELECT salesOrderId,salesorder.businessId,salesorder.productId,customerId,deliveryAddressId,salesOrderNumber,quantity ,status,orderDate,comment,subTotal FROM product , salesorder WHERE product.NAME LIKE ? AND product.ProductID =salesorder.ProductID and  CustomerID=?";
+			}
+			ArrayList<SalesOrder> orderlist;
+			orderlist = (ArrayList<SalesOrder>) qr.query(db.getConnection(), sql, para,
+					new BeanListHandler<SalesOrder>(SalesOrder.class));
+			CustomerOrderTable[] t = convertToCustomerOrderTable(orderlist);
+			cellData.setAll(t);
+			customerOrderTable.setItems(cellData);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void selectOrderItemRad() {
+		orderBusinessRad.setSelected(false);
+
+	}
+
+	public void selectOrderBusinessRad() {
+		orderItemRad.setSelected(false);
 	}
 
 }

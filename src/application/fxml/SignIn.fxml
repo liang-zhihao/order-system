@@ -19,7 +19,7 @@
             <JFXTextField fx:id="txID" focusColor="#104918" layoutX="270.0" layoutY="67.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="248.0" text="xhy" />
             <JFXRadioButton fx:id="raBus" layoutX="332.0" layoutY="235.0" onAction="#selectRaBus" text="Business" />
             <JFXPasswordField fx:id="txPsw" focusColor="#104918" layoutX="270.0" layoutY="137.0" prefHeight="48.0" prefWidth="248.0" text="123456" />
-            <JFXRadioButton fx:id="raCus" layoutX="146.0" layoutY="235.0" onAction="#selectRaCus" text="Customer" />
+            <JFXRadioButton fx:id="raCus" layoutX="146.0" layoutY="235.0" onAction="#selectRaCus" selected="true" text="Customer" />
          </children>
       </AnchorPane>
    </center>

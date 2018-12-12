@@ -15,7 +15,7 @@
    <children>
       <AnchorPane layoutX="-4.0" layoutY="-3.0">
          <children>
-            <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="164.0" spacing="11.0" style="-fx-background-color: #64363C;">
+            <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="617.0" prefWidth="164.0" spacing="11.0" style="-fx-background-color: #64363C;">
                <children>
                   <Label prefHeight="85.0" prefWidth="164.0" text="Best Order System">
                      <padding>
@@ -93,7 +93,7 @@
       </AnchorPane>
       <AnchorPane fx:id="cusOrderPane" layoutX="160.0" layoutY="6.0" prefHeight="600.0" prefWidth="682.0">
          <children>
-            <TableView fx:id="customerOrderTable" layoutX="14.0" layoutY="160.0" prefHeight="415.0" prefWidth="630.0">
+            <TableView fx:id="customerOrderTable" layoutX="17.0" layoutY="160.0" prefHeight="433.0" prefWidth="630.0">
                <columns>
                   <TableColumn fx:id="orderItemCol" prefWidth="88.0" text="Item Name" />
                   <TableColumn fx:id="orderBusinessCol" editable="false" text="Business" />
@@ -105,30 +105,24 @@
                   <TableColumn fx:id="orderNumberCol" prefWidth="128.0" text="OrderNumber" />
                </columns>
             </TableView>
-            <AnchorPane layoutX="14.0" layoutY="14.0">
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="132.0" prefWidth="660.0">
                <children>
                   <Label layoutX="6.0" layoutY="96.0" prefHeight="36.0" prefWidth="152.0" text="OrderMange">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <JFXButton fx:id="btSearchOrder" layoutX="575.0" layoutY="101.0" style="-fx-background-color: white;" text="Search" />
                   <Label fx:id="LabText" layoutX="3.0" layoutY="14.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: white;" text="Username/Order(wait for css)">
                      <font>
                         <Font name="Ebrima" size="31.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="tfSearchOrder" layoutX="156.0" layoutY="101.0" prefHeight="25.0" prefWidth="255.0" />
-                  <MenuButton fx:id="orderMenuBtn" layoutX="455.0" layoutY="99.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="98.0" text="Sort By">
-                     <items>
-                        <MenuItem fx:id="orderMenuItem" mnemonicParsing="false" text="Name" />
-                        <MenuItem fx:id="orderMenuBusiness" mnemonicParsing="false" text="Business" />
-                        <MenuItem fx:id="orderMenuDate" mnemonicParsing="false" text="Date" />
-                        <MenuItem fx:id="orderMenuSub" mnemonicParsing="false" text="Subtotal" />
-                     </items>
-                  </MenuButton>
+                  <JFXTextField fx:id="tfSearchOrder" layoutX="156.0" layoutY="101.0" prefHeight="25.0" prefWidth="186.0" />
+                  <JFXRadioButton fx:id="orderItemRad" layoutX="351.0" layoutY="88.0" selected="true" text="Item" />
+                  <JFXRadioButton fx:id="orderBusinessRad" layoutX="351.0" layoutY="118.0" text="Business" />
                </children>
             </AnchorPane>
+            <JFXButton fx:id="btSearchOrder" layoutX="524.0" layoutY="105.0" onAction="#orderSearch" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: white;" text="Search" />
          </children>
       </AnchorPane>
    </children>
