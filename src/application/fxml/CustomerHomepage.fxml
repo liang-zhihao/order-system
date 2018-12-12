@@ -122,7 +122,7 @@
                   <JFXRadioButton fx:id="orderBusinessRad" layoutX="351.0" layoutY="118.0" text="Business" />
                </children>
             </AnchorPane>
-            <JFXButton fx:id="btSearchOrder" layoutX="524.0" layoutY="105.0" onAction="#orderSearch" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: white;" text="Search" />
+            <JFXButton fx:id="btSearchOrder" buttonType="RAISED" layoutX="524.0" layoutY="105.0" onAction="#orderSearch" prefHeight="36.0" prefWidth="98.0" text="Search" />
          </children>
       </AnchorPane>
    </children>
