@@ -41,7 +41,7 @@
                         <SepiaTone />
                      </effect>
                   </JFXButton>
-                  <JFXButton fx:id="btItem" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="219.0" style="-fx-background-color: #77969A;" text="Item" textFill="#fcf9f9" textOverrun="CLIP">
+                  <JFXButton fx:id="btItem" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="219.0" styleClass="#77969A" text="Item" textFill="#fcf9f9" textOverrun="CLIP">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
