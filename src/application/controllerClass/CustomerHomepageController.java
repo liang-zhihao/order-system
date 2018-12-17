@@ -96,9 +96,9 @@ public class CustomerHomepageController {
 	@FXML
 	private JFXButton btLogout;
 	@FXML
-	private JFXRadioButton orderBusinessRad;
-	@FXML
 	private JFXRadioButton orderItemRad;
+	@FXML
+	private JFXRadioButton orderBusinessRad;
 	@FXML
 	private JFXButton btSearch;
 	@FXML
@@ -109,9 +109,17 @@ public class CustomerHomepageController {
 	private TableColumn<CustomerOrderTable, String> orderCommentCol;
 	// 创建并初始化数据
 
-	// public static void initialize() throws SQLException {
-	//
-	// }
+	public void initialize() throws SQLException {
+		orderNumberCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("salesOrderNumber"));
+		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("quantity"));
+		orderStatusCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("status"));
+		orderDateCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("orderDate"));
+		orderCommentCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("comment"));
+		orderSubCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("subTotal"));
+		orderItemCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("itemName"));
+		orderBusinessCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("Business"));
+	}
+
 	ObservableList<CustomerOrderTable> cellData = FXCollections.observableArrayList();
 
 	public static void main(String[] args) throws SQLException {
@@ -130,18 +138,11 @@ public class CustomerHomepageController {
 		QueryRunner qr = new QueryRunner();
 		String sql = "select * from salesorder where customerid =" + NowInf.customer.getCustomerId();
 		try {
+			cellData.clear();
 			ArrayList<SalesOrder> orderlist = (ArrayList<SalesOrder>) qr.query(db.getConnection(), sql,
 					new BeanListHandler<SalesOrder>(SalesOrder.class));
 			CustomerOrderTable[] t = convertToCustomerOrderTable(orderlist);
-			orderNumberCol
-					.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("salesOrderNumber"));
-			orderQuantityCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("quantity"));
-			orderStatusCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("status"));
-			orderDateCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("orderDate"));
-			orderCommentCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("comment"));
-			orderSubCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("subTotal"));
-			orderItemCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("itemName"));
-			orderBusinessCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("Business"));
+
 			cellData.addAll(t);
 			customerOrderTable.setItems(cellData);
 		} catch (SQLException e) {
@@ -185,6 +186,7 @@ public class CustomerHomepageController {
 
 	public void orderSearch() {
 		try {
+			cellData.clear();
 			String key = tfSearchOrder.getText();
 			key = "%" + key + "%";
 			Object[] para = new Object[2];
@@ -195,15 +197,15 @@ public class CustomerHomepageController {
 			String sql = "";
 			if (orderBusinessRad.isSelected()) {
 				sql = "SELECT salesOrderId,business.businessId,productId,customerId,deliveryAddressId,salesOrderNumber,quantity ,status,orderDate,comment,subTotal FROM business , salesorder WHERE businessName LIKE ? AND business.BusinessID =salesorder.BusinessID and CustomerID=?";
-
 			} else {
 				sql = "SELECT salesOrderId,salesorder.businessId,salesorder.productId,customerId,deliveryAddressId,salesOrderNumber,quantity ,status,orderDate,comment,subTotal FROM product , salesorder WHERE product.NAME LIKE ? AND product.ProductID =salesorder.ProductID and  CustomerID=?";
 			}
 			ArrayList<SalesOrder> orderlist;
 			orderlist = (ArrayList<SalesOrder>) qr.query(db.getConnection(), sql, para,
 					new BeanListHandler<SalesOrder>(SalesOrder.class));
+			// System.out.println(orderlist.get(0).getCustomerId());
 			CustomerOrderTable[] t = convertToCustomerOrderTable(orderlist);
-			cellData.setAll(t);
+			cellData.addAll(t);
 			customerOrderTable.setItems(cellData);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -211,12 +213,13 @@ public class CustomerHomepageController {
 		}
 	}
 
-	public void selectOrderItemRad() {
-		orderBusinessRad.setSelected(false);
+	public void OOrderItemRad() {
 
+		orderBusinessRad.setSelected(false);
 	}
 
-	public void selectOrderBusinessRad() {
+	public void OOrderBusinessRad() {
+
 		orderItemRad.setSelected(false);
 	}
 
