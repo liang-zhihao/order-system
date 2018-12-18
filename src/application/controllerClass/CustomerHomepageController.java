@@ -133,6 +133,7 @@ public class CustomerHomepageController {
 	// 创建并初始化数据
 
 	public void initialize() throws SQLException {
+
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("salesOrderNumber"));
 		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("quantity"));
 		orderStatusCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("status"));
@@ -161,7 +162,7 @@ public class CustomerHomepageController {
 				});
 		// btOrderCol.setCellValueFactory(cellData ->
 		// cellData.getValue().cb.getCheckBox());
-
+		initOrderSearch();
 	}
 
 	ObservableList<CustomerOrderTable> cellData = FXCollections.observableArrayList();
@@ -319,14 +320,28 @@ public class CustomerHomepageController {
 	}
 
 	public void confirmReceipt() {
-		for (int i = 0; i < cellData.size(); i++) {
-			CustomerOrderTable t = cellData.get(i);
-			if (t.getIsCheck()) {
-				cellData.get(i).setStatus("Received");
-				System.out.println("________________");
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		String sql = "update salesorder set status = ? where SalesOrderNumber = ?";
+		Object[] para = new Object[2];
+		para[0] = "Received";
+		try {
+
+			for (int i = 0; i < cellData.size(); i++) {
+				CustomerOrderTable t = cellData.get(i);
+				if (t.getIsCheck()) {
+					t.setStatus("Received");
+					para[1] = t.getSalesOrderNumber();
+					qr.update(db.getConnection(), sql, para);
+					System.out.println("confirm successfully");
+				}
 			}
+			customerOrderTable.refresh();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		customerOrderTable.refresh();
+
 	}
 
 }

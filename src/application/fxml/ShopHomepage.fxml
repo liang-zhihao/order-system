@@ -1,43 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="ShopHomepage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="776.0" prefWidth="1193.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.ShopHomepageController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TitledPane animated="false" layoutY="-30.0" prefHeight="30.0" prefWidth="1193.0" text="Homepage" textFill="#104918">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-         </content>
-      </TitledPane>
-      <MenuBar fx:id="mnBar" prefHeight="30.0" prefWidth="1193.0">
-         <menus>
-            <Menu fx:id="mnUserName" mnemonicParsing="false" text="User Name">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Updated" />
-                  <MenuItem mnemonicParsing="false" text="Address" />
-               </items>
-            </Menu>
-            <Menu fx:id="mnItems" mnemonicParsing="false" text="Items" />
-            <Menu fx:id="mnOrders" mnemonicParsing="false" text="Orders" />
-            <Menu fx:id="mnLogOut" mnemonicParsing="false" text="Log Out" />
-         </menus>
-      </MenuBar>
-      <TextField fx:id="txPhoneNum" layoutX="284.0" layoutY="401.0" prefHeight="48.0" prefWidth="248.0" />
-      <TextField fx:id="txEmail" layoutX="284.0" layoutY="475.0" prefHeight="48.0" prefWidth="248.0" />
-      <Label fx:id="lbUserName" alignment="CENTER" layoutX="125.0" layoutY="254.0" prefHeight="48.0" prefWidth="110.0" text="User Name" textFill="#104918" />
-      <Label fx:id="lbPhoneNum" alignment="CENTER" layoutX="125.0" layoutY="401.0" prefHeight="48.0" prefWidth="110.0" text="Phone Number" textFill="#104918" />
-      <Label fx:id="lbEmail" alignment="CENTER" layoutX="125.0" layoutY="475.0" prefHeight="48.0" prefWidth="110.0" text="Email" textFill="#104918" />
-      <TextField fx:id="txID" layoutX="284.0" layoutY="330.0" prefHeight="48.0" prefWidth="248.0" />
-      <Label fx:id="lbID" alignment="CENTER" layoutX="125.0" layoutY="330.0" prefHeight="48.0" prefWidth="110.0" text="ID" textFill="#104918" />
-      <TextField fx:id="txUserName" layoutX="284.0" layoutY="254.0" prefHeight="48.0" prefWidth="248.0" />
-      <Label alignment="CENTER" layoutX="125.0" layoutY="76.0" lineSpacing="5.0" prefHeight="130.0" prefWidth="407.0" text="WELCOME!" textFill="#104918">
-         <font>
-            <Font size="67.0" />
-         </font>
-      </Label>
+      <AnchorPane layoutX="6.0" layoutY="7.0" prefHeight="623.0" prefWidth="167.0">
+         <children>
+            <VBox alignment="TOP_CENTER" layoutX="2.0" layoutY="3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="617.0" prefWidth="164.0" spacing="11.0" style="-fx-background-color: #2B5F75;">
+               <children>
+                  <Label prefHeight="85.0" prefWidth="164.0" text="Best Order System" textFill="#fcfcfc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <JFXButton fx:id="btUser" alignment="TOP_LEFT" onAction="#showUserInf" prefHeight="50.0" prefWidth="164.0" style="-fx-border-bottom-color: white;" text="User" textFill="#fcfcfc" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Arial" size="25.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btOrder" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" onAction="#initOrderSearch" prefHeight="50.0" prefWidth="192.0" text="Order" textAlignment="CENTER" textFill="#fcf9f9">
+                     <cursor>
+                        <Cursor fx:constant="DISAPPEAR" />
+                     </cursor>
+                     <effect>
+                        <SepiaTone />
+                     </effect>
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btItem" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="219.0" styleClass="#77969A" text="Item" textFill="#fcf9f9" textOverrun="CLIP">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btCart" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="219.0" text="Cart" textFill="#fcf9f9">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btLogout" alignment="TOP_LEFT" prefHeight="51.0" prefWidth="164.0" text="Logout" textFill="#fcf9f9" textOverrun="CLIP">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
