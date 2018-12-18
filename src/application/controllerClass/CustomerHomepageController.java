@@ -5,12 +5,17 @@ import java.util.ArrayList;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ArrayHandler;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
+import application.dataClass.CheckBoxTCell;
+import application.dataClass.Customer;
 import application.dataClass.CustomerOrderTable;
 import application.dataClass.Db;
 import application.dataClass.NowInf;
@@ -19,49 +24,53 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Callback;
 
 public class CustomerHomepageController {
 	@FXML
-	private MenuItem orderMenuSub;
-
-	@FXML
-	private JFXButton btItem;
-
-	@FXML
-	private MenuItem orderMenuBusiness;
-
+	private TableColumn<CustomerOrderTable, Boolean> btOrderCol;
 	@FXML
 	private TableColumn<CustomerOrderTable, String> orderBusinessCol;
 
 	@FXML
-	private MenuItem orderMenuItem;
-
-	@FXML
-	private JFXButton btCart;
-
-	@FXML
 	private TableColumn<CustomerOrderTable, String> orderItemCol;
+	@FXML
+	private TableColumn<CustomerOrderTable, String> orderDateCol;
+	@FXML
+	private TableColumn<CustomerOrderTable, Integer> orderSubCol;
+	@FXML
+	private TableView<CustomerOrderTable> customerOrderTable;
 
 	@FXML
-	private MenuItem orderMenuDate;
+	private TableColumn<CustomerOrderTable, Integer> orderQuantityCol;
+	@FXML
+	private TableColumn<CustomerOrderTable, Integer> orderNumberCol;
+	@FXML
+	private TableColumn<CustomerOrderTable, String> orderStatusCol;
+	@FXML
+	private TableColumn<CustomerOrderTable, String> orderCommentCol;
+	@FXML
+	private JFXButton btItem;
+
+	@FXML
+	private JFXTextField emailtfd;
+
+	@FXML
+	private JFXRadioButton orderBusinessRad;
 
 	@FXML
 	private Label LabText;
 
 	@FXML
-	private TableColumn<CustomerOrderTable, String> orderDateCol;
+	private AnchorPane cusOrderPane1;
 
 	@FXML
-	private JFXButton btUser;
-
-	@FXML
-	private TableColumn<CustomerOrderTable, Integer> orderSubCol;
+	private JFXTextField nicknametfd;
 
 	@FXML
 	private JFXTextField tfSearch;
@@ -73,40 +82,54 @@ public class CustomerHomepageController {
 	private AnchorPane cusOrderPane;
 
 	@FXML
-	private AnchorPane cusItemPane;
-
-	@FXML
-	private TableView<CustomerOrderTable> customerOrderTable;
-
-	@FXML
-	private TableColumn<CustomerOrderTable, Integer> orderQuantityCol;
-
-	@FXML
-	private JFXTextField tfSearchOrder;
+	private JFXButton btChangeInf;
 
 	@FXML
 	private JFXButton btSearchOrder;
 
 	@FXML
-	private MenuButton orderMenuBtn;
+	private JFXTextField originalpwdtfd;
+
+	@FXML
+	private JFXTextArea biota;
+
+	@FXML
+	private JFXTextField confirmpwdtfd;
+
+	@FXML
+	private JFXTextField newpwdtfd;
+
+	@FXML
+	private JFXButton btCart;
+
+	@FXML
+	private JFXTextField usernametfd;
+
+	@FXML
+	private JFXTextField phonetfd;
+
+	@FXML
+	private JFXButton btUser;
+
+	@FXML
+	private AnchorPane cusItemPane;
+
+	@FXML
+	private JFXRadioButton orderItemRad;
+
+	@FXML
+	private JFXTextField tfSearchOrder;
 
 	@FXML
 	private JFXButton btOrder;
 
 	@FXML
 	private JFXButton btLogout;
-	@FXML
-	private JFXRadioButton orderItemRad;
-	@FXML
-	private JFXRadioButton orderBusinessRad;
+
 	@FXML
 	private JFXButton btSearch;
 	@FXML
-	private TableColumn<CustomerOrderTable, Integer> orderNumberCol;
-	@FXML
-	private TableColumn<CustomerOrderTable, String> orderStatusCol;
-	@FXML
-	private TableColumn<CustomerOrderTable, String> orderCommentCol;
+	private JFXButton btConfirmreceipt;
 	// 创建并初始化数据
 
 	public void initialize() throws SQLException {
@@ -118,6 +141,27 @@ public class CustomerHomepageController {
 		orderSubCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("subTotal"));
 		orderItemCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("itemName"));
 		orderBusinessCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("Business"));
+		// btOrderCol.setCellFactory(CheckBoxTableCell.forTableColumn(btOrderCol));
+		btOrderCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Boolean>("isCheck"));
+		btOrderCol.setCellFactory(
+				new Callback<TableColumn<CustomerOrderTable, Boolean>, TableCell<CustomerOrderTable, Boolean>>() {
+					public TableCell<CustomerOrderTable, Boolean> call(TableColumn<CustomerOrderTable, Boolean> param) {
+						final CheckBoxTCell<CustomerOrderTable, Boolean> cell = new CheckBoxTCell<>();
+						final JFXCheckBox checkbox = (JFXCheckBox) cell.getGraphic();
+						checkbox.setOnAction(e -> {
+							// System.out.println(t.getItemName());
+							if (cellData.get(cell.getIndex()).getIsCheck().booleanValue()) {
+								cellData.get(cell.getIndex()).setIsCheck(false);
+							} else {
+								cellData.get(cell.getIndex()).setIsCheck(true);
+							}
+						});
+						return cell;
+					}
+				});
+		// btOrderCol.setCellValueFactory(cellData ->
+		// cellData.getValue().cb.getCheckBox());
+
 	}
 
 	ObservableList<CustomerOrderTable> cellData = FXCollections.observableArrayList();
@@ -176,6 +220,7 @@ public class CustomerHomepageController {
 				t[i].setSalesOrderNumber(orderlist.get(i).getSalesOrderNumber());
 				t[i].setStatus(orderlist.get(i).getStatus());
 				t[i].setSubTotal(orderlist.get(i).getSubTotal());
+				t[i].setIsCheck(false);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -214,13 +259,74 @@ public class CustomerHomepageController {
 	}
 
 	public void OOrderItemRad() {
-
 		orderBusinessRad.setSelected(false);
 	}
 
 	public void OOrderBusinessRad() {
-
 		orderItemRad.setSelected(false);
+	}
+
+	public void changeInf() {
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		String sql = "update customer set NickName = ?,PhoneNumber = ? , Email=? , Bio = ? where CustomerID = ?";
+		Object[] para = new Object[5];
+		para[0] = nicknametfd.getText();
+		para[1] = Integer.parseInt(phonetfd.getText());
+		para[2] = emailtfd.getText();
+		para[3] = biota.getText();
+		para[4] = NowInf.customer.getCustomerId();
+		try {
+			if (!originalpwdtfd.getText().isEmpty() && !newpwdtfd.getText().isEmpty()
+					&& !confirmpwdtfd.getText().isEmpty()) {
+				if (!originalpwdtfd.getText().equals(NowInf.customer.getPassword())) {
+					System.out.println("Original Password is wrong");
+					return;
+				}
+				if (!newpwdtfd.getText().equals(confirmpwdtfd.getText())) {
+					System.out.println("Confirm Password is wrong");
+					return;
+				}
+				String sql2 = "update customer set Password =? where CustomerID=?";
+				Object[] para2 = new Object[2];
+				para2[0] = newpwdtfd.getText();
+				para2[1] = NowInf.customer.getCustomerId();
+				try {
+					qr.update(db.getConnection(), sql2, para2);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} // 更新信息
+			String sql3 = "select * from customer where customerID=" + NowInf.customer.getCustomerId();
+			qr.update(db.getConnection(), sql, para);
+			System.out.println("Update SUCCESSFUL");
+			NowInf.customer = qr.query(db.getConnection(), sql3, new BeanHandler<Customer>(Customer.class));
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
+	public void showUserInf() {
+		Customer t = NowInf.customer;
+		usernametfd.setText(t.getUsername());
+		nicknametfd.setText(t.getNickname());
+		phonetfd.setText("" + t.getPhoneNumber());
+		emailtfd.setText(t.getEmail());
+		biota.setText(t.getBio());
+	}
+
+	public void confirmReceipt() {
+		for (int i = 0; i < cellData.size(); i++) {
+			CustomerOrderTable t = cellData.get(i);
+			if (t.getIsCheck()) {
+				cellData.get(i).setStatus("Received");
+				System.out.println("________________");
+			}
+		}
+		customerOrderTable.refresh();
 	}
 
 }

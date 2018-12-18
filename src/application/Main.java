@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
+	// <Insets top="11.0" />
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -16,7 +16,6 @@ public class Main extends Application {
 			// scene.getStylesheets().add(getClass().getResource("//application.css").toExternalForm());
 			scene.getStylesheets()
 					.add(getClass().getClassLoader().getResource("application//application.css").toExternalForm());
-
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("µÇÂ¼´°¿Ú");
 			primaryStage.show();

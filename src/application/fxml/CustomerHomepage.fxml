@@ -26,7 +26,7 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <JFXButton fx:id="btUser" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="164.0" style="-fx-border-bottom-color: white;" text="User" textFill="#fcfcfc" VBox.vgrow="ALWAYS">
+                  <JFXButton fx:id="btUser" alignment="TOP_LEFT" onAction="#showUserInf" prefHeight="50.0" prefWidth="164.0" style="-fx-border-bottom-color: white;" text="User" textFill="#fcfcfc" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="Arial" size="25.0" />
                      </font>
@@ -92,9 +92,9 @@
             </Pane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="cusOrderPane" layoutX="183.0" layoutY="14.0" prefHeight="623.0" prefWidth="653.0" visible="false">
+      <AnchorPane fx:id="cusOrderPane" layoutX="183.0" layoutY="14.0" prefHeight="623.0" prefWidth="653.0">
          <children>
-            <TableView fx:id="customerOrderTable" layoutY="157.0" prefHeight="433.0" prefWidth="630.0">
+            <TableView fx:id="customerOrderTable" layoutY="157.0" prefHeight="402.0" prefWidth="674.0">
                <columns>
                   <TableColumn fx:id="orderItemCol" prefWidth="88.0" text="Item Name" />
                   <TableColumn fx:id="orderBusinessCol" editable="false" text="Business" />
@@ -104,6 +104,7 @@
                   <TableColumn fx:id="orderStatusCol" minWidth="0.0" prefWidth="47.0" text="Status" />
                   <TableColumn fx:id="orderCommentCol" prefWidth="75.0" text="Comment" />
                   <TableColumn fx:id="orderNumberCol" prefWidth="128.0" text="OrderNumber" />
+                  <TableColumn fx:id="btOrderCol" prefWidth="75.0" text="Select" />
                </columns>
             </TableView>
             <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="132.0" prefWidth="660.0">
@@ -124,34 +125,102 @@
                   <JFXButton fx:id="btSearchOrder" layoutX="515.0" layoutY="98.0" onAction="#orderSearch" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #2B5F75;" text="Search" />
                </children>
             </AnchorPane>
+            <JFXButton fx:id="btConfirmreceipt" layoutX="541.0" layoutY="559.0" onAction="#confirmReceipt" prefHeight="47.0" prefWidth="119.0" text="Confirm receipt" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="cusOrderPane1" layoutX="163.0" layoutY="-3.0" prefHeight="623.0" prefWidth="689.0">
+      <AnchorPane fx:id="cusOrderPane1" layoutX="163.0" layoutY="-3.0" prefHeight="623.0" prefWidth="689.0" visible="false">
          <children>
-            <FlowPane layoutX="131.0" layoutY="167.0" prefHeight="309.0" prefWidth="467.0" style="-fx-border-color: gray;">
+            <FlowPane layoutX="69.0" layoutY="114.0" prefHeight="370.0" prefWidth="530.0" style="-fx-border-color: gray;">
                <children>
-                  <VBox prefHeight="315.0" prefWidth="87.0">
+                  <VBox prefHeight="368.0" prefWidth="421.0">
                      <children>
-                        <Label prefHeight="49.0" prefWidth="250.0" text="Username" />
-                        <Label prefHeight="56.0" prefWidth="217.0" text="Label" />
-                        <Label prefHeight="56.0" prefWidth="217.0" text="Label" />
-                        <Label prefHeight="56.0" prefWidth="217.0" text="Label" />
-                        <Label prefHeight="56.0" prefWidth="217.0" text="Label" />
-                        <Label prefHeight="56.0" prefWidth="217.0" text="Label" />
+                        <HBox prefHeight="66.0" prefWidth="422.0">
+                           <children>
+                              <Label alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="125.0" text="UserName" />
+                              <JFXTextField fx:id="usernametfd" editable="false" prefHeight="44.0" prefWidth="322.0">
+                                 <HBox.margin>
+                                   
+                                 </HBox.margin>
+                              </JFXTextField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="66.0" prefWidth="422.0">
+                           <children>
+                              <Label alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="125.0" text="Original Password" />
+                              <JFXTextField fx:id="originalpwdtfd" prefHeight="44.0" prefWidth="322.0">
+                                 <HBox.margin>
+                                 
+                                 </HBox.margin>
+                              </JFXTextField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="66.0" prefWidth="422.0">
+                           <children>
+                              <Label alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="125.0" text="New Password" />
+                              <JFXTextField fx:id="newpwdtfd" prefHeight="44.0" prefWidth="322.0">
+                                 <HBox.margin>
+                                 
+                                 </HBox.margin>
+                              </JFXTextField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="66.0" prefWidth="422.0">
+                           <children>
+                              <Label alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="125.0" text="Confirm Password" />
+                              <JFXTextField fx:id="confirmpwdtfd" prefHeight="44.0" prefWidth="322.0">
+                                 <HBox.margin>
+                                  
+                                 </HBox.margin>
+                              </JFXTextField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="66.0" prefWidth="422.0">
+                           <children>
+                              <Label alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="125.0" text="NickName" />
+                              <JFXTextField fx:id="nicknametfd" prefHeight="44.0" prefWidth="322.0">
+                                 <HBox.margin>
+                                  
+                                 </HBox.margin>
+                              </JFXTextField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="66.0" prefWidth="422.0">
+                           <children>
+                              <Label alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="125.0" text="Phone Number" />
+                              <JFXTextField fx:id="phonetfd" prefHeight="44.0" prefWidth="322.0">
+                                 <HBox.margin>
+                                 
+                                 </HBox.margin>
+                              </JFXTextField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="66.0" prefWidth="422.0">
+                           <children>
+                              <Label alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="125.0" text="Email" />
+                              <JFXTextField fx:id="emailtfd" prefHeight="44.0" prefWidth="322.0">
+                                 <HBox.margin>
+                               
+                                 </HBox.margin>
+                              </JFXTextField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="54.0" prefWidth="422.0">
+                           <children>
+                              <Label alignment="BOTTOM_RIGHT" prefHeight="39.0" prefWidth="115.0" text="Bio" />
+                              <JFXTextArea fx:id="biota" prefHeight="33.0" prefWidth="306.0" text=" " />
+                           </children>
+                        </HBox>
                      </children>
-                  </VBox>
-                  <VBox prefHeight="315.0" prefWidth="230.0">
-                     <children>
-                        <JFXTextField prefHeight="51.0" prefWidth="230.0" />
-                        <JFXTextField prefHeight="51.0" prefWidth="230.0" />
-                        <JFXTextField prefHeight="51.0" prefWidth="230.0" />
-                        <JFXTextField prefHeight="51.0" prefWidth="230.0" />
-                        <JFXTextField prefHeight="51.0" prefWidth="230.0" />
-                        <JFXTextField prefHeight="51.0" prefWidth="230.0" />
-                     </children>
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                     <padding>
+                        <Insets bottom="11.0" left="11.0" right="11.0" top="11.0" />
+                     </padding>
                   </VBox>
                </children>
             </FlowPane>
+            <JFXButton fx:id="btChangeInf" layoutX="481.0" layoutY="489.0" onAction="#changeInf" prefHeight="47.0" prefWidth="119.0" text="Confirm Change" />
          </children>
       </AnchorPane>
    </children>
