@@ -18,7 +18,7 @@
          <font>
             <Font name="Segoe Script" size="20.0" />
          </font></JFXButton>
-      <VBox alignment="CENTER" layoutX="144.0" layoutY="143.0" prefHeight="484.0" prefWidth="263.0" spacing="10.0" style="-fx-background-radius: 0; -fx-background-color: white;">
+      <VBox alignment="CENTER" layoutX="108.0" layoutY="143.0" prefHeight="484.0" prefWidth="334.0" spacing="10.0" style="-fx-background-radius: 0; -fx-background-color: white;">
          <children>
             <JFXTextField fx:id="txUserName" alignment="CENTER" focusColor="LIGHTGRAY" prefHeight="50.0" prefWidth="257.0" promptText="Username" style="-fx-border-color: #484D53; -fx-border-radius: 0;" unFocusColor="WHITE">
                <font>
@@ -52,7 +52,7 @@
             </JFXTextField>
             <JFXTextArea fx:id="txBio" focusColor="LIGHTGRAY" prefHeight="109.0" prefWidth="257.0" promptText="Bio" style="-fx-border-color: #484D53;" unFocusColor="WHITE">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="15.0" />
                </font>
             </JFXTextArea>
          </children>
