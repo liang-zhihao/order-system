@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-	// <Insets top="11.0" />
 	@Override
 	public void start(Stage primaryStage) {
 		try {

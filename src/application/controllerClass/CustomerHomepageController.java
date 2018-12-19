@@ -16,9 +16,9 @@ import com.jfoenix.controls.JFXTextField;
 
 import application.dataClass.CheckBoxTCell;
 import application.dataClass.Customer;
-import application.dataClass.CustomerOrderTable;
 import application.dataClass.Db;
 import application.dataClass.NowInf;
+import application.dataClass.OrderTable;
 import application.dataClass.SalesOrder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,27 +33,27 @@ import javafx.util.Callback;
 
 public class CustomerHomepageController {
 	@FXML
-	private TableColumn<CustomerOrderTable, Boolean> btOrderCol;
+	private TableColumn<OrderTable, Boolean> btOrderCol;
 	@FXML
-	private TableColumn<CustomerOrderTable, String> orderBusinessCol;
+	private TableColumn<OrderTable, String> orderBusinessCol;
 
 	@FXML
-	private TableColumn<CustomerOrderTable, String> orderItemCol;
+	private TableColumn<OrderTable, String> orderItemCol;
 	@FXML
-	private TableColumn<CustomerOrderTable, String> orderDateCol;
+	private TableColumn<OrderTable, String> orderDateCol;
 	@FXML
-	private TableColumn<CustomerOrderTable, Integer> orderSubCol;
+	private TableColumn<OrderTable, Integer> orderSubCol;
 	@FXML
-	private TableView<CustomerOrderTable> customerOrderTable;
+	private TableView<OrderTable> orderTable;
 
 	@FXML
-	private TableColumn<CustomerOrderTable, Integer> orderQuantityCol;
+	private TableColumn<OrderTable, Integer> orderQuantityCol;
 	@FXML
-	private TableColumn<CustomerOrderTable, Integer> orderNumberCol;
+	private TableColumn<OrderTable, Integer> orderNumberCol;
 	@FXML
-	private TableColumn<CustomerOrderTable, String> orderStatusCol;
+	private TableColumn<OrderTable, String> orderStatusCol;
 	@FXML
-	private TableColumn<CustomerOrderTable, String> orderCommentCol;
+	private TableColumn<OrderTable, String> orderCommentCol;
 	@FXML
 	private JFXButton btItem;
 
@@ -134,38 +134,37 @@ public class CustomerHomepageController {
 
 	public void initialize() throws SQLException {
 
-		orderNumberCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("salesOrderNumber"));
-		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("quantity"));
-		orderStatusCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("status"));
-		orderDateCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("orderDate"));
-		orderCommentCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("comment"));
-		orderSubCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Integer>("subTotal"));
-		orderItemCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("itemName"));
-		orderBusinessCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, String>("Business"));
+		orderNumberCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("salesOrderNumber"));
+		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("quantity"));
+		orderStatusCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("status"));
+		orderDateCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("orderDate"));
+		orderCommentCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("comment"));
+		orderSubCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("subTotal"));
+		orderItemCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("itemName"));
+		orderBusinessCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("Business"));
 		// btOrderCol.setCellFactory(CheckBoxTableCell.forTableColumn(btOrderCol));
-		btOrderCol.setCellValueFactory(new PropertyValueFactory<CustomerOrderTable, Boolean>("isCheck"));
-		btOrderCol.setCellFactory(
-				new Callback<TableColumn<CustomerOrderTable, Boolean>, TableCell<CustomerOrderTable, Boolean>>() {
-					public TableCell<CustomerOrderTable, Boolean> call(TableColumn<CustomerOrderTable, Boolean> param) {
-						final CheckBoxTCell<CustomerOrderTable, Boolean> cell = new CheckBoxTCell<>();
-						final JFXCheckBox checkbox = (JFXCheckBox) cell.getGraphic();
-						checkbox.setOnAction(e -> {
-							// System.out.println(t.getItemName());
-							if (cellData.get(cell.getIndex()).getIsCheck().booleanValue()) {
-								cellData.get(cell.getIndex()).setIsCheck(false);
-							} else {
-								cellData.get(cell.getIndex()).setIsCheck(true);
-							}
-						});
-						return cell;
+		btOrderCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Boolean>("isCheck"));
+		btOrderCol.setCellFactory(new Callback<TableColumn<OrderTable, Boolean>, TableCell<OrderTable, Boolean>>() {
+			public TableCell<OrderTable, Boolean> call(TableColumn<OrderTable, Boolean> param) {
+				final CheckBoxTCell<OrderTable, Boolean> cell = new CheckBoxTCell<>();
+				final JFXCheckBox checkbox = (JFXCheckBox) cell.getGraphic();
+				checkbox.setOnAction(e -> {
+					// System.out.println(t.getItemName());
+					if (cellData.get(cell.getIndex()).getIsCheck().booleanValue()) {
+						cellData.get(cell.getIndex()).setIsCheck(false);
+					} else {
+						cellData.get(cell.getIndex()).setIsCheck(true);
 					}
 				});
+				return cell;
+			}
+		});
 		// btOrderCol.setCellValueFactory(cellData ->
 		// cellData.getValue().cb.getCheckBox());
-		initOrderSearch();
+		// initOrderSearch();
 	}
 
-	ObservableList<CustomerOrderTable> cellData = FXCollections.observableArrayList();
+	ObservableList<OrderTable> cellData = FXCollections.observableArrayList();
 
 	public static void main(String[] args) throws SQLException {
 		Db db = new Db();
@@ -186,20 +185,20 @@ public class CustomerHomepageController {
 			cellData.clear();
 			ArrayList<SalesOrder> orderlist = (ArrayList<SalesOrder>) qr.query(db.getConnection(), sql,
 					new BeanListHandler<SalesOrder>(SalesOrder.class));
-			CustomerOrderTable[] t = convertToCustomerOrderTable(orderlist);
+			OrderTable[] t = convertToOrderTable(orderlist);
 
 			cellData.addAll(t);
-			customerOrderTable.setItems(cellData);
+			orderTable.setItems(cellData);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private CustomerOrderTable[] convertToCustomerOrderTable(ArrayList<SalesOrder> orderlist) {
-		CustomerOrderTable[] t = new CustomerOrderTable[orderlist.size()];
+	private OrderTable[] convertToOrderTable(ArrayList<SalesOrder> orderlist) {
+		OrderTable[] t = new OrderTable[orderlist.size()];
 		for (int i = 0; i < orderlist.size(); i++) {
-			t[i] = new CustomerOrderTable();
+			t[i] = new OrderTable();
 		}
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
@@ -250,9 +249,9 @@ public class CustomerHomepageController {
 			orderlist = (ArrayList<SalesOrder>) qr.query(db.getConnection(), sql, para,
 					new BeanListHandler<SalesOrder>(SalesOrder.class));
 			// System.out.println(orderlist.get(0).getCustomerId());
-			CustomerOrderTable[] t = convertToCustomerOrderTable(orderlist);
+			OrderTable[] t = convertToOrderTable(orderlist);
 			cellData.addAll(t);
-			customerOrderTable.setItems(cellData);
+			orderTable.setItems(cellData);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -328,7 +327,7 @@ public class CustomerHomepageController {
 		try {
 
 			for (int i = 0; i < cellData.size(); i++) {
-				CustomerOrderTable t = cellData.get(i);
+				OrderTable t = cellData.get(i);
 				if (t.getIsCheck()) {
 					t.setStatus("Received");
 					para[1] = t.getSalesOrderNumber();
@@ -336,7 +335,7 @@ public class CustomerHomepageController {
 					System.out.println("confirm successfully");
 				}
 			}
-			customerOrderTable.refresh();
+			orderTable.refresh();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
