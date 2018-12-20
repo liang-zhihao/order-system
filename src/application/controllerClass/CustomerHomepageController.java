@@ -67,7 +67,7 @@ public class CustomerHomepageController {
 	private Label LabText;
 
 	@FXML
-	private AnchorPane cusOrderPane1;
+	private AnchorPane cusUserInf;
 
 	@FXML
 	private JFXTextField nicknametfd;
@@ -130,7 +130,25 @@ public class CustomerHomepageController {
 	private JFXButton btSearch;
 	@FXML
 	private JFXButton btConfirmreceipt;
+
 	// 创建并初始化数据
+	public void openUserInf() {
+		cusItemPane.setVisible(false);
+		cusOrderPane.setVisible(false);
+		cusUserInf.setVisible(true);
+	}
+
+	public void openOrder() {
+		cusItemPane.setVisible(false);
+		cusOrderPane.setVisible(true);
+		cusUserInf.setVisible(false);
+	}
+
+	public void openItem() {
+		cusItemPane.setVisible(true);
+		cusOrderPane.setVisible(false);
+		cusUserInf.setVisible(false);
+	}
 
 	public void initialize() throws SQLException {
 
@@ -178,6 +196,7 @@ public class CustomerHomepageController {
 	}
 
 	public void initOrderSearch() {
+		openOrder();
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 		String sql = "select * from salesorder where customerid =" + NowInf.customer.getCustomerId();

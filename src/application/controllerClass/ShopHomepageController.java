@@ -1,5 +1,7 @@
 package application.controllerClass;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -27,10 +29,17 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class ShopHomepageController {
+
+	@FXML
+	private ImageView imgHead;
 	@FXML
 	private TableColumn<OrderTable, String> orderBusinessCol;
 	@FXML
@@ -122,6 +131,8 @@ public class ShopHomepageController {
 
 	@FXML
 	private JFXButton btUser;
+	@FXML
+	private JFXButton btHead;
 
 	@FXML
 	private JFXTextField originalpwd;
@@ -143,12 +154,33 @@ public class ShopHomepageController {
 
 	@FXML
 	private JFXButton btLogout;
+	@FXML
+	private ImageView img;
 
 	@FXML
 	private JFXButton btSearch;
 	ObservableList<OrderTable> cellData = FXCollections.observableArrayList();
 
+	public void openUserInf() {
+		ItemPane.setVisible(false);
+		OrderPane.setVisible(false);
+		userInfPane.setVisible(true);
+	}
+
+	public void openOrder() {
+		ItemPane.setVisible(false);
+		OrderPane.setVisible(true);
+		userInfPane.setVisible(false);
+	}
+
+	public void openItem() {
+		ItemPane.setVisible(true);
+		OrderPane.setVisible(false);
+		userInfPane.setVisible(false);
+	}
+
 	public void initUserInf() {
+		openUserInf();
 		Business t = NowInf.business;
 		tfUser.setText(t.getUsername());
 		tfPhone.setText(t.getPhoneNumber());
@@ -194,6 +226,8 @@ public class ShopHomepageController {
 	}
 
 	public void initialize() throws SQLException {
+		// img.setImage(new Image("application/fxml/img/ga.png"));
+		// imgHead.setImage(new Image());
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("salesOrderNumber"));
 		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("quantity"));
 		orderStatusCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("status"));
@@ -201,9 +235,6 @@ public class ShopHomepageController {
 		orderCommentCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("comment"));
 		orderSubCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("subTotal"));
 		orderItemCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("itemName"));
-		// orderBusinessCol.setCellValueFactory(new PropertyValueFactory<OrderTable,
-		// String>("Business"));
-		// btOrderCol.setCellFactory(CheckBoxTableCell.forTableColumn(btOrderCol));
 		btOrderCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Boolean>("isCheck"));
 		btOrderCol.setCellFactory(new Callback<TableColumn<OrderTable, Boolean>, TableCell<OrderTable, Boolean>>() {
 			public TableCell<OrderTable, Boolean> call(TableColumn<OrderTable, Boolean> param) {
@@ -226,6 +257,8 @@ public class ShopHomepageController {
 	}
 
 	public void initOrderSearch() {
+		openOrder();
+
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 		String sql = "select * from salesorder where businessid =" + NowInf.business.getBusinessId();
@@ -237,7 +270,6 @@ public class ShopHomepageController {
 			cellData.addAll(t);
 			orderTable.setItems(cellData);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -303,6 +335,15 @@ public class ShopHomepageController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void choseHead() throws IOException {
+		final FileChooser fc = new FileChooser();
+		Stage stage = (Stage) btHead.getScene().getWindow();
+		File pic = fc.showOpenDialog(stage);
+		String name = "Business" + NowInf.business.getBusinessId();
+		Image t = NowInf.copyPictureToProject(pic, name);
+		imgHead.setImage(t);
 	}
 
 }

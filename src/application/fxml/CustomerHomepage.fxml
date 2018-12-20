@@ -128,7 +128,7 @@
             <JFXButton fx:id="btConfirmreceipt" layoutX="605.0" layoutY="677.0" onAction="#confirmReceipt" prefHeight="47.0" prefWidth="119.0" text="Confirm receipt" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="cusOrderPane1" layoutX="163.0" layoutY="-3.0" prefHeight="623.0" prefWidth="689.0" visible="false">
+      <AnchorPane fx:id="cusUserInf" layoutX="163.0" layoutY="-3.0" prefHeight="623.0" prefWidth="689.0" visible="false">
          <children>
             <FlowPane layoutX="69.0" layoutY="114.0" prefHeight="370.0" prefWidth="530.0" style="-fx-border-color: gray;">
                <children>
