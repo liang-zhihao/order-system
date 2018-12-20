@@ -12,70 +12,98 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
 import application.dataClass.Db;
+import application.dataClass.NowInf;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class CusRegisterController {
 
-    @FXML
-    private Label lbPsw;
+	@FXML
+	private ImageView imgCon;
 
-    @FXML
-    private JFXButton btRegister;
+	@FXML
+	private ImageView imgPass;
 
-    @FXML
-    private AnchorPane RegisterAsCustomer;
+	@FXML
+	private ImageView imgUser;
+	@FXML
+	private ImageView imgPhone;
 
-    @FXML
-    private JFXPasswordField txPswConfirm;
+	@FXML
+	private ImageView imgNick;
+	@FXML
+	private ImageView imgEmail;
 
-    @FXML
-    private Label lbErrorUserName;
+	@FXML
+	private Label lbPsw;
 
-    @FXML
-    private JFXPasswordField txPsw;
+	@FXML
+	private JFXButton btRegister;
 
-    @FXML
-    private JFXTextField txUserName;
+	@FXML
+	private AnchorPane RegisterAsCustomer;
 
-    @FXML
-    private Label lbBio;
+	@FXML
+	private JFXPasswordField txPswConfirm;
 
-    @FXML
-    private Label lbUserName;
+	@FXML
+	private Label lbErrorUserName;
 
-    @FXML
-    private JFXTextField txEmail;
+	@FXML
+	private JFXPasswordField txPsw;
 
-    @FXML
-    private Label lbConfirm;
+	@FXML
+	private JFXTextField txUserName;
 
-    @FXML
-    private Label lbErrorUserName2;
+	@FXML
+	private Label lbBio;
 
-    @FXML
-    private JFXTextField txPhoneNum;
+	@FXML
+	private Label lbUserName;
 
-    @FXML
-    private Label lbPhoneNum;
+	@FXML
+	private JFXTextField txEmail;
 
-    @FXML
-    private Label lbNickname;
+	@FXML
+	private Label lbConfirm;
 
-    @FXML
-    private Label lbErrorPassword;
+	@FXML
+	private Label lbErrorUserName2;
 
-    @FXML
-    private Label lbEmail;
+	@FXML
+	private JFXTextField txPhoneNum;
 
-    @FXML
-    private JFXTextArea txBio;
+	@FXML
+	private Label lbPhoneNum;
 
-    @FXML
-    private JFXTextField txNickname;
+	@FXML
+	private Label lbNickname;
 
-    public void btRegister() throws SQLException {
+	@FXML
+	private Label lbErrorPassword;
+
+	@FXML
+	private Label lbEmail;
+
+	@FXML
+	private JFXTextArea txBio;
+
+	@FXML
+	private JFXTextField txNickname;
+
+	public void initialize() {
+		NowInf.setPicView(imgUser, "icon/user.png");
+		// NowInf.setPicView(imgNick, "icon/user.png");
+		NowInf.setPicView(imgPass, "icon/password.png");
+		// NowInf.setPicView(imgCon, "icon/password.png");
+		NowInf.setPicView(imgEmail, "icon/email.png");
+		NowInf.setPicView(imgPhone, "icon/phone.png");
+
+	}
+
+	public void btRegister() throws SQLException {
 		String UserName = txUserName.getText();
 		String Psw = txPsw.getText();
 		String PswConfirm = txPswConfirm.getText();
@@ -85,33 +113,34 @@ public class CusRegisterController {
 		String Bio = txBio.getText();
 		Random randomID = new Random();
 		int ID = randomID.nextInt(99999) - 10;
-		
-		if(UserName.equals(null)) {
+
+		if (UserName.equals(null)) {
 			lbErrorUserName.setVisible(true);
 		}
-		
+
 		Db db = new Db();
 		Object[] result = null;
 		String sql1 = "Select count(*) from Customer where UserName = ?";
 		QueryRunner qr = new QueryRunner();
 		result = qr.query(db.getConnection(), sql1, UserName, new ArrayHandler());
 		int a = Integer.parseInt(result[0].toString());
-		if(a == 0) {
-			if(Psw.equals(PswConfirm)) {
-				//result = qr.query(db.getConnection(), sql2, para, new ArrayHandler());
-				qr.update(db.getConnection(), "Insert into Customer (CustomerID, UserName, Password, Nickname, PhoneNumber, Email, Bio) "
-						+ "values(?, ?, ?, ?, ?, ?, ?)", ID, UserName, Psw, Nickname, PhoneNum, Email, Bio);
-				
+		if (a == 0) {
+			if (Psw.equals(PswConfirm)) {
+				// result = qr.query(db.getConnection(), sql2, para, new ArrayHandler());
+				qr.update(db.getConnection(),
+						"Insert into Customer (CustomerID, UserName, Password, Nickname, PhoneNumber, Email, Bio) "
+								+ "values(?, ?, ?, ?, ?, ?, ?)",
+						ID, UserName, Psw, Nickname, PhoneNum, Email, Bio);
+
 				System.out.println("Registration Successful");
 				lbErrorPassword.setVisible(false);
 				lbErrorUserName2.setVisible(false);
-			}else {
+			} else {
 				lbErrorPassword.setVisible(true);
 			}
-		}else {
+		} else {
 			lbErrorUserName2.setVisible(true);
 		}
 	}
 
 }
-
