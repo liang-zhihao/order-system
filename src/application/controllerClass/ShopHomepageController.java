@@ -28,12 +28,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
@@ -80,55 +77,31 @@ public class ShopHomepageController {
 	private TableColumn<?, ?> itemProductnumCol;
 
 	@FXML
-	private JFXButton btItem;
-
+	private AnchorPane ShopHomepage;
 	@FXML
-	private JFXRadioButton orderCustomerRad;
-
+	private MenuBar mnBar;
 	@FXML
-	private TableColumn<?, ?> itemCostCol;
-
+	private Menu mnUserName;
 	@FXML
-	private JFXTextField confirmpwd;
-
+	private Menu mnItems;
 	@FXML
-	private TableColumn<?, ?> itemDetailCol;
-
+	private Menu mnOrders;
 	@FXML
-	private Label LabText;
-
+	private Menu mnLogOut;
 	@FXML
-	private JFXTextField tfSearch;
-
+	private TextField txPhoneNum;
 	@FXML
-	private JFXButton btAddItem;
-
+	private TextField txEmail;
 	@FXML
-	private JFXButton btDelItem;
-
+	private Label lbUserName;
 	@FXML
-	private JFXButton btSearchOrder;
-
+	private Label lbPhoneNum;
 	@FXML
-	private TableColumn<?, ?> itemWeightCol;
-
+	private Label lbEmail;
 	@FXML
-	private JFXTextField tfShipping;
-
+	private TextField txID;
 	@FXML
-	private JFXTextField newpwd;
-
-	@FXML
-	private JFXTextField tfPhone;
-
-	@FXML
-	private TableView<?> ItemTableView;
-	@FXML
-	private JFXTextField tfUser;
-
-	@FXML
-	private JFXTextField tfEmail;
-
+	private Label lbID;
 	@FXML
 	private JFXTextField tfBusinessname;
 

@@ -60,8 +60,8 @@ public class NowInf {
 		} else {
 			t = NowInf.customer.getNickname();
 		}
-		java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("HH");// 设置日期格式
-		String time = df.format(new Date());// new Date()为获取当前系统时间
+		java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("HH");// 锟斤拷锟斤拷锟斤拷锟节革拷式
+		String time = df.format(new Date());// new Date()为锟斤拷取锟斤拷前系统时锟斤拷
 		int hour = Integer.valueOf(time);
 
 		if (hour < 12 && hour > 0) {

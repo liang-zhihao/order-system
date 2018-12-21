@@ -1,4 +1,4 @@
-package application.controllerClass;
+package application.fxml;
 
 import java.sql.SQLException;
 import java.util.Random;
@@ -16,7 +16,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
-public class CusRegisterController {
+public class BusinessRegisterController {
+
+    @FXML
+    private Label lbShippingAdd;
 
     @FXML
     private Label lbPsw;
@@ -25,7 +28,7 @@ public class CusRegisterController {
     private JFXButton btRegister;
 
     @FXML
-    private AnchorPane RegisterAsCustomer;
+    private Label lbBusinessName;
 
     @FXML
     private JFXPasswordField txPswConfirm;
@@ -40,7 +43,7 @@ public class CusRegisterController {
     private JFXTextField txUserName;
 
     @FXML
-    private Label lbBio;
+    private AnchorPane RegisterAsBusiness;
 
     @FXML
     private Label lbUserName;
@@ -61,7 +64,10 @@ public class CusRegisterController {
     private Label lbPhoneNum;
 
     @FXML
-    private Label lbNickname;
+    private JFXTextArea txShippingAdd;
+
+    @FXML
+    private JFXTextField txBusinessName;
 
     @FXML
     private Label lbErrorPassword;
@@ -69,42 +75,14 @@ public class CusRegisterController {
     @FXML
     private Label lbEmail;
 
-    @FXML
-    private JFXTextArea txBio;
-
-    @FXML
-    private JFXTextField txNickname;
-
-	@FXML
-	private Label lbErrorPassword;
-
-	@FXML
-	private Label lbEmail;
-
-	@FXML
-	private JFXTextArea txBio;
-
-	@FXML
-	private JFXTextField txNickname;
-
-	public void initialize() {
-		// NowInf.setPicView(imgUser, "icon/user.png");
-		// NowInf.setPicView(imgNick, "icon/user.png");
-		// NowInf.setPicView(imgPass, "icon/password.png");
-		// NowInf.setPicView(imgCon, "icon/password.png");
-		// NowInf.setPicView(imgEmail, "icon/email.png");
-		// NowInf.setPicView(imgPhone, "icon/phone.png");
-
-	}
-
-	public void btRegister() throws SQLException {
+    public void btRegister() throws SQLException {
 		String UserName = txUserName.getText();
 		String Psw = txPsw.getText();
 		String PswConfirm = txPswConfirm.getText();
-		String Nickname = txNickname.getText();
+		String BusinessName = txBusinessName.getText();
 		String PhoneNum = txPhoneNum.getText();
 		String Email = txEmail.getText();
-		String Bio = txBio.getText();
+		String ShippingAdd = txShippingAdd.getText();
 		Random randomID = new Random();
 		int ID = randomID.nextInt(99999) - 10;
 		
@@ -114,15 +92,15 @@ public class CusRegisterController {
 		
 		Db db = new Db();
 		Object[] result = null;
-		String sql1 = "Select count(*) from Customer where UserName = ?";
+		String sql1 = "Select count(*) from Business where UserName = ?";
 		QueryRunner qr = new QueryRunner();
 		result = qr.query(db.getConnection(), sql1, UserName, new ArrayHandler());
 		int a = Integer.parseInt(result[0].toString());
 		if(a == 0) {
 			if(Psw.equals(PswConfirm)) {
 				//result = qr.query(db.getConnection(), sql2, para, new ArrayHandler());
-				qr.update(db.getConnection(), "Insert into Customer (CustomerID, UserName, Password, Nickname, PhoneNumber, Email, Bio) "
-						+ "values(?, ?, ?, ?, ?, ?, ?)", ID, UserName, Psw, Nickname, PhoneNum, Email, Bio);
+				qr.update(db.getConnection(), "Insert into Business (BusinessID, BusinessName, UserName, Password, PhoneNumber, Email, ShippingAddress) "
+						+ "values(?, ?, ?, ?, ?, ?, ?)", ID, BusinessName, UserName, Psw, PhoneNum, Email, ShippingAdd);
 				
 				System.out.println("Registration Successful");
 				lbErrorPassword.setVisible(false);
@@ -136,4 +114,3 @@ public class CusRegisterController {
 	}
 
 }
-
