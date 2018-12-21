@@ -48,3 +48,10 @@
     visibility: false;
     -fx-background-color: #5f93e7;
 }
+/**
+ *商品列表 
+  */
+.VBox-item{
+	-fx-font-family:"Verdana";
+	 -fx-font-size:15px;
+}

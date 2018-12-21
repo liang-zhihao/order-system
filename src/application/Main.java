@@ -27,5 +27,7 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+		String t = "Business-1-82824-jpg";
+		System.out.println();
 	}
 }
