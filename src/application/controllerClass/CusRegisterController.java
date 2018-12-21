@@ -8,7 +8,6 @@ import org.apache.commons.dbutils.handlers.ArrayHandler;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
 import application.dataClass.Db;
@@ -18,74 +17,50 @@ import javafx.scene.layout.AnchorPane;
 
 public class CusRegisterController {
 
-    @FXML
-    private Label lbPsw;
-
-    @FXML
-    private JFXButton btRegister;
-
-    @FXML
-    private AnchorPane RegisterAsCustomer;
-
-    @FXML
-    private JFXPasswordField txPswConfirm;
-
-    @FXML
-    private Label lbErrorUserName;
-
-    @FXML
-    private JFXPasswordField txPsw;
-
-    @FXML
-    private JFXTextField txUserName;
-
-    @FXML
-    private Label lbBio;
-
-    @FXML
-    private Label lbUserName;
-
-    @FXML
-    private JFXTextField txEmail;
-
-    @FXML
-    private Label lbConfirm;
-
-    @FXML
-    private Label lbErrorUserName2;
-
-    @FXML
-    private JFXTextField txPhoneNum;
-
-    @FXML
-    private Label lbPhoneNum;
-
-    @FXML
-    private Label lbNickname;
-
-    @FXML
-    private Label lbErrorPassword;
-
-    @FXML
-    private Label lbEmail;
-
-    @FXML
-    private JFXTextArea txBio;
-
-    @FXML
-    private JFXTextField txNickname;
+	@FXML
+	private Label lbPsw;
 
 	@FXML
-	private Label lbErrorPassword;
+	private JFXButton btRegister;
 
 	@FXML
-	private Label lbEmail;
+	private AnchorPane RegisterAsCustomer;
 
 	@FXML
-	private JFXTextArea txBio;
+	private JFXPasswordField txPswConfirm;
 
 	@FXML
-	private JFXTextField txNickname;
+	private Label lbErrorUserName;
+
+	@FXML
+	private JFXPasswordField txPsw;
+
+	@FXML
+	private JFXTextField txUserName;
+
+	@FXML
+	private Label lbBio;
+
+	@FXML
+	private Label lbUserName;
+
+	@FXML
+	private JFXTextField txEmail;
+
+	@FXML
+	private Label lbConfirm;
+
+	@FXML
+	private Label lbErrorUserName2;
+
+	@FXML
+	private JFXTextField txPhoneNum;
+
+	@FXML
+	private Label lbPhoneNum;
+
+	@FXML
+	private Label lbNickname;
 
 	public void initialize() {
 		// NowInf.setPicView(imgUser, "icon/user.png");
@@ -107,33 +82,34 @@ public class CusRegisterController {
 		String Bio = txBio.getText();
 		Random randomID = new Random();
 		int ID = randomID.nextInt(99999) - 10;
-		
-		if(UserName.equals(null)) {
+
+		if (UserName.equals(null)) {
 			lbErrorUserName.setVisible(true);
 		}
-		
+
 		Db db = new Db();
 		Object[] result = null;
 		String sql1 = "Select count(*) from Customer where UserName = ?";
 		QueryRunner qr = new QueryRunner();
 		result = qr.query(db.getConnection(), sql1, UserName, new ArrayHandler());
 		int a = Integer.parseInt(result[0].toString());
-		if(a == 0) {
-			if(Psw.equals(PswConfirm)) {
-				//result = qr.query(db.getConnection(), sql2, para, new ArrayHandler());
-				qr.update(db.getConnection(), "Insert into Customer (CustomerID, UserName, Password, Nickname, PhoneNumber, Email, Bio) "
-						+ "values(?, ?, ?, ?, ?, ?, ?)", ID, UserName, Psw, Nickname, PhoneNum, Email, Bio);
-				
+		if (a == 0) {
+			if (Psw.equals(PswConfirm)) {
+				// result = qr.query(db.getConnection(), sql2, para, new ArrayHandler());
+				qr.update(db.getConnection(),
+						"Insert into Customer (CustomerID, UserName, Password, Nickname, PhoneNumber, Email, Bio) "
+								+ "values(?, ?, ?, ?, ?, ?, ?)",
+						ID, UserName, Psw, Nickname, PhoneNum, Email, Bio);
+
 				System.out.println("Registration Successful");
 				lbErrorPassword.setVisible(false);
 				lbErrorUserName2.setVisible(false);
-			}else {
+			} else {
 				lbErrorPassword.setVisible(true);
 			}
-		}else {
+		} else {
 			lbErrorUserName2.setVisible(true);
 		}
 	}
 
 }
-

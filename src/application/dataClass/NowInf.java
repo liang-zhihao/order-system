@@ -60,8 +60,8 @@ public class NowInf {
 		} else {
 			t = NowInf.customer.getNickname();
 		}
-		java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("HH");// �������ڸ�ʽ
-		String time = df.format(new Date());// new Date()Ϊ��ȡ��ǰϵͳʱ��
+		java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("HH");
+		String time = df.format(new Date());//
 		int hour = Integer.valueOf(time);
 
 		if (hour < 12 && hour > 0) {
