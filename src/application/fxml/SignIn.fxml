@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -7,16 +10,61 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="pane" prefHeight="440.0" prefWidth="613.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.SignInController">
+<AnchorPane prefHeight="534.0" prefWidth="600.0" style="-fx-background-color: #71767C;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.SignInController">
    <children>
-      <Label fx:id="lbID" alignment="CENTER" layoutX="120.0" layoutY="82.0" prefHeight="48.0" prefWidth="110.0" text="ID" textFill="#104918" />
-      <Label fx:id="lbPsw" alignment="CENTER" layoutX="120.0" layoutY="147.0" prefHeight="48.0" prefWidth="110.0" text="PASSWORD" textFill="#104918" />
-      <TextField fx:id="txID" layoutX="271.0" layoutY="82.0" prefHeight="48.0" prefWidth="248.0" text="ff14" />
-      <PasswordField fx:id="txPsw" layoutX="271.0" layoutY="147.0" prefHeight="48.0" prefWidth="248.0" text="123456" />
-      <RadioButton fx:id="raCus" layoutX="213.0" layoutY="212.0" mnemonicParsing="false" onAction="#selectRaCus" selected="true" text="Customer" />
-      <RadioButton fx:id="raBus" layoutX="329.0" layoutY="212.0" mnemonicParsing="false" onAction="#selectRaBus" text="Business" />
-      <Label fx:id="labError" layoutX="175.0" layoutY="306.0" text="Login error" textFill="#f50f0f" visible="false" />
-      <JFXButton fx:id="btSignIn" layoutX="160.0" layoutY="242.0" onAction="#btSign" prefHeight="48.0" prefWidth="90.0" text="Login" />
-      <JFXButton fx:id="btRegister" layoutX="388.0" layoutY="253.0" prefHeight="33.0" prefWidth="84.0" text="Register" />
+      <AnchorPane layoutX="111.0" layoutY="65.0" prefHeight="405.0" prefWidth="380.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;">
+         <children>
+            <JFXRadioButton fx:id="raBus" layoutX="44.0" layoutY="243.0" onAction="#selectRaBus" prefWidth="92.0" selected="true" text="Business" textFill="#8d8d8d">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font>
+            </JFXRadioButton>
+            <JFXButton fx:id="btSignIn" layoutX="34.0" layoutY="268.0" onAction="#btSign" prefHeight="48.0" prefWidth="295.0" style="-fx-background-color: #009A9A; -fx-background-radius: 11;" text="Sign In" textFill="#cdffff">
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="labError" layoutX="53.0" layoutY="280.0" prefHeight="24.0" prefWidth="88.0" text="Login error" textFill="#f50f0f" visible="false" />
+            <JFXRadioButton fx:id="raCus" layoutX="44.0" layoutY="214.0" onAction="#selectRaCus" text="Customer" textFill="#8d8d8d">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font>
+            </JFXRadioButton>
+            <JFXButton fx:id="btRegister" layoutX="34.0" layoutY="329.0" onAction="#btRegister" prefHeight="48.0" prefWidth="295.0" style="-fx-background-color: #009A9A; -fx-background-radius: 11;" text="Register" textFill="#cdffff">
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </JFXButton>
+            <VBox layoutX="44.0" layoutY="106.0" prefHeight="108.0" prefWidth="295.0" spacing="20.0" style="-fx-background-radius: 11;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="32.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <ImageView fx:id="imgUser" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
+                        <JFXTextField fx:id="txID" focusColor="#0a3f32" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="32.0" prefWidth="295.0" promptText="Username" text="ff14" unFocusColor="#d9d9d9">
+                           <font>
+                              <Font name="Verdana" size="15.0" />
+                           </font>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="32.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <ImageView fx:id="imgPass" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
+                        <JFXPasswordField fx:id="txPsw" focusColor="#104918" prefHeight="32.0" prefWidth="295.0" promptText="Password" text="123456" unFocusColor="#d9d9d9">
+                           <font>
+                              <Font name="Verdana" size="15.0" />
+                           </font>
+                        </JFXPasswordField>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Label alignment="CENTER" prefHeight="64.0" prefWidth="380.0" text="Login" textFill="#656565">
+               <font>
+                  <Font name="Bookman Old Style" size="55.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
