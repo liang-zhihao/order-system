@@ -1,15 +1,16 @@
 package application.controllerClass;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 
-public class ShopHomepageController {
+public class SearchOrders_CustomerController {
 	@FXML
-	private AnchorPane ShopHomepage;
+	private AnchorPane CustomerSearchOrders;
 	@FXML
 	private MenuBar mnBar;
 	@FXML
@@ -21,20 +22,12 @@ public class ShopHomepageController {
 	@FXML
 	private Menu mnLogOut;
 	@FXML
-	private TextField txPhoneNum;
+	private TextField txEnterBnsID;
 	@FXML
-	private TextField txEmail;
+	private Button btSearchBnsID;
 	@FXML
-	private Label lbUserName;
+	private AnchorPane pnResult;
 	@FXML
-	private Label lbPhoneNum;
-	@FXML
-	private Label lbEmail;
-	@FXML
-	private TextField txID;
-	@FXML
-	private Label lbID;
-	@FXML
-	private TextField txUserName;
+	private GridPane tableOrdersFORCustomer;
 
 }
