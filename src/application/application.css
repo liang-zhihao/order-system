@@ -1,11 +1,6 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .button{
  -fx-padding: 0.7em 0.57em;
-
-
-    -fx-background-color: rgb(0,98,132);
-  
-    -fx-text-fill: WHITE;
 }
 
 .table-view .table-row-cell {
@@ -14,9 +9,17 @@
 
 }
 .table-view .table-row-cell .table-cell {
-
-    -fx-border-width: 0px;
-
+ -fx-background-color: white;
+    -fx-border-width:0px;
+    -fx-border-color:#F5F5F5;
+ -fx-padding:11px;
+ -fx-font-family:"微软雅黑";
+ -fx-font-size:15px;
+ 
+}
+.table-view .table-row-cell{
+	 -fx-border-width:1px;
+    -fx-border-color:#F5F5F5;
 }
 /**
 *表格边框颜色
@@ -24,7 +27,7 @@
 .table-view *.column-header-background { /* FX theme stylesheet */
 
 -fx-background-color: #33A6B8;
-
+-fx-effect: dropshadow(three-pass-box, #72b9da, 10.0,0, 0, 0);
 -fx-background-insets: 0px, 0px;
 
 }
@@ -32,10 +35,11 @@
  * 表头背景颜色变化
  */
 .table-column .label{
-    -fx-background-color: #0089A7;
-    -fx-text-fill: white ;
+    -fx-background-color: white;
+    -fx-text-fill: #6E6E6E ;
     -fx-text-alignment: center ;
     -fx-graphic-text-gap:0;
+    -fx-font-family:"Verdana";
 
 }
 /**
