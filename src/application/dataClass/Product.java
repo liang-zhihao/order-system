@@ -6,11 +6,24 @@ public class Product {
 	private String Name;
 	private int Standardcost;
 	private String Detail;
+	private String PictureName;
 	private Double Weight;
 	private int businessiD;// 通过id连接
 
-	public void setBusinessID(int businessID) {
-		this.businessiD = businessID;
+	public int getBusinessiD() {
+		return businessiD;
+	}
+
+	public String getPictureName() {
+		return PictureName;
+	}
+
+	public void setBusinessiD(int businessiD) {
+		this.businessiD = businessiD;
+	}
+
+	public void setPictureName(String pictureName) {
+		PictureName = pictureName;
 	}
 
 	public void setDetail(String detail) {
@@ -35,10 +48,6 @@ public class Product {
 
 	public void setWeight(Double weight) {
 		Weight = weight;
-	}
-
-	public int getBusinessID() {
-		return businessiD;
 	}
 
 	public String getDetail() {
