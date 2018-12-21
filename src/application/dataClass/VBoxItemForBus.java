@@ -76,10 +76,8 @@ public class VBoxItemForBus extends VBox {
 		});
 		btDel.setOnAction(e -> {
 			String srcPicName = im.getImage().getUrl();
-			srcPicName.substring(srcPicName.indexOf("/bin/application/fxml/img/"));
-			for (int i = 0; i < srcPicName.length(); i++) {
-				src
-			}
+			System.out.println(srcPicName.substring(srcPicName.indexOf("/bin/application/fxml/img/")));
+
 			File pic1 = new File(im.getImage().getUrl());
 			System.out.println(im.getImage().getUrl());
 			// File pic2 = new File();

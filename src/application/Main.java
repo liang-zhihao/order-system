@@ -18,7 +18,7 @@ public class Main extends Application {
 					.add(getClass().getClassLoader().getResource("application//application.css").toExternalForm());
 
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("��¼����");
+			primaryStage.setTitle("Sign In");
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
