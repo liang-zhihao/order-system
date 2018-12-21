@@ -13,9 +13,59 @@ import com.jfoenix.controls.JFXTextField;
 import application.dataClass.Db;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class CusRegisterController {
+
+	@FXML
+<<<<<<< HEAD
+	private Label lbPsw;
+
+	@FXML
+	private JFXButton btRegister;
+
+	@FXML
+	private AnchorPane RegisterAsCustomer;
+
+	@FXML
+	private JFXPasswordField txPswConfirm;
+
+	@FXML
+	private Label lbErrorUserName;
+
+	@FXML
+	private JFXPasswordField txPsw;
+
+	@FXML
+	private JFXTextField txUserName;
+
+	@FXML
+	private Label lbBio;
+
+	@FXML
+	private Label lbUserName;
+
+	@FXML
+	private JFXTextField txEmail;
+
+	@FXML
+	private Label lbConfirm;
+=======
+	private ImageView imgCon;
+
+	@FXML
+	private ImageView imgPass;
+
+	@FXML
+	private ImageView imgUser;
+	@FXML
+	private ImageView imgPhone;
+
+	@FXML
+	private ImageView imgNick;
+	@FXML
+	private ImageView imgEmail;
 
 	@FXML
 	private Label lbPsw;
@@ -49,6 +99,19 @@ public class CusRegisterController {
 
 	@FXML
 	private Label lbConfirm;
+
+	@FXML
+	private Label lbErrorUserName2;
+
+	@FXML
+	private JFXTextField txPhoneNum;
+
+	@FXML
+	private Label lbPhoneNum;
+
+	@FXML
+	private Label lbNickname;
+>>>>>>> parent of 9f64fcc... Merge branch 'master' of https://github.com/TTEAMM/orderSystem
 
 	@FXML
 	private Label lbErrorUserName2;

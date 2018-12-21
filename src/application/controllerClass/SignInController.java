@@ -18,10 +18,17 @@ import application.dataClass.NowInf;
 import application.frameClass.CustomerHomepageFrame;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class SignInController {
+	@FXML
+	private ImageView imgPass;
+
+	@FXML
+	private ImageView imgUser;
 
 	@FXML
 	private Label lbPsw;
@@ -52,6 +59,12 @@ public class SignInController {
 
 	@FXML
 	private JFXPasswordField txPsw;
+
+	public void initialize() {
+		imgPass.setImage(new Image("application/fxml/img/icon/password.png"));
+
+		imgUser.setImage(new Image("application/fxml/img/icon/user.png"));
+	}
 
 	public void selectRaCus() {
 		raBus.setSelected(false);
