@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
 import application.dataClass.Db;
+import application.dataClass.NowInf;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -93,12 +94,12 @@ public class CusRegisterController {
 	private JFXTextField txNickname;
 
 	public void initialize() {
-		// NowInf.setPicView(imgUser, "icon/user.png");
+		NowInf.setPicView(imgUser, "icon/user.png");
 		// NowInf.setPicView(imgNick, "icon/user.png");
-		// NowInf.setPicView(imgPass, "icon/password.png");
+		NowInf.setPicView(imgPass, "icon/password.png");
 		// NowInf.setPicView(imgCon, "icon/password.png");
-		// NowInf.setPicView(imgEmail, "icon/email.png");
-		// NowInf.setPicView(imgPhone, "icon/phone.png");
+		NowInf.setPicView(imgEmail, "icon/email.png");
+		NowInf.setPicView(imgPhone, "icon/phone.png");
 
 	}
 

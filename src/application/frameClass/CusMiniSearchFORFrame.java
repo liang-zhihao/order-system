@@ -5,17 +5,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class AddAItemFrame {
-	public AddAItemFrame() {
+public class CusMiniSearchFORFrame {
+	public CusMiniSearchFORFrame() {
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("application//fxml//AddAItem.fxml"));
-			Scene scene = new Scene(root, 400, 672);
-			// scene.getStylesheets().add(getClass().getResource("//application.css").toExternalForm());
+			Parent root = FXMLLoader
+					.load(getClass().getClassLoader().getResource("application//fxml//CusMiniSearchFOR.fxml"));
+			Scene scene = new Scene(root, 800, 600);
 			scene.getStylesheets()
 					.add(getClass().getClassLoader().getResource("application//application.css").toExternalForm());
-
 			Stage stage = new Stage();
-			stage.setTitle("Add a Item");
+			stage.setTitle("CusMiniSearch");
 			stage.setScene(scene);
 			stage.show();
 		} catch (Exception e) {
