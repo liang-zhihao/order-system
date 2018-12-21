@@ -18,7 +18,7 @@ public class Main extends Application {
 			scene.getStylesheets()
 					.add(getClass().getClassLoader().getResource("application//application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("µÇÂ¼´°¿Ú");
+			primaryStage.setTitle("Sign In");
 			primaryStage.getIcons().add(new Image("application/fxml/img/233.jpg"));
 			primaryStage.show();
 		} catch (Exception e) {

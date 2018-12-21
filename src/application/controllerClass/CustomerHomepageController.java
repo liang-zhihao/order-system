@@ -36,7 +36,6 @@ public class CustomerHomepageController {
 	private TableColumn<OrderTable, Boolean> btOrderCol;
 	@FXML
 	private TableColumn<OrderTable, String> orderBusinessCol;
-
 	@FXML
 	private TableColumn<OrderTable, String> orderItemCol;
 	@FXML
@@ -151,7 +150,6 @@ public class CustomerHomepageController {
 	}
 
 	public void initialize() throws SQLException {
-
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("salesOrderNumber"));
 		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("quantity"));
 		orderStatusCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("status"));
@@ -192,7 +190,6 @@ public class CustomerHomepageController {
 				new BeanListHandler<SalesOrder>(SalesOrder.class));
 		System.out.println(list.get(0).getOrderDate());
 		// initOrderSearch();
-
 	}
 
 	public void initOrderSearch() {
@@ -205,7 +202,6 @@ public class CustomerHomepageController {
 			ArrayList<SalesOrder> orderlist = (ArrayList<SalesOrder>) qr.query(db.getConnection(), sql,
 					new BeanListHandler<SalesOrder>(SalesOrder.class));
 			OrderTable[] t = convertToOrderTable(orderlist);
-
 			cellData.addAll(t);
 			orderTable.setItems(cellData);
 		} catch (SQLException e) {

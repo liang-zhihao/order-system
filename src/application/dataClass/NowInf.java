@@ -48,7 +48,7 @@ public class NowInf {
 	}
 
 	public static void setPicView(ImageView im, String path) {
-		System.out.println("FUCK-application/fxml/img/" + path);
+
 		im.setImage(new Image("application/fxml/img/" + path));
 
 	}

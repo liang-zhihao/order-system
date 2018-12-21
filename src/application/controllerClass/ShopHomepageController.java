@@ -359,7 +359,6 @@ public class ShopHomepageController {
 		String name = "Business" + NowInf.business.getBusinessId();
 		Image t = NowInf.copyPictureToProject(pic, name, "a");
 		imgHead.setImage(t);
-		// TODO:
 	}
 
 	public void initItemPane() {
