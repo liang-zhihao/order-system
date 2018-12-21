@@ -20,7 +20,10 @@ import application.dataClass.CheckBoxTCell;
 import application.dataClass.Db;
 import application.dataClass.NowInf;
 import application.dataClass.OrderTable;
+import application.dataClass.Product;
 import application.dataClass.SalesOrder;
+import application.dataClass.VBoxItemForBus;
+import application.frameClass.AddAItemFrame;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,11 +35,19 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class ShopHomepageController {
+	@FXML
+	private Label lbItemGreeting;
+	@FXML
+	private Label lbOrderGreeting;
+
+	@FXML
+	private FlowPane fpItems;
 
 	@FXML
 	private ImageView imgHead;
@@ -63,7 +74,8 @@ public class ShopHomepageController {
 	private TableColumn<OrderTable, String> orderCommentCol;
 	@FXML
 	private JFXButton btConfirmshipment;
-
+	@FXML
+	private JFXButton btRefresh;
 	@FXML
 	private TableColumn<?, ?> itemProductnumCol;
 
@@ -171,12 +183,14 @@ public class ShopHomepageController {
 		ItemPane.setVisible(false);
 		OrderPane.setVisible(true);
 		userInfPane.setVisible(false);
+		lbOrderGreeting.setText(NowInf.getGreetingWords());
 	}
 
 	public void openItem() {
 		ItemPane.setVisible(true);
 		OrderPane.setVisible(false);
 		userInfPane.setVisible(false);
+		lbItemGreeting.setText(NowInf.getGreetingWords());
 	}
 
 	public void initUserInf() {
@@ -226,6 +240,9 @@ public class ShopHomepageController {
 	}
 
 	public void initialize() throws SQLException {
+
+		VBoxItemForBus tmp = new VBoxItemForBus("1.jpg", "gakki", "Japan", 10);
+		fpItems.getChildren().add(tmp);
 		// img.setImage(new Image("application/fxml/img/ga.png"));
 		// imgHead.setImage(new Image());
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("salesOrderNumber"));
@@ -258,7 +275,6 @@ public class ShopHomepageController {
 
 	public void initOrderSearch() {
 		openOrder();
-
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 		String sql = "select * from salesorder where businessid =" + NowInf.business.getBusinessId();
@@ -302,7 +318,7 @@ public class ShopHomepageController {
 				t[i].setIsCheck(false);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		return t;
@@ -332,7 +348,6 @@ public class ShopHomepageController {
 			cellData.addAll(t);
 			orderTable.setItems(cellData);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -342,8 +357,38 @@ public class ShopHomepageController {
 		Stage stage = (Stage) btHead.getScene().getWindow();
 		File pic = fc.showOpenDialog(stage);
 		String name = "Business" + NowInf.business.getBusinessId();
-		Image t = NowInf.copyPictureToProject(pic, name);
+		Image t = NowInf.copyPictureToProject(pic, name, "a");
 		imgHead.setImage(t);
+		// TODO:
+	}
+
+	public void initItemPane() {
+		openItem();
+	}
+
+	public void AddItem() {
+		new AddAItemFrame();
+	}
+
+	public void refresh() {
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+
+		String sql = "select * from product where businessid =" + NowInf.business.getBusinessId();
+		// System.out.println(NowInf.business.getBusinessId());
+		fpItems.getChildren().clear();
+
+		ArrayList<Product> productlist = null;
+		try {
+			productlist = (ArrayList<Product>) qr.query(db.getConnection(), sql,
+					new BeanListHandler<Product>(Product.class));
+
+			NowInf.addItemToPane(fpItems, productlist);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 }
