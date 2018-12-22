@@ -60,13 +60,10 @@ public class NowInf {
 		} else {
 			t = NowInf.customer.getNickname();
 		}
-<<<<<<< HEAD
-		java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("HH");
-		String time = df.format(new Date());//
-=======
+
 		java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("HH");// 设置日期格式
 		String time = df.format(new Date());// new Date()为获取当前系统时间
->>>>>>> parent of 9f64fcc... Merge branch 'master' of https://github.com/TTEAMM/orderSystem
+
 		int hour = Integer.valueOf(time);
 
 		if (hour < 12 && hour > 0) {

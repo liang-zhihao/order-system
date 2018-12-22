@@ -1,5 +1,7 @@
 package application.controllerClass;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -10,6 +12,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -28,7 +31,13 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class CustomerHomepageController {
@@ -36,6 +45,7 @@ public class CustomerHomepageController {
 	private TableColumn<OrderTable, Boolean> btOrderCol;
 	@FXML
 	private TableColumn<OrderTable, String> orderBusinessCol;
+
 	@FXML
 	private TableColumn<OrderTable, String> orderItemCol;
 	@FXML
@@ -53,103 +63,152 @@ public class CustomerHomepageController {
 	private TableColumn<OrderTable, String> orderStatusCol;
 	@FXML
 	private TableColumn<OrderTable, String> orderCommentCol;
+	
 	@FXML
-	private JFXButton btItem;
+    private AnchorPane UserPane;
 
-	@FXML
-	private JFXTextField emailtfd;
+    @FXML
+    private JFXPasswordField txOriPsw;
 
-	@FXML
-	private JFXRadioButton orderBusinessRad;
+    @FXML
+    private JFXTextArea txAddress;
 
-	@FXML
-	private Label LabText;
+    @FXML
+    private JFXTextField tfSearch;
 
-	@FXML
-	private AnchorPane cusUserInf;
+    @FXML
+    private JFXTextField txCntPerson;
 
-	@FXML
-	private JFXTextField nicknametfd;
+    @FXML
+    private JFXTextField txMAdd;
 
-	@FXML
-	private JFXTextField tfSearch;
+    @FXML
+    private JFXTextField txGreeting;
 
-	@FXML
-	private JFXButton btAddCart;
+    @FXML
+    private JFXButton btCart;
 
-	@FXML
-	private AnchorPane cusOrderPane;
+    @FXML
+    private Label OrderGteeting;
 
-	@FXML
-	private JFXButton btChangeInf;
+    @FXML
+    private Label lbTime;
 
-	@FXML
-	private JFXButton btSearchOrder;
+    @FXML
+    private AnchorPane cusItemPane;
 
-	@FXML
-	private JFXTextField originalpwdtfd;
+    @FXML
+    private JFXTextField tfSearchOrder;
 
-	@FXML
-	private JFXTextArea biota;
+    @FXML
+    private JFXButton btOrder;
 
-	@FXML
-	private JFXTextField confirmpwdtfd;
+    @FXML
+    private JFXPasswordField txConformNewPsw;
 
-	@FXML
-	private JFXTextField newpwdtfd;
+    @FXML
+    private JFXButton btItem;
 
-	@FXML
-	private JFXButton btCart;
+    @FXML
+    private AnchorPane CustomerHomepagePane;
 
-	@FXML
-	private JFXTextField usernametfd;
+    @FXML
+    private JFXTextField txUserName;
 
-	@FXML
-	private JFXTextField phonetfd;
+    @FXML
+    private JFXButton btAddAdd1;
 
-	@FXML
-	private JFXButton btUser;
+    @FXML
+    private JFXButton btAddAddress;
 
-	@FXML
-	private AnchorPane cusItemPane;
+    @FXML
+    private JFXRadioButton orderBusinessRad;
 
-	@FXML
-	private JFXRadioButton orderItemRad;
+    @FXML
+    private JFXButton btAddCart;
 
-	@FXML
-	private JFXTextField tfSearchOrder;
+    @FXML
+    private AnchorPane cusOrderPane;
 
-	@FXML
-	private JFXButton btOrder;
+    @FXML
+    private AnchorPane addAdrPane;
 
-	@FXML
-	private JFXButton btLogout;
+    @FXML
+    private JFXButton btSearchOrder;
 
-	@FXML
-	private JFXButton btSearch;
-	@FXML
-	private JFXButton btConfirmreceipt;
+    @FXML
+    private JFXButton btConfirmreceipt;
 
-	// 创建并初始化数据
+    @FXML
+    private JFXTextField txCntPhone;
+
+    @FXML
+    private ImageView avatar;
+
+    @FXML
+    private VBox txInformation;
+
+    @FXML
+    private JFXPasswordField txNewPsw;
+
+    @FXML
+    private JFXTextField txNickName;
+
+    @FXML
+    private JFXTextField txEmail;
+
+    @FXML
+    private JFXButton btChangeIfo;
+
+    @FXML
+    private Label ItemGreeting;
+
+    @FXML
+    private JFXButton btChangeAvatar;
+
+    @FXML
+    private JFXButton btUser;
+
+    @FXML
+    private JFXTextField txPhone;
+
+    @FXML
+    private JFXRadioButton orderItemRad;
+
+    @FXML
+    private JFXTextField txBio;
+
+    @FXML
+    private JFXButton btLogout;
+
+    @FXML
+    private JFXButton btSearch;
+
+
+
 	public void openUserInf() {
 		cusItemPane.setVisible(false);
 		cusOrderPane.setVisible(false);
-		cusUserInf.setVisible(true);
+		addAdrPane.setVisible(false);
+		UserPane.setVisible(true);
 	}
 
 	public void openOrder() {
 		cusItemPane.setVisible(false);
 		cusOrderPane.setVisible(true);
-		cusUserInf.setVisible(false);
+		addAdrPane.setVisible(false);
+		UserPane.setVisible(false);
 	}
 
 	public void openItem() {
 		cusItemPane.setVisible(true);
 		cusOrderPane.setVisible(false);
-		cusUserInf.setVisible(false);
+		addAdrPane.setVisible(false);
+		UserPane.setVisible(false);
 	}
 
 	public void initialize() throws SQLException {
+		showUserInf();
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("salesOrderNumber"));
 		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("quantity"));
 		orderStatusCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("status"));
@@ -190,6 +249,7 @@ public class CustomerHomepageController {
 				new BeanListHandler<SalesOrder>(SalesOrder.class));
 		System.out.println(list.get(0).getOrderDate());
 		// initOrderSearch();
+
 	}
 
 	public void initOrderSearch() {
@@ -202,6 +262,7 @@ public class CustomerHomepageController {
 			ArrayList<SalesOrder> orderlist = (ArrayList<SalesOrder>) qr.query(db.getConnection(), sql,
 					new BeanListHandler<SalesOrder>(SalesOrder.class));
 			OrderTable[] t = convertToOrderTable(orderlist);
+
 			cellData.addAll(t);
 			orderTable.setItems(cellData);
 		} catch (SQLException e) {
@@ -280,31 +341,38 @@ public class CustomerHomepageController {
 	public void OOrderBusinessRad() {
 		orderItemRad.setSelected(false);
 	}
+	
+	public void btItems() {
+		openItem();
+		//
+	}
+	
+	
 
 	public void changeInf() {
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 		String sql = "update customer set NickName = ?,PhoneNumber = ? , Email=? , Bio = ? where CustomerID = ?";
 		Object[] para = new Object[5];
-		para[0] = nicknametfd.getText();
-		para[1] = Integer.parseInt(phonetfd.getText());
-		para[2] = emailtfd.getText();
-		para[3] = biota.getText();
+		para[0] = txNickName.getText();
+		para[1] = Integer.parseInt(txPhone.getText());
+		para[2] = txEmail.getText();
+		para[3] = txBio.getText();
 		para[4] = NowInf.customer.getCustomerId();
 		try {
-			if (!originalpwdtfd.getText().isEmpty() && !newpwdtfd.getText().isEmpty()
-					&& !confirmpwdtfd.getText().isEmpty()) {
-				if (!originalpwdtfd.getText().equals(NowInf.customer.getPassword())) {
+			if (!txOriPsw.getText().isEmpty() && !txNewPsw.getText().isEmpty()
+					&& !txConformNewPsw.getText().isEmpty()) {
+				if (!txOriPsw.getText().equals(NowInf.customer.getPassword())) {
 					System.out.println("Original Password is wrong");
 					return;
 				}
-				if (!newpwdtfd.getText().equals(confirmpwdtfd.getText())) {
+				if (!txNewPsw.getText().equals(txConformNewPsw.getText())) {
 					System.out.println("Confirm Password is wrong");
 					return;
 				}
 				String sql2 = "update customer set Password =? where CustomerID=?";
 				Object[] para2 = new Object[2];
-				para2[0] = newpwdtfd.getText();
+				para2[0] = txNewPsw.getText();
 				para2[1] = NowInf.customer.getCustomerId();
 				try {
 					qr.update(db.getConnection(), sql2, para2);
@@ -312,7 +380,7 @@ public class CustomerHomepageController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} // 更新信息
+			} 
 			String sql3 = "select * from customer where customerID=" + NowInf.customer.getCustomerId();
 			qr.update(db.getConnection(), sql, para);
 			System.out.println("Update SUCCESSFUL");
@@ -325,12 +393,16 @@ public class CustomerHomepageController {
 	}
 
 	public void showUserInf() {
+		openUserInf();
+		//btChangeAvatar();
+		
 		Customer t = NowInf.customer;
-		usernametfd.setText(t.getUsername());
-		nicknametfd.setText(t.getNickname());
-		phonetfd.setText("" + t.getPhoneNumber());
-		emailtfd.setText(t.getEmail());
-		biota.setText(t.getBio());
+		txUserName.setText(t.getUsername());
+		txNickName.setText(t.getNickname());
+		txPhone.setText("" + t.getPhoneNumber());
+		txEmail.setText(t.getEmail());
+		txBio.setText(t.getBio());
+		txMAdd.setText(null);
 	}
 
 	public void confirmReceipt() {
@@ -355,7 +427,49 @@ public class CustomerHomepageController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+	}
+	
+	public void btLogout() {
+		Stage stage = (Stage) btLogout.getScene().getWindow();
+		stage.close();
+	}
+	
+	public void btChangeAvatar() throws IOException {
+		FileChooser fileChooser = new FileChooser();
+		Stage mainStage = (Stage) btChangeAvatar.getScene().getWindow();		
+		File selectedFile = fileChooser.showOpenDialog(mainStage);
+		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("*.jpg", "*.jpeg","*.png"));
+		String name = "Customer" + NowInf.customer.getCustomerId();
+		Image n = NowInf.copyPictureToProject(selectedFile, name, "a");		
+		avatar.setImage(n);
+	}
+	
+	public void btAddAddress() {
+		addAdrPane.setVisible(true);
+		UserPane.setVisible(false);
+	}
+	
+	public void btAdd() throws SQLException {
+		int ID = NowInf.customer.getCustomerId();
+		String CnP = txCntPerson.getText();
+		int CnPhone = Integer.parseInt(txCntPhone.getText());
+		String AddressDetail = txAddress.getText();
+		Db db = new Db();
+		Object[] result = null;
+		int count;
+		QueryRunner qr = new QueryRunner();	
+		
+		String sql1 = "select count(*) from deliveryaddress where CustomerID = ?";
+		result = qr.query(db.getConnection(), sql1, ID, new ArrayHandler());
+		count =Integer.parseInt(result[0].toString());
+		int AddressID = count + 1;			
+		//System.out.println(count);
+		//System.out.println(AddressID);
+		qr.update(db.getConnection(),
+				"Insert into deliveryaddress (DeliveryAddressID, CustomerID, Consignee, PhoneNumber, Detail) "
+						+ "values(?, ?, ?, ?, ?)",
+						AddressID, ID, CnP, CnPhone, AddressDetail);
+		System.out.println("Adding Successful");
 	}
 
 }
