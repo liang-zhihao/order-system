@@ -10,7 +10,7 @@ public class CustomerHomepageFrame {
 		try {
 			Parent root = FXMLLoader
 					.load(getClass().getClassLoader().getResource("application//fxml//CustomerHomepage.fxml"));
-			Scene scene = new Scene(root, 808, 623);
+			Scene scene = new Scene(root, 1081, 805);
 			scene.getStylesheets()
 					.add(getClass().getClassLoader().getResource("application//application.css").toExternalForm());
 			Stage stage = new Stage();
