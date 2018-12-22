@@ -18,14 +18,15 @@ public class Main extends Application {
 					.add(getClass().getClassLoader().getResource("application//application.css").toExternalForm());
 
 			primaryStage.setScene(scene);
-<<<<<<< HEAD
+
 			primaryStage.setTitle("Sign In");
 
 			primaryStage.getIcons().add(new Image("application/fxml/img/233.jpg"));
 
-=======
-			primaryStage.setTitle("µÇÂ¼´°¿Ú");
->>>>>>> e457a272e7cf6be5e1ee67a8df756741526b9de2
+
+			primaryStage.setTitle("ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½");
+
+
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
