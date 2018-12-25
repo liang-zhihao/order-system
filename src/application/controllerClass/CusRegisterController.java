@@ -75,7 +75,53 @@ public class CusRegisterController {
     @FXML
     private JFXTextField txNickname;
 
-    public void btRegister() throws SQLException {
+	@FXML
+	private JFXPasswordField txPsw;
+
+	@FXML
+	private JFXTextField txUserName;
+
+	@FXML
+	private Label lbBio;
+
+	@FXML
+	private Label lbUserName;
+
+	@FXML
+	private JFXTextField txEmail;
+	@FXML
+	private JFXTextField txNickname;
+
+	@FXML
+	private Label lbConfirm;
+
+	@FXML
+	private Label lbErrorUserName2;
+
+	@FXML
+	private JFXTextField txPhoneNum;
+
+	@FXML
+	private Label lbPhoneNum;
+	@FXML
+	private Label lbErrorPassword;
+
+	@FXML
+	private Label lbNickname;
+	@FXML
+	private JFXTextArea txBio;
+
+	public void initialize() {
+		// NowInf.setPicView(imgUser, "icon/user.png");
+		// NowInf.setPicView(imgNick, "icon/user.png");
+		// NowInf.setPicView(imgPass, "icon/password.png");
+		// NowInf.setPicView(imgCon, "icon/password.png");
+		// NowInf.setPicView(imgEmail, "icon/email.png");
+		// NowInf.setPicView(imgPhone, "icon/phone.png");
+
+	}
+
+	public void btRegister() throws SQLException {
 		String UserName = txUserName.getText();
 		String Psw = txPsw.getText();
 		String PswConfirm = txPswConfirm.getText();

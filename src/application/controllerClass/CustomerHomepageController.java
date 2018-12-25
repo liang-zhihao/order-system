@@ -17,6 +17,7 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
+import application.dataClass.CartTable;
 import application.dataClass.CheckBoxTCell;
 import application.dataClass.Customer;
 import application.dataClass.Db;
@@ -63,81 +64,66 @@ public class CustomerHomepageController {
 	private TableColumn<OrderTable, String> orderStatusCol;
 	@FXML
 	private TableColumn<OrderTable, String> orderCommentCol;
-	
+
 	@FXML
-    private AnchorPane UserPane;
+	private AnchorPane UserPane;
 
-    @FXML
-    private JFXPasswordField txOriPsw;
+	@FXML
+	private JFXPasswordField txOriPsw;
 
-    @FXML
-    private JFXTextArea txAddress;
+	@FXML
+	private JFXTextArea txAddress;
 
-    @FXML
-    private JFXTextField tfSearch;
+	@FXML
+	private JFXTextField tfSearch;
 
-    @FXML
-    private JFXTextField txCntPerson;
+	@FXML
+	private JFXTextField txCntPerson;
 
-    @FXML
-    private JFXTextField txMAdd;
+	@FXML
+	private JFXTextField txMAdd;
 
-    @FXML
-    private JFXTextField txGreeting;
+	@FXML
+	private JFXTextField txGreeting;
 
-    @FXML
-    private JFXButton btCart;
+	@FXML
+	private JFXButton btCart;
 
-    @FXML
-    private Label OrderGteeting;
+	@FXML
+	private Label OrderGteeting;
 
-    @FXML
-    private Label lbTime;
+	@FXML
+	private Label lbTime;
 
-    @FXML
-    private AnchorPane cusItemPane;
+	@FXML
+	private AnchorPane cusItemPane;
 
-    @FXML
-    private JFXTextField tfSearchOrder;
+	@FXML
+	private JFXTextField tfSearchOrder;
 
-    @FXML
-    private JFXButton btOrder;
+	@FXML
+	private JFXButton btOrder;
 
-    @FXML
-    private JFXPasswordField txConformNewPsw;
+	@FXML
+	private JFXPasswordField txConformNewPsw;
 
-    @FXML
-    private JFXButton btItem;
+	@FXML
+	private JFXButton btItem;
 
-    @FXML
-    private AnchorPane CustomerHomepagePane;
+	@FXML
+	private AnchorPane CustomerHomepagePane;
 
-    @FXML
-    private JFXTextField txUserName;
+	@FXML
+	private JFXTextField txUserName;
 
-    @FXML
-    private JFXButton btAddAdd1;
+	@FXML
+	private JFXButton btAddAdd1;
 
-    @FXML
-    private JFXButton btAddAddress;
+	@FXML
+	private JFXButton btAddAddress;
 
-    @FXML
-    private JFXRadioButton orderBusinessRad;
-
-    @FXML
-    private JFXButton btAddCart;
-
-    @FXML
-    private AnchorPane cusOrderPane;
-
-    @FXML
-    private AnchorPane addAdrPane;
-
-    @FXML
-    private JFXButton btSearchOrder;
-
-    @FXML
-    private JFXButton btConfirmreceipt;
+	@FXML
+	private JFXRadioButton orderBusinessRad;
 
     @FXML
     private JFXTextField txGreeting1;
@@ -145,46 +131,97 @@ public class CustomerHomepageController {
     @FXML
     private JFXTextField txCntPhone;
 
-    @FXML
-    private ImageView avatar;
+	@FXML
+	private AnchorPane cusOrderPane;
 
-    @FXML
-    private VBox txInformation;
+	@FXML
+	private AnchorPane addAdrPane;
 
-    @FXML
-    private JFXPasswordField txNewPsw;
+	@FXML
+	private JFXButton btSearchOrder;
 
-    @FXML
-    private JFXTextField txNickName;
+	@FXML
+	private JFXButton btConfirmreceipt;
 
-    @FXML
-    private JFXTextField txEmail;
+	@FXML
+	private JFXTextField txCntPhone;
 
-    @FXML
-    private JFXButton btChangeIfo;
+	@FXML
+	private ImageView avatar;
 
     @FXML
     private JFXButton btChangeAvatar;
+	@FXML
+	private VBox txInformation;
 
-    @FXML
-    private JFXButton btUser;
+	@FXML
+	private JFXPasswordField txNewPsw;
 
-    @FXML
-    private JFXTextField txPhone;
+	@FXML
+	private JFXTextField txNickName;
 
-    @FXML
-    private JFXRadioButton orderItemRad;
+	@FXML
+	private JFXTextField txEmail;
 
-    @FXML
-    private JFXTextField txBio;
+	@FXML
+	private JFXButton btChangeIfo;
 
-    @FXML
-    private JFXButton btLogout;
+	@FXML
+	private Label ItemGreeting;
 
-    @FXML
-    private JFXButton btSearch;
+	@FXML
+	private JFXButton btChangeAvatar;
 
+	@FXML
+	private JFXButton btUser;
 
+	@FXML
+	private JFXTextField txPhone;
+
+	@FXML
+	private JFXRadioButton orderItemRad;
+
+	@FXML
+	private JFXTextField txBio;
+
+	@FXML
+	private JFXButton btLogout;
+
+	@FXML
+	private JFXButton btSearch;
+
+	public void initialize() throws SQLException {
+		showUserInf();
+		orderNumberCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("salesOrderNumber"));
+		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("quantity"));
+		orderStatusCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("status"));
+		orderDateCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("orderDate"));
+		orderCommentCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("comment"));
+		orderSubCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("subTotal"));
+		orderItemCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("itemName"));
+		orderBusinessCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("Business"));
+		btOrderCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Boolean>("isCheck"));
+		btOrderCol.setCellFactory(new Callback<TableColumn<OrderTable, Boolean>, TableCell<OrderTable, Boolean>>() {
+			public TableCell<OrderTable, Boolean> call(TableColumn<OrderTable, Boolean> param) {
+				final CheckBoxTCell<OrderTable, Boolean> cell = new CheckBoxTCell<>();
+				final JFXCheckBox checkbox = (JFXCheckBox) cell.getGraphic();
+				checkbox.setOnAction(e -> {
+					if (cellData.get(cell.getIndex()).getIsCheck().booleanValue()) {
+						cellData.get(cell.getIndex()).setIsCheck(false);
+					} else {
+						cellData.get(cell.getIndex()).setIsCheck(true);
+					}
+				});
+				return cell;
+			}
+		});
+		// btOrderCol.setCellValueFactory(cellData ->
+		// cellData.getValue().cb.getCheckBox());
+		// initOrderSearch();
+	}
+
+	ObservableList<OrderTable> cellData = FXCollections.observableArrayList();
+	ObservableList<CartTable> cellDataCart = FXCollections.observableArrayList();
 
 	public void openUserInf() {
 		cusItemPane.setVisible(false);
@@ -207,40 +244,6 @@ public class CustomerHomepageController {
 		UserPane.setVisible(false);
 	}
 
-	public void initialize() throws SQLException {
-		showUserInf();
-		orderNumberCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("salesOrderNumber"));
-		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("quantity"));
-		orderStatusCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("status"));
-		orderDateCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("orderDate"));
-		orderCommentCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("comment"));
-		orderSubCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("subTotal"));
-		orderItemCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("itemName"));
-		orderBusinessCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("Business"));
-		// btOrderCol.setCellFactory(CheckBoxTableCell.forTableColumn(btOrderCol));
-		btOrderCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Boolean>("isCheck"));
-		btOrderCol.setCellFactory(new Callback<TableColumn<OrderTable, Boolean>, TableCell<OrderTable, Boolean>>() {
-			public TableCell<OrderTable, Boolean> call(TableColumn<OrderTable, Boolean> param) {
-				final CheckBoxTCell<OrderTable, Boolean> cell = new CheckBoxTCell<>();
-				final JFXCheckBox checkbox = (JFXCheckBox) cell.getGraphic();
-				checkbox.setOnAction(e -> {
-					// System.out.println(t.getItemName());
-					if (cellData.get(cell.getIndex()).getIsCheck().booleanValue()) {
-						cellData.get(cell.getIndex()).setIsCheck(false);
-					} else {
-						cellData.get(cell.getIndex()).setIsCheck(true);
-					}
-				});
-				return cell;
-			}
-		});
-		// btOrderCol.setCellValueFactory(cellData ->
-		// cellData.getValue().cb.getCheckBox());
-		// initOrderSearch();
-	}
-
-	ObservableList<OrderTable> cellData = FXCollections.observableArrayList();
-
 	public static void main(String[] args) throws SQLException {
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
@@ -261,7 +264,7 @@ public class CustomerHomepageController {
 			cellData.clear();
 			ArrayList<SalesOrder> orderlist = (ArrayList<SalesOrder>) qr.query(db.getConnection(), sql,
 					new BeanListHandler<SalesOrder>(SalesOrder.class));
-			OrderTable[] t = convertToOrderTable(orderlist);
+			OrderTable[] t = NowInf.convertToOrderTable(orderlist);
 
 			cellData.addAll(t);
 			orderTable.setItems(cellData);
@@ -269,40 +272,6 @@ public class CustomerHomepageController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	private OrderTable[] convertToOrderTable(ArrayList<SalesOrder> orderlist) {
-		OrderTable[] t = new OrderTable[orderlist.size()];
-		for (int i = 0; i < orderlist.size(); i++) {
-			t[i] = new OrderTable();
-		}
-		Db db = new Db();
-		QueryRunner qr = new QueryRunner();
-		String sql1 = "select BusinessName from business where businessId=?";
-		String sql2 = "select Name from Product where ProductId=?";
-		Object[] para = new Object[1];
-		Object[] tmp = null;
-		try {
-			for (int i = 0; i < orderlist.size(); i++) {
-				para[0] = orderlist.get(i).getBusinessId();
-				tmp = qr.query(db.getConnection(), sql1, para, new ArrayHandler());
-				t[i].setBusiness(tmp[0].toString());
-				para[0] = orderlist.get(i).getProductId();
-				tmp = qr.query(db.getConnection(), sql2, para, new ArrayHandler());
-				t[i].setItemName(tmp[0].toString());
-				t[i].setComment(orderlist.get(i).getComment());
-				t[i].setOrderDate(orderlist.get(i).getOrderDate());
-				t[i].setQuantity(orderlist.get(i).getQuantity());
-				t[i].setSalesOrderNumber(orderlist.get(i).getSalesOrderNumber());
-				t[i].setStatus(orderlist.get(i).getStatus());
-				t[i].setSubTotal(orderlist.get(i).getSubTotal());
-				t[i].setIsCheck(false);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return t;
 	}
 
 	public void orderSearch() {
@@ -325,7 +294,7 @@ public class CustomerHomepageController {
 			orderlist = (ArrayList<SalesOrder>) qr.query(db.getConnection(), sql, para,
 					new BeanListHandler<SalesOrder>(SalesOrder.class));
 			// System.out.println(orderlist.get(0).getCustomerId());
-			OrderTable[] t = convertToOrderTable(orderlist);
+			OrderTable[] t = NowInf.convertToOrderTable(orderlist);
 			cellData.addAll(t);
 			orderTable.setItems(cellData);
 		} catch (SQLException e) {
@@ -341,11 +310,12 @@ public class CustomerHomepageController {
 	public void OOrderBusinessRad() {
 		orderItemRad.setSelected(false);
 	}
-	
+
 	public void btItems() {
 		openItem();
 		//
 	}	
+	}
 
 	public void changeInf() {
 		Db db = new Db();
@@ -378,7 +348,7 @@ public class CustomerHomepageController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} 
+			}
 			String sql3 = "select * from customer where customerID=" + NowInf.customer.getCustomerId();
 			qr.update(db.getConnection(), sql, para);
 			System.out.println("Update SUCCESSFUL");
@@ -395,6 +365,8 @@ public class CustomerHomepageController {
 		//showAvatar();
 		//btChangeAvatar();
 		
+		// btChangeAvatar();
+
 		Customer t = NowInf.customer;
 		txUserName.setText(t.getUsername());
 		txNickName.setText(t.getNickname());
@@ -427,7 +399,7 @@ public class CustomerHomepageController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void btLogout() {
 		Stage stage = (Stage) btLogout.getScene().getWindow();
 		stage.close();
@@ -439,21 +411,23 @@ public class CustomerHomepageController {
 //		avatar.setImage(new Image(n));
 //	}
 	
+
 	public void btChangeAvatar() throws IOException {
 		FileChooser fileChooser = new FileChooser();
-		Stage mainStage = (Stage) btChangeAvatar.getScene().getWindow();		
+		Stage mainStage = (Stage) btChangeAvatar.getScene().getWindow();
 		File selectedFile = fileChooser.showOpenDialog(mainStage);
-		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("*.jpg", "*.jpeg","*.png"));
-		String name = "Customer" + NowInf.customer.getCustomerId();
-		Image n = NowInf.copyPictureToProject(selectedFile, name, "a");		
+		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("*.jpg", "*.jpeg", "*.png"));
+		String name = "Customer" + "-" + NowInf.customer.getCustomerId() + "."
+				+ NowInf.getPicAttributeFromFile(selectedFile.getName());
+		Image n = NowInf.copyPictureToProject(selectedFile, name, "a");
 		avatar.setImage(n);
 	}
-	
+
 	public void btAddAddress() {
 		addAdrPane.setVisible(true);
 		UserPane.setVisible(false);
 	}
-	
+
 	public void btAdd() throws SQLException {
 		int ID = NowInf.customer.getCustomerId();
 		String CnP = txCntPerson.getText();
@@ -462,18 +436,18 @@ public class CustomerHomepageController {
 		Db db = new Db();
 		Object[] result = null;
 		int count;
-		QueryRunner qr = new QueryRunner();	
-		
+		QueryRunner qr = new QueryRunner();
+
 		String sql1 = "select count(*) from deliveryaddress where CustomerID = ?";
 		result = qr.query(db.getConnection(), sql1, ID, new ArrayHandler());
-		count =Integer.parseInt(result[0].toString());
-		int AddressID = count + 1;			
-		//System.out.println(count);
-		//System.out.println(AddressID);
+		count = Integer.parseInt(result[0].toString());
+		int AddressID = count + 1;
+		// System.out.println(count);
+		// System.out.println(AddressID);
 		qr.update(db.getConnection(),
 				"Insert into deliveryaddress (DeliveryAddressID, CustomerID, Consignee, PhoneNumber, Detail) "
 						+ "values(?, ?, ?, ?, ?)",
-						AddressID, ID, CnP, CnPhone, AddressDetail);
+				AddressID, ID, CnP, CnPhone, AddressDetail);
 		System.out.println("Adding Successful");
 	}
 
