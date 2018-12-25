@@ -140,6 +140,9 @@ public class CustomerHomepageController {
     private JFXButton btConfirmreceipt;
 
     @FXML
+    private JFXTextField txGreeting1;
+
+    @FXML
     private JFXTextField txCntPhone;
 
     @FXML
@@ -159,9 +162,6 @@ public class CustomerHomepageController {
 
     @FXML
     private JFXButton btChangeIfo;
-
-    @FXML
-    private Label ItemGreeting;
 
     @FXML
     private JFXButton btChangeAvatar;
@@ -345,9 +345,7 @@ public class CustomerHomepageController {
 	public void btItems() {
 		openItem();
 		//
-	}
-	
-	
+	}	
 
 	public void changeInf() {
 		Db db = new Db();
@@ -392,8 +390,9 @@ public class CustomerHomepageController {
 
 	}
 
-	public void showUserInf() {
+	public void showUserInf() throws SQLException {
 		openUserInf();
+		//showAvatar();
 		//btChangeAvatar();
 		
 		Customer t = NowInf.customer;
@@ -433,6 +432,12 @@ public class CustomerHomepageController {
 		Stage stage = (Stage) btLogout.getScene().getWindow();
 		stage.close();
 	}
+	
+//	public void showAvatar() {		
+//		String name = "Customer" + NowInf.customer.getCustomerId();
+//		String n = "/src/application/fxml/img/item" + name;	
+//		avatar.setImage(new Image(n));
+//	}
 	
 	public void btChangeAvatar() throws IOException {
 		FileChooser fileChooser = new FileChooser();
