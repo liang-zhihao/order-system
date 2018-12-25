@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="662.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="662.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.controllerClass.ChangeItemController">
    <children>
       <VBox alignment="CENTER" layoutX="33.0" layoutY="22.0" prefHeight="590.0" prefWidth="334.0" spacing="10.0" style="-fx-background-color: white;">
          <children>

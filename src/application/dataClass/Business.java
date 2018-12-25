@@ -8,6 +8,15 @@ public class Business {
 	private String phoneNumber;
 	private String email;
 	private String shippingAddress;
+	private String PictureName;
+
+	public void setPictureName(String pictureName) {
+		PictureName = pictureName;
+	}
+
+	public String getPictureName() {
+		return PictureName;
+	}
 
 	public int getBusinessId() {
 		return businessId;

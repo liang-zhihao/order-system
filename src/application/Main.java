@@ -24,7 +24,7 @@ public class Main extends Application {
 
 			primaryStage.getIcons().add(new Image("application/fxml/img/233.jpg"));
 
-			primaryStage.setTitle("��¼����");
+			primaryStage.setTitle("Sign In");
 
 			primaryStage.show();
 		} catch (Exception e) {

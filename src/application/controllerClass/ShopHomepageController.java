@@ -22,12 +22,12 @@ import application.dataClass.NowInf;
 import application.dataClass.OrderTable;
 import application.dataClass.Product;
 import application.dataClass.SalesOrder;
-import application.dataClass.VBoxItemForBus;
 import application.frameClass.AddAItemFrame;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -41,6 +41,11 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class ShopHomepageController {
+
+	@FXML
+	private ScrollPane scrollPaneItems;
+	@FXML
+	private AnchorPane parentPane;
 	@FXML
 	private Label lbItemGreeting;
 	@FXML
@@ -173,76 +178,9 @@ public class ShopHomepageController {
 	private JFXButton btSearch;
 	ObservableList<OrderTable> cellData = FXCollections.observableArrayList();
 
-	public void openUserInf() {
-		ItemPane.setVisible(false);
-		OrderPane.setVisible(false);
-		userInfPane.setVisible(true);
-	}
-
-	public void openOrder() {
-		ItemPane.setVisible(false);
-		OrderPane.setVisible(true);
-		userInfPane.setVisible(false);
-		lbOrderGreeting.setText(NowInf.getGreetingWords());
-	}
-
-	public void openItem() {
-		ItemPane.setVisible(true);
-		OrderPane.setVisible(false);
-		userInfPane.setVisible(false);
-		lbItemGreeting.setText(NowInf.getGreetingWords());
-	}
-
-	public void initUserInf() {
-		openUserInf();
-		Business t = NowInf.business;
-		tfUser.setText(t.getUsername());
-		tfPhone.setText(t.getPhoneNumber());
-		tfEmail.setText(t.getEmail());
-		tfShipping.setText(t.getShippingAddress());
-		tfBusinessname.setText(t.getBusinessName());
-	}
-
-	public void changeInf() {
-		Db db = new Db();
-		QueryRunner qr = new QueryRunner();
-		String sql = "update business set PhoneNumber = ?, Email=? , ShippingAddress = ?,BusinessName =? where BusinessID = ?";
-		Object[] para = new Object[5];
-		para[0] = Integer.parseInt(tfPhone.getText());
-		para[1] = tfEmail.getText();
-		para[2] = tfShipping.getText();
-		para[3] = tfBusinessname.getText();
-		para[4] = NowInf.business.getBusinessId();
-		try {
-			if (!originalpwd.getText().isEmpty() && !newpwd.getText().isEmpty() && !confirmpwd.getText().isEmpty()) {
-				if (!originalpwd.getText().equals(NowInf.business.getPassword())) {
-					System.out.println("Original Password is wrong");
-					return;
-				}
-				if (!newpwd.getText().equals(confirmpwd.getText())) {
-					System.out.println("Confirm Password is wrong");
-					return;
-				}
-				String sql2 = "update business set Password =? where BusinessID=?";
-				Object[] para2 = new Object[2];
-				para2[0] = newpwd.getText();
-				para2[1] = NowInf.business.getBusinessId();
-				qr.update(db.getConnection(), sql2, para2);
-
-			} // Update Information
-			String sql3 = "select * from business where BusinessID=" + NowInf.business.getBusinessId();
-			qr.update(db.getConnection(), sql, para);
-			System.out.println("Update SUCCESSFUL");
-			NowInf.business = qr.query(db.getConnection(), sql3, new BeanHandler<Business>(Business.class));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
 	public void initialize() throws SQLException {
-
-		VBoxItemForBus tmp = new VBoxItemForBus("1.jpg", "gakki", "Japan", 10);
-		fpItems.getChildren().add(tmp);
+		lbItemGreeting.setText(NowInf.getGreetingWords());
+		openOrder();
 		// img.setImage(new Image("application/fxml/img/ga.png"));
 		// imgHead.setImage(new Image());
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("salesOrderNumber"));
@@ -271,6 +209,82 @@ public class ShopHomepageController {
 		// btOrderCol.setCellValueFactory(cellData ->
 		// cellData.getValue().cb.getCheckBox());
 
+	}
+
+	public void openUserInf() {
+		ItemPane.setVisible(false);
+		OrderPane.setVisible(false);
+		userInfPane.setVisible(true);
+	}
+
+	public void openOrder() {
+		ItemPane.setVisible(false);
+		OrderPane.setVisible(true);
+		userInfPane.setVisible(false);
+		lbOrderGreeting.setText(NowInf.getGreetingWords());
+	}
+
+	public void openItem() {
+
+		ItemPane.setVisible(true);
+		OrderPane.setVisible(false);
+		userInfPane.setVisible(false);
+		lbItemGreeting.setText(NowInf.getGreetingWords());
+	}
+
+	public void initUserInf() {
+		openUserInf();
+		if (NowInf.business.getPictureName() != null) {
+			String path = "avatar/" + NowInf.business.getPictureName();
+			NowInf.setPicView(imgHead, path);
+		}
+		Business t = NowInf.business;
+		tfUser.setText(t.getUsername());
+		tfPhone.setText(t.getPhoneNumber());
+		tfEmail.setText(t.getEmail());
+		tfShipping.setText(t.getShippingAddress());
+		tfBusinessname.setText(t.getBusinessName());
+	}
+
+	public void changeInf() {
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		String sql = "update business set PhoneNumber = ?, Email=? , ShippingAddress = ?,BusinessName =? where BusinessID = ?";
+		Object[] para = new Object[5];
+		for (int i = 0; i < 5; i++) {
+			para[i] = 0;
+		}
+		if (tfPhone.getText() != null) {
+			para[0] = Integer.parseInt(tfPhone.getText());
+		}
+		para[1] = tfEmail.getText();
+		para[2] = tfShipping.getText();
+		para[3] = tfBusinessname.getText();
+		para[4] = NowInf.business.getBusinessId();
+		try {
+			if (!originalpwd.getText().isEmpty() && !newpwd.getText().isEmpty() && !confirmpwd.getText().isEmpty()) {
+				if (!originalpwd.getText().equals(NowInf.business.getPassword())) {
+					System.out.println("Original Password is wrong");
+					return;
+				}
+				if (!newpwd.getText().equals(confirmpwd.getText())) {
+					System.out.println("Confirm Password is wrong");
+					return;
+				}
+				String sql2 = "update business set Password =? where BusinessID=?";
+				Object[] para2 = new Object[2];
+				para2[0] = newpwd.getText();
+				para2[1] = NowInf.business.getBusinessId();
+				qr.update(db.getConnection(), sql2, para2);
+
+			} // Update Information
+			String sql3 = "select * from business where BusinessID=" + NowInf.business.getBusinessId();
+			qr.update(db.getConnection(), sql, para);
+			System.out.println("Update SUCCESSFUL");
+			NowInf.business = qr.query(db.getConnection(), sql3, new BeanHandler<Business>(Business.class));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void initOrderSearch() {
@@ -356,13 +370,35 @@ public class ShopHomepageController {
 		final FileChooser fc = new FileChooser();
 		Stage stage = (Stage) btHead.getScene().getWindow();
 		File pic = fc.showOpenDialog(stage);
-		String name = "Business" + NowInf.business.getBusinessId();
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		String sql = "update business set picturename =? where businessid =?";
+		Object[] p = new Object[2];
+		String name = "Business-" + NowInf.business.getBusinessId() + "."
+				+ NowInf.getPicAttributeFromFile(pic.getName());
 		Image t = NowInf.copyPictureToProject(pic, name, "a");
+		p[0] = name;
+		p[1] = NowInf.business.getBusinessId();
+		try {
+			qr.update(db.getConnection(), sql, p);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("set avatar successfully");
 		imgHead.setImage(t);
+	}
+
+	public static void main(String[] args) {
+		String name = "Business-" + 1 + "-"
+				+ NowInf.getPicAttributeFromFile("Business-1-.2d723a34349b033b9ef2b2271ece36d3d439bdaa.jpg");
+		System.out.println(name);
+
 	}
 
 	public void initItemPane() {
 		openItem();
+		refresh();
 	}
 
 	public void AddItem() {
@@ -372,7 +408,6 @@ public class ShopHomepageController {
 	public void refresh() {
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
-
 		String sql = "select * from product where businessid =" + NowInf.business.getBusinessId();
 		// System.out.println(NowInf.business.getBusinessId());
 		fpItems.getChildren().clear();
@@ -381,7 +416,6 @@ public class ShopHomepageController {
 		try {
 			productlist = (ArrayList<Product>) qr.query(db.getConnection(), sql,
 					new BeanListHandler<Product>(Product.class));
-
 			NowInf.addItemToPane(fpItems, productlist);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

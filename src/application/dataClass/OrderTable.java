@@ -18,7 +18,7 @@ public class OrderTable {
 	private StringProperty itemName;
 	private StringProperty Business;
 	// private CheckBoxTCell checkbox;
-	public BooleanProperty isCheck;
+	private BooleanProperty isCheck;
 	// public checkbox cb = new checkbox();
 
 	public void setIsCheck(boolean isCheck) {
