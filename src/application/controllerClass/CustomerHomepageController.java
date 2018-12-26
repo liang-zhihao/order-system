@@ -139,8 +139,11 @@ public class CustomerHomepageController {
 	@FXML
 	private JFXRadioButton orderBusinessRad;
 
-	@FXML
-	private JFXButton btAddCart;
+    @FXML
+    private JFXTextField txGreeting1;
+
+    @FXML
+    private JFXTextField txCntPhone;
 
 	@FXML
 	private AnchorPane cusOrderPane;
@@ -160,6 +163,8 @@ public class CustomerHomepageController {
 	@FXML
 	private ImageView avatar;
 
+    @FXML
+    private JFXButton btChangeAvatar;
 	@FXML
 	private VBox txInformation;
 
@@ -337,6 +342,7 @@ public class CustomerHomepageController {
 		openItem();
 		initItemPane();
 		//
+	}	
 	}
 
 	public void changeInf() {
@@ -382,8 +388,11 @@ public class CustomerHomepageController {
 
 	}
 
-	public void showUserInf() {
+	public void showUserInf() throws SQLException {
 		openUserInf();
+		//showAvatar();
+		//btChangeAvatar();
+		
 		// btChangeAvatar();
 
 		Customer t = NowInf.customer;
@@ -423,6 +432,13 @@ public class CustomerHomepageController {
 		Stage stage = (Stage) btLogout.getScene().getWindow();
 		stage.close();
 	}
+	
+//	public void showAvatar() {		
+//		String name = "Customer" + NowInf.customer.getCustomerId();
+//		String n = "/src/application/fxml/img/item" + name;	
+//		avatar.setImage(new Image(n));
+//	}
+	
 
 	public void btChangeAvatar() throws IOException {
 		FileChooser fileChooser = new FileChooser();
