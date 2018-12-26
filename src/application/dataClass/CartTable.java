@@ -11,6 +11,7 @@ public class CartTable {
 	private StringProperty itemName;
 	private StringProperty Business;
 	private BooleanProperty isCheck;
+	private IntegerProperty cost;
 
 	public void setBusiness(String business) {
 		this.Business = new SimpleStringProperty(business);

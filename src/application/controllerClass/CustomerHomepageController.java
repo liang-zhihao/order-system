@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ArrayHandler;
@@ -17,12 +18,15 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
+import application.dataClass.Cart;
 import application.dataClass.CartTable;
 import application.dataClass.CheckBoxTCell;
 import application.dataClass.Customer;
 import application.dataClass.Db;
+import application.dataClass.HBoxForCart;
 import application.dataClass.NowInf;
 import application.dataClass.OrderTable;
+import application.dataClass.Product;
 import application.dataClass.SalesOrder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,6 +39,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -42,6 +47,15 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class CustomerHomepageController {
+
+	@FXML
+	private FlowPane fpItem;
+	@FXML
+	private JFXCheckBox cartSelectAll;
+	@FXML
+	private VBox cartVBox;
+	@FXML
+	private AnchorPane cartPane;
 	@FXML
 	private TableColumn<OrderTable, Boolean> btOrderCol;
 	@FXML
@@ -187,6 +201,7 @@ public class CustomerHomepageController {
 
 	public void initialize() throws SQLException {
 		showUserInf();
+		// OrderTablePane
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("salesOrderNumber"));
 		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("quantity"));
 		orderStatusCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("status"));
@@ -210,9 +225,8 @@ public class CustomerHomepageController {
 				return cell;
 			}
 		});
-		// btOrderCol.setCellValueFactory(cellData ->
-		// cellData.getValue().cb.getCheckBox());
-		// initOrderSearch();
+		// CartTablePane
+
 	}
 
 	ObservableList<OrderTable> cellData = FXCollections.observableArrayList();
@@ -223,6 +237,7 @@ public class CustomerHomepageController {
 		cusOrderPane.setVisible(false);
 		addAdrPane.setVisible(false);
 		UserPane.setVisible(true);
+		cartPane.setVisible(false);
 	}
 
 	public void openOrder() {
@@ -230,6 +245,7 @@ public class CustomerHomepageController {
 		cusOrderPane.setVisible(true);
 		addAdrPane.setVisible(false);
 		UserPane.setVisible(false);
+		cartPane.setVisible(false);
 	}
 
 	public void openItem() {
@@ -237,6 +253,17 @@ public class CustomerHomepageController {
 		cusOrderPane.setVisible(false);
 		addAdrPane.setVisible(false);
 		UserPane.setVisible(false);
+		cartPane.setVisible(false);
+	}
+
+	public void openCart() {
+		cusItemPane.setVisible(false);
+		cusOrderPane.setVisible(false);
+		addAdrPane.setVisible(false);
+		UserPane.setVisible(false);
+		cartPane.setVisible(true);
+		cartPane.setVisible(false);
+		initCartPane();
 	}
 
 	public static void main(String[] args) throws SQLException {
@@ -308,6 +335,7 @@ public class CustomerHomepageController {
 
 	public void btItems() {
 		openItem();
+		initItemPane();
 		//
 	}
 
@@ -433,6 +461,85 @@ public class CustomerHomepageController {
 						+ "values(?, ?, ?, ?, ?)",
 				AddressID, ID, CnP, CnPhone, AddressDetail);
 		System.out.println("Adding Successful");
+	}
+
+	public void initCartPane() {
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		String sql = "select * from cart where customerid =" + NowInf.customer.getCustomerId();
+		try {
+			ArrayList<Cart> cartlist = (ArrayList<Cart>) qr.query(db.getConnection(), sql,
+					new BeanListHandler<Cart>(Cart.class));
+			for (int i = 0; i < cartlist.size(); i++) {
+				String sql1 = "SELECT product.`Name` , business.BusinessName,product.StandardCost,cart.number,product.PictureName FROM product,cart,business WHERE CartID ="
+						+ cartlist.get(i).getCartId()
+						+ "  AND cart.ProductID=product.ProductID AND business.BusinessID =product.BusinessID";
+				// String item, String business, int cost, int num, String picname
+				Object[] t = qr.query(db.getConnection(), sql1, new ArrayHandler());
+				HBoxForCart ht = new HBoxForCart(t[0].toString(), t[1].toString(), Integer.valueOf(t[2].toString()),
+						Integer.valueOf(t[3].toString()), t[4].toString());
+				ht.setCartId(cartlist.get(i).getCartId());
+				ht.setProductId(cartlist.get(i).getProductId());
+				cartVBox.getChildren().add(ht);
+				System.out.println(cartVBox.getChildren().get(0));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void cartSelectAl() {
+		for (int i = 1; i < cartVBox.getChildren().size(); i++) {
+			HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
+			t.setCheck(true);
+		}
+
+	}
+
+	public void buyBuyBuy() {
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		for (int i = 1; i < cartVBox.getChildren().size(); i++) {
+			try {
+				HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
+				t.getCartId();
+				t.getProductId();
+				String sql = "INSERT into salesorder (BusinessID,ProductID,CustomerID,DeliveryAddressID,SalesOrderNumber,Quantity,`Status`,OrderDate,`Comment`,SubTotal) VALUES(?,?,?,?,?,?,?,?,?,?)";
+				Object[] p = new Object[10];
+				String sql1 = "select * from product where productid =" + t.getProductId();
+				Product ptmp = qr.query(db.getConnection(), sql1, new BeanHandler<Product>(Product.class));
+				p[0] = ptmp.getBusinessiD();
+				p[1] = t.getProductId();
+				p[2] = NowInf.customer.getCustomerId();
+				p[3] = 1;
+				p[4] = ptmp.getProductnumber();
+				p[5] = Integer.valueOf(t.getTfNum().getText());
+				p[6] = "weifahuo";
+				p[7] = new Date();
+				p[8] = " ";
+				p[9] = Integer.valueOf(t.getTfNum().getText()) * ptmp.getStandardcost();
+				qr.update(db.getConnection(), sql, p);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	public void initItemPane() {
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		String sql = "select * from product";
+		try {
+			ArrayList<Product> plist = (ArrayList<Product>) qr.query(db.getConnection(), sql,
+					new BeanListHandler<Product>(Product.class));
+			NowInf.addItemToPane(fpItem, plist, "c");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

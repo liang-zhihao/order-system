@@ -416,7 +416,7 @@ public class ShopHomepageController {
 		try {
 			productlist = (ArrayList<Product>) qr.query(db.getConnection(), sql,
 					new BeanListHandler<Product>(Product.class));
-			NowInf.addItemToPane(fpItems, productlist);
+			NowInf.addItemToPane(fpItems, productlist, "b");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

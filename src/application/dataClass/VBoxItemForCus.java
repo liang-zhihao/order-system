@@ -1,5 +1,9 @@
 package application.dataClass;
 
+import java.sql.SQLException;
+
+import org.apache.commons.dbutils.QueryRunner;
+
 import com.jfoenix.controls.JFXButton;
 
 import javafx.geometry.Pos;
@@ -20,6 +24,15 @@ public class VBoxItemForCus extends VBox {
 	private HBox hb1 = new HBox();
 	private HBox hb2 = new HBox();
 	private Label lbPrice = new Label();
+	private int itemId;
+
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
+	}
+
+	public int getItemId() {
+		return itemId;
+	}
 
 	public VBoxItemForCus() {
 	}
@@ -60,6 +73,24 @@ public class VBoxItemForCus extends VBox {
 		hb1.getChildren().addAll(lbBusiness, lbPrice);
 		hb2.getChildren().addAll(btAddToCart, btBuy);
 		this.getChildren().addAll(im, lbItem, hb1, hb2);
+		btAddToCart.setOnAction(e -> {
+			Db db = new Db();
+			QueryRunner qr = new QueryRunner();
+			Object[] p = new Object[2];
+			p[0] = NowInf.customer.getCustomerId();
+			p[1] = itemId;
+			String sql = "insert into cart (customerid,productid) VALUES(?,?)";
+			try {
+				qr.update(Db.getConnection(), sql, p);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
+		btBuy.setOnAction(e -> {
+
+		});
+
 	}
 
 }
