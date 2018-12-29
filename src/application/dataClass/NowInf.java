@@ -82,7 +82,7 @@ public class NowInf {
 			Product t = productlist.get(i);
 			String sql = "select DISTINCT businessname from business,product where product.businessid =business.businessid and product.businessid="
 					+ t.getBusinessiD();
-			System.out.println(t.getBusinessiD());
+			System.out.println("BusinessID:" + t.getBusinessiD());
 			String busname = "";
 			try {
 				Object[] res = qr.query(db.getConnection(), sql, new ArrayHandler());
@@ -93,11 +93,13 @@ public class NowInf {
 			}
 			String picname = t.getPictureName();
 			if (type.equals("b")) {
-				VBoxItemForBus tmp = new VBoxItemForBus("item/" + picname, t.getName(), busname, t.getStandardcost());
+				VBoxItemForBus tmp = new VBoxItemForBus(picname, t.getName(), busname, t.getStandardcost());
+				System.out.println("Cost:" + t.getStandardcost());
 				tmp.setItemId(t.getProductid());
 				p.getChildren().add(tmp);
 			} else {
-				VBoxItemForCus tmp = new VBoxItemForCus("item/" + picname, t.getName(), busname, t.getStandardcost());
+				VBoxItemForCus tmp = new VBoxItemForCus(picname, t.getName(), busname, t.getStandardcost());
+				System.out.println(t.getStandardcost());
 				tmp.setItemId(t.getProductid());
 				p.getChildren().add(tmp);
 			}

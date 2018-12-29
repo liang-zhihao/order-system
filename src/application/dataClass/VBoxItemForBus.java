@@ -40,7 +40,7 @@ public class VBoxItemForBus extends VBox {
 		return itemId;
 	}
 
-	public VBoxItemForBus(String path, String name, String business, int price) {
+	public VBoxItemForBus(String path, String name, String business, double price) {
 		DropShadow ds1 = new DropShadow();
 		ds1.setOffsetY(4.0f);
 		ds1.setOffsetX(4.0f);
@@ -57,7 +57,7 @@ public class VBoxItemForBus extends VBox {
 		this.setStyle("-fx-background-color:white;");
 		im.setFitWidth(190);
 		im.setFitHeight(184);
-		NowInf.setPicView(im, path);
+		NowInf.setPicView(im, "item/" + path);
 		// lbItem.setFont(Font.font("Verdana", 15));
 		lbItem.setAlignment(Pos.CENTER_LEFT);
 		lbItem.setPrefWidth(191);

@@ -48,8 +48,14 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class CustomerHomepageController {
-
-	
+	@FXML
+	private FlowPane fpItem;
+	@FXML
+	private JFXCheckBox cartSelectAll;
+	@FXML
+	private VBox cartVBox;
+	@FXML
+	private AnchorPane cartPane;
 	@FXML
 	private TableColumn<OrderTable, Boolean> btOrderCol;
 	@FXML
@@ -63,7 +69,6 @@ public class CustomerHomepageController {
 	private TableColumn<OrderTable, Integer> orderSubCol;
 	@FXML
 	private TableView<OrderTable> orderTable;
-
 	@FXML
 	private TableColumn<OrderTable, Integer> orderQuantityCol;
 	@FXML
@@ -72,7 +77,6 @@ public class CustomerHomepageController {
 	private TableColumn<OrderTable, String> orderStatusCol;
 	@FXML
 	private TableColumn<OrderTable, String> orderCommentCol;
-
 	@FXML
     private AnchorPane UserPane;
 
@@ -94,8 +98,10 @@ public class CustomerHomepageController {
     @FXML
     private JFXButton btCart;
 
-    @FXML
-    private Label OrderGteeting;
+	@FXML
+	private JFXButton btBuy;
+	@FXML
+	private JFXButton btCart;
 
     @FXML
     private Label lbTime;
@@ -133,11 +139,8 @@ public class CustomerHomepageController {
     @FXML
     private JFXButton btShowAddress;
 
-    @FXML
-    private JFXRadioButton orderBusinessRad;
-
-    @FXML
-    private JFXButton btAddCart;
+	@FXML
+	private JFXTextField txGreeting1;
 
     @FXML
     private AnchorPane cusOrderPane;
@@ -159,6 +162,10 @@ public class CustomerHomepageController {
 
     @FXML
     private ImageView avatar;
+	@FXML
+	private JFXButton btChangeAvatar;
+	@FXML
+	private VBox txInformation;
 
     @FXML
     private VBox txInformation;
@@ -268,7 +275,6 @@ public class CustomerHomepageController {
 		addAdrPane.setVisible(false);
 		UserPane.setVisible(false);
 		cartPane.setVisible(true);
-		//cartPane.setVisible(false);
 		initCartPane();
 	}
 
@@ -391,6 +397,11 @@ public class CustomerHomepageController {
 
 	public void showUserInf() throws SQLException {
 		openUserInf();
+		// showAvatar();
+		// btChangeAvatar();
+
+		// btChangeAvatar();
+
 		Customer t = NowInf.customer;
 		txUserName.setText(t.getUsername());
 		txNickName.setText(t.getNickname());
@@ -427,13 +438,12 @@ public class CustomerHomepageController {
 		Stage stage = (Stage) btLogout.getScene().getWindow();
 		stage.close();
 	}
-	
-//	public void showAvatar() {		
-//		String name = "Customer" + NowInf.customer.getCustomerId();
-//		String n = "/src/application/fxml/img/item" + name;	
-//		avatar.setImage(new Image(n));
-//	}
-	
+
+	// public void showAvatar() {
+	// String name = "Customer" + NowInf.customer.getCustomerId();
+	// String n = "/src/application/fxml/img/item" + name;
+	// avatar.setImage(new Image(n));
+	// }
 
 	public void btChangeAvatar() throws IOException {
 		FileChooser fileChooser = new FileChooser();
@@ -496,12 +506,14 @@ public class CustomerHomepageController {
 						+ "  AND cart.ProductID=product.ProductID AND business.BusinessID =product.BusinessID";
 				// String item, String business, int cost, int num, String picname
 				Object[] t = qr.query(db.getConnection(), sql1, new ArrayHandler());
-				HBoxForCart ht = new HBoxForCart(t[0].toString(), t[1].toString(), Integer.valueOf(t[2].toString()),
+				HBoxForCart ht;
+				ht = new HBoxForCart(t[0].toString(), t[1].toString(), Float.valueOf(t[2].toString()),
 						Integer.valueOf(t[3].toString()), t[4].toString());
 				ht.setCartId(cartlist.get(i).getCartId());
 				ht.setProductId(cartlist.get(i).getProductId());
 				cartVBox.getChildren().add(ht);
-				System.out.println(cartVBox.getChildren().get(0));
+				// cartVBox.getChildren().add(new Label("FUCK"));
+				System.out.println(cartVBox.getChildren().get(i).toString());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -510,9 +522,16 @@ public class CustomerHomepageController {
 	}
 
 	public void cartSelectAl() {
-		for (int i = 1; i < cartVBox.getChildren().size(); i++) {
-			HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
-			t.setCheck(true);
+		if (cartSelectAll.isSelected()) {
+			for (int i = 1; i < cartVBox.getChildren().size(); i++) {
+				HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
+				t.setCheck(true);
+			}
+		} else {
+			for (int i = 1; i < cartVBox.getChildren().size(); i++) {
+				HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
+				t.setCheck(false);
+			}
 		}
 
 	}
@@ -535,10 +554,10 @@ public class CustomerHomepageController {
 				p[3] = 1;
 				p[4] = ptmp.getProductnumber();
 				p[5] = Integer.valueOf(t.getTfNum().getText());
-				p[6] = "weifahuo";
+				p[6] = "Not shipped";
 				p[7] = new Date();
 				p[8] = " ";
-				p[9] = Integer.valueOf(t.getTfNum().getText()) * ptmp.getStandardcost();
+				p[9] = 1.0 * Integer.valueOf(t.getTfNum().getText()) * ptmp.getStandardcost();
 				qr.update(db.getConnection(), sql, p);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
