@@ -4,7 +4,7 @@ public class Product {
 	private int Productid;
 	private String Productnumber;// »õºÅ
 	private String Name;
-	private int Standardcost;
+	private double Standardcost;
 	private String Detail;
 	private String PictureName;
 	private Double Weight;
@@ -42,8 +42,8 @@ public class Product {
 		Productnumber = productnumber;
 	}
 
-	public void setStandardcost(int standardcost) {
-		Standardcost = standardcost;
+	public void setStandardcost(double standardcost) {
+		this.Standardcost = standardcost;
 	}
 
 	public void setWeight(Double weight) {
@@ -66,7 +66,7 @@ public class Product {
 		return Productnumber;
 	}
 
-	public int getStandardcost() {
+	public double getStandardcost() {
 		return Standardcost;
 	}
 

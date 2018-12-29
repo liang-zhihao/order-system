@@ -1,8 +1,10 @@
 package application.dataClass;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -14,7 +16,7 @@ public class OrderTable {
 	private StringProperty status;
 	private StringProperty orderDate;
 	private StringProperty comment;
-	private IntegerProperty subTotal;
+	private DoubleProperty subTotal;
 	private StringProperty itemName;
 	private StringProperty Business;
 	// private CheckBoxTCell checkbox;
@@ -57,8 +59,8 @@ public class OrderTable {
 		this.status = new SimpleStringProperty(status);
 	}
 
-	public void setSubTotal(int subTotal) {
-		this.subTotal = new SimpleIntegerProperty(subTotal);
+	public void setSubTotal(double subTotal) {
+		this.subTotal = new SimpleDoubleProperty(subTotal);
 	}
 
 	public String getBusiness() {
@@ -89,7 +91,7 @@ public class OrderTable {
 		return status.get();
 	}
 
-	public int getSubTotal() {
+	public double getSubTotal() {
 		return subTotal.get();
 	}
 }
