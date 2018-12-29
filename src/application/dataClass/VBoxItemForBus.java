@@ -52,7 +52,7 @@ public class VBoxItemForBus extends VBox {
 		this.setPrefWidth(190);
 		this.setMaxWidth(190);
 		this.setSpacing(10);
-		this.getStyleClass().add("VBox-item");
+		this.getStyleClass().add("itemFont");
 		// this.setMargin(getParent(), new Insets(0, 10, 0, 10));
 		this.setStyle("-fx-background-color:white;");
 		im.setFitWidth(190);
@@ -81,9 +81,9 @@ public class VBoxItemForBus extends VBox {
 		});
 		btDel.setOnAction(e -> {
 			// del picture
-			String srcPicPath = im.getImage().impl_getUrl();
+			String srcPicPath = im.getImage().getUrl();
 			srcPicPath = srcPicPath.replace("/bin/", "/src/");
-			File pic1 = new File(im.getImage().impl_getUrl());
+			File pic1 = new File(im.getImage().getUrl());
 			File pic2 = new File(srcPicPath);
 			pic1.delete();
 			pic2.delete();

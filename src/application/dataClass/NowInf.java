@@ -58,8 +58,8 @@ public class NowInf {
 			t = NowInf.customer.getNickname();
 		}
 
-		java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("HH");// 设置日期格式
-		String time = df.format(new Date());// new Date()为获取当前系统时间
+		java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("HH");// 锟斤拷锟斤拷锟斤拷锟节革拷式
+		String time = df.format(new Date());// new Date()为锟斤拷取锟斤拷前系统时锟斤拷
 
 		int hour = Integer.valueOf(time);
 
@@ -74,7 +74,7 @@ public class NowInf {
 		return g;
 	}
 
-	public static void addItemToPane(FlowPane p, ArrayList<Product> productlist) {
+	public static void addItemToPane(FlowPane p, ArrayList<Product> productlist, String type) {
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 
@@ -92,9 +92,16 @@ public class NowInf {
 				e.printStackTrace();
 			}
 			String picname = t.getPictureName();
-			VBoxItemForBus tmp = new VBoxItemForBus("item/" + picname, t.getName(), busname, t.getStandardcost());
-			tmp.setItemId(t.getProductid());
-			p.getChildren().add(tmp);
+			if (type.equals("b")) {
+				VBoxItemForBus tmp = new VBoxItemForBus("item/" + picname, t.getName(), busname, t.getStandardcost());
+				tmp.setItemId(t.getProductid());
+				p.getChildren().add(tmp);
+			} else {
+				VBoxItemForCus tmp = new VBoxItemForCus("item/" + picname, t.getName(), busname, t.getStandardcost());
+				tmp.setItemId(t.getProductid());
+				p.getChildren().add(tmp);
+			}
+
 		}
 		System.out.println("successfully");
 	}
