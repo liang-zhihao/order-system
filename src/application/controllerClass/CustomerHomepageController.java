@@ -48,14 +48,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class CustomerHomepageController {
-	@FXML
-	private FlowPane fpItem;
-	@FXML
-	private JFXCheckBox cartSelectAll;
-	@FXML
-	private VBox cartVBox;
-	@FXML
-	private AnchorPane cartPane;
+
 	@FXML
 	private TableColumn<OrderTable, Boolean> btOrderCol;
 	@FXML
@@ -78,132 +71,123 @@ public class CustomerHomepageController {
 	@FXML
 	private TableColumn<OrderTable, String> orderCommentCol;
 	@FXML
-    private AnchorPane UserPane;
-
-    @FXML
-    private JFXPasswordField txOriPsw;
-
-    @FXML
-    private JFXTextArea txAddress;
-
-    @FXML
-    private JFXTextField tfSearch;
-
-    @FXML
-    private JFXTextField txCntPerson;
-
-    @FXML
-    private JFXTextField txGreeting;
-
-    @FXML
-    private JFXButton btCart;
+	private AnchorPane UserPane;
 
 	@FXML
-	private JFXButton btBuy;
+	private JFXPasswordField txOriPsw;
+
+	@FXML
+	private JFXTextArea txAddress;
+
+	@FXML
+	private JFXTextField tfSearch;
+
+	@FXML
+	private JFXTextField txCntPerson;
+
+	@FXML
+	private JFXTextField txGreeting;
+
 	@FXML
 	private JFXButton btCart;
 
-    @FXML
-    private Label lbTime;
+	@FXML
+	private JFXButton btBuy;
 
-    @FXML
-    private AnchorPane cusItemPane;
+	@FXML
+	private Label lbTime;
 
-    @FXML
-    private JFXTextField tfSearchOrder;
+	@FXML
+	private AnchorPane cusItemPane;
 
-    @FXML
-    private JFXButton btOrder;
+	@FXML
+	private JFXTextField tfSearchOrder;
 
-    @FXML
-    private JFXPasswordField txConformNewPsw;
+	@FXML
+	private JFXButton btOrder;
 
-    @FXML
-    private JFXButton btItem;
+	@FXML
+	private JFXPasswordField txConformNewPsw;
 
-    @FXML
-    private AnchorPane CustomerHomepagePane;
+	@FXML
+	private JFXButton btItem;
 
-    @FXML
-    private AnchorPane cartPane;
+	@FXML
+	private AnchorPane CustomerHomepagePane;
 
-    @FXML
-    private JFXTextField txUserName;
+	@FXML
+	private AnchorPane cartPane;
 
-    @FXML
-    private JFXButton btAddAdd1;
+	@FXML
+	private JFXTextField txUserName;
 
-    @FXML
-    private JFXButton btAddAddress;
+	@FXML
+	private JFXButton btAddAdd1;
 
-    @FXML
-    private JFXButton btShowAddress;
+	@FXML
+	private JFXButton btAddAddress;
+
+	@FXML
+	private JFXButton btShowAddress;
+
+	@FXML
+	private AnchorPane cusOrderPane;
+
+	@FXML
+	private AnchorPane addAdrPane;
+
+	@FXML
+	private JFXButton btSearchOrder;
+
+	@FXML
+	private JFXButton btConfirmreceipt;
 
 	@FXML
 	private JFXTextField txGreeting1;
 
-    @FXML
-    private AnchorPane cusOrderPane;
-
-    @FXML
-    private AnchorPane addAdrPane;
-
-    @FXML
-    private JFXButton btSearchOrder;
-
-    @FXML
-    private JFXButton btConfirmreceipt;
-
-    @FXML
-    private JFXTextField txGreeting1;
-
-    @FXML
-    private JFXTextField txCntPhone;
-
-    @FXML
-    private ImageView avatar;
 	@FXML
-	private JFXButton btChangeAvatar;
+	private JFXTextField txCntPhone;
+
+	@FXML
+	private ImageView avatar;
+
 	@FXML
 	private VBox txInformation;
 
-    @FXML
-    private VBox txInformation;
+	@FXML
+	private JFXPasswordField txNewPsw;
 
-    @FXML
-    private JFXPasswordField txNewPsw;
+	@FXML
+	private JFXTextField txNickName;
 
-    @FXML
-    private JFXTextField txNickName;
+	@FXML
+	private JFXTextField txEmail;
 
-    @FXML
-    private JFXTextField txEmail;
+	@FXML
+	private JFXButton btChangeIfo;
 
-    @FXML
-    private JFXButton btChangeIfo;
+	@FXML
+	private JFXButton btChangeAvatar;
 
-    @FXML
-    private JFXButton btChangeAvatar;
+	@FXML
+	private JFXButton btUser;
 
-    @FXML
-    private JFXButton btUser;
+	@FXML
+	private JFXTextField txPhone;
 
-    @FXML
-    private JFXTextField txPhone;
+	@FXML
+	private JFXRadioButton orderItemRad;
 
-    @FXML
-    private JFXRadioButton orderItemRad;
+	@FXML
+	private JFXTextField txBio;
 
-    @FXML
-    private JFXTextField txBio;
+	@FXML
+	private JFXButton btLogout;
 
-    @FXML
-    private JFXButton btLogout;
+	@FXML
+	private JFXButton btSearch;
 
-    @FXML
-    private JFXButton btSearch;
-    
-    @FXML
+	@FXML
 	private FlowPane fpItem;
 	@FXML
 	private JFXCheckBox cartSelectAll;
@@ -252,7 +236,7 @@ public class CustomerHomepageController {
 	}
 
 	public void openOrder() {
-		OrderGteeting.setText(NowInf.getGreetingWords());
+		OrderGteeting1.setText(NowInf.getGreetingWords());
 		cusItemPane.setVisible(false);
 		cusOrderPane.setVisible(true);
 		addAdrPane.setVisible(false);
@@ -349,8 +333,7 @@ public class CustomerHomepageController {
 		openItem();
 		initItemPane();
 		//
-	}	
-	
+	}
 
 	public void changeInf() {
 		Db db = new Db();
@@ -471,7 +454,7 @@ public class CustomerHomepageController {
 			Object[] result = null;
 			int count;
 			QueryRunner qr = new QueryRunner();
-	
+
 			String sql1 = "select count(*) from deliveryaddress where CustomerID = ?";
 			result = qr.query(db.getConnection(), sql1, ID, new ArrayHandler());
 			count = Integer.parseInt(result[0].toString());
@@ -483,12 +466,12 @@ public class CustomerHomepageController {
 							+ "values(?, ?, ?, ?, ?)",
 					AddressID, ID, CnP, CnPhone, AddressDetail);
 			System.out.println("Adding Successful");
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void ShowAddress() {
 		new CusAddressFrame();
 	}
