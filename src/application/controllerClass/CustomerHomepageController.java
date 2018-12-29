@@ -28,7 +28,6 @@ import application.dataClass.NowInf;
 import application.dataClass.OrderTable;
 import application.dataClass.Product;
 import application.dataClass.SalesOrder;
-import application.frameClass.CusAddressFrame;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -480,7 +479,7 @@ public class CustomerHomepageController {
 	}
 
 	public void ShowAddress() {
-		new CusAddressFrame();
+		// new CusAddressFrame();
 	}
 
 	public void initCartPane() {
