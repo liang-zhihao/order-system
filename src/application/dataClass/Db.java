@@ -29,7 +29,7 @@ import org.apache.commons.dbutils.handlers.ArrayListHandler;
  * */
 public class Db {
 
-	public static String url = "jdbc:mysql://127.0.0.1:3306/sys?useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true ";
+	public static String url = "jdbc:mysql://127.0.0.1:3306/ordersystemby(yyandlzh)?useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true ";
 	public static String user = "root";
 	public static String passwd = "123456";
 	public static String driver = "com.mysql.cj.jdbc.Driver";

@@ -89,9 +89,9 @@ public class ChangeItemController {
 				Image t = NowInf.copyPictureToProject(pic, p.getPictureName(), "i");
 				imgChangeItem.setImage(t);
 			} else {
-				String srcPicPath = imgChangeItem.getImage().impl_getUrl();
+				String srcPicPath = imgChangeItem.getImage().getUrl();
 				srcPicPath = srcPicPath.replace("/bin/", "/src/");
-				File pic1 = new File(imgChangeItem.getImage().impl_getUrl());
+				File pic1 = new File(imgChangeItem.getImage().getUrl());
 				File pic2 = new File(srcPicPath);
 				Db db = new Db();
 				QueryRunner qr = new QueryRunner();

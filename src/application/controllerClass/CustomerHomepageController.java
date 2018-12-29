@@ -49,10 +49,6 @@ import javafx.util.Callback;
 
 public class CustomerHomepageController {
 
-<<<<<<< HEAD
-=======
-	
->>>>>>> parent of 050ff23... Merge branch 'final-test'
 	@FXML
 	private TableColumn<OrderTable, Boolean> btOrderCol;
 	@FXML
@@ -91,16 +87,14 @@ public class CustomerHomepageController {
 	@FXML
 	private JFXTextField txCntPerson;
 
-<<<<<<< HEAD
 	@FXML
 	private JFXTextField txGreeting;
 
 	@FXML
 	private JFXButton btCart;
-=======
-    @FXML
-    private Label OrderGteeting;
->>>>>>> parent of 050ff23... Merge branch 'final-test'
+
+	@FXML
+	private Label OrderGteeting;
 
 	@FXML
 	private JFXButton btBuy;
@@ -138,16 +132,14 @@ public class CustomerHomepageController {
 	@FXML
 	private JFXButton btAddAddress;
 
-<<<<<<< HEAD
 	@FXML
 	private JFXButton btShowAddress;
-=======
-    @FXML
-    private JFXRadioButton orderBusinessRad;
 
-    @FXML
-    private JFXButton btAddCart;
->>>>>>> parent of 050ff23... Merge branch 'final-test'
+	@FXML
+	private JFXRadioButton orderBusinessRad;
+
+	@FXML
+	private JFXButton btAddCart;
 
 	@FXML
 	private AnchorPane cusOrderPane;
@@ -167,16 +159,11 @@ public class CustomerHomepageController {
 	@FXML
 	private JFXTextField txCntPhone;
 
-<<<<<<< HEAD
-	@FXML
-	private ImageView avatar;
-
 	@FXML
 	private VBox txInformation;
-=======
-    @FXML
-    private ImageView avatar;
->>>>>>> parent of 050ff23... Merge branch 'final-test'
+
+	@FXML
+	private ImageView avatar;
 
 	@FXML
 	private JFXPasswordField txNewPsw;
@@ -260,7 +247,7 @@ public class CustomerHomepageController {
 	}
 
 	public void openOrder() {
-		OrderGteeting1.setText(NowInf.getGreetingWords());
+		OrderGteeting.setText(NowInf.getGreetingWords());
 		cusItemPane.setVisible(false);
 		cusOrderPane.setVisible(true);
 		addAdrPane.setVisible(false);
@@ -283,7 +270,7 @@ public class CustomerHomepageController {
 		addAdrPane.setVisible(false);
 		UserPane.setVisible(false);
 		cartPane.setVisible(true);
-		//cartPane.setVisible(false);
+		// cartPane.setVisible(false);
 		initCartPane();
 	}
 
@@ -441,13 +428,12 @@ public class CustomerHomepageController {
 		Stage stage = (Stage) btLogout.getScene().getWindow();
 		stage.close();
 	}
-	
-//	public void showAvatar() {		
-//		String name = "Customer" + NowInf.customer.getCustomerId();
-//		String n = "/src/application/fxml/img/item" + name;	
-//		avatar.setImage(new Image(n));
-//	}
-	
+
+	// public void showAvatar() {
+	// String name = "Customer" + NowInf.customer.getCustomerId();
+	// String n = "/src/application/fxml/img/item" + name;
+	// avatar.setImage(new Image(n));
+	// }
 
 	public void btChangeAvatar() throws IOException {
 		FileChooser fileChooser = new FileChooser();
@@ -510,7 +496,7 @@ public class CustomerHomepageController {
 						+ "  AND cart.ProductID=product.ProductID AND business.BusinessID =product.BusinessID";
 				// String item, String business, int cost, int num, String picname
 				Object[] t = qr.query(db.getConnection(), sql1, new ArrayHandler());
-				HBoxForCart ht = new HBoxForCart(t[0].toString(), t[1].toString(), Integer.valueOf(t[2].toString()),
+				HBoxForCart ht = new HBoxForCart(t[0].toString(), t[1].toString(), Double.valueOf(t[2].toString()),
 						Integer.valueOf(t[3].toString()), t[4].toString());
 				ht.setCartId(cartlist.get(i).getCartId());
 				ht.setProductId(cartlist.get(i).getProductId());

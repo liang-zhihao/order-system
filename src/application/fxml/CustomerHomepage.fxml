@@ -47,7 +47,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="UserPane" layoutX="254.0" layoutY="35.0" prefHeight="716.0" prefWidth="691.0" style="-fx-border-color: #947A6D; -fx-background-color: #ffffff;">
+      <AnchorPane fx:id="UserPane" layoutX="254.0" layoutY="35.0" prefHeight="716.0" prefWidth="691.0" style="-fx-border-color: #947A6D; -fx-background-color: #ffffff;" visible="false">
          <children>
             <ImageView fx:id="avatar" fitHeight="189.0" fitWidth="148.0" layoutX="70.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -257,7 +257,7 @@
             <JFXButton fx:id="btConfirmreceipt" layoutX="605.0" layoutY="677.0" onAction="#confirmReceipt" prefHeight="47.0" prefWidth="119.0" text="Confirm receipt" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="cartPane" layoutX="221.0" layoutY="11.0" visible="false">
+      <AnchorPane fx:id="cartPane" layoutX="221.0" layoutY="11.0">
          <children>
             <ScrollPane layoutX="-4.0" layoutY="78.0" prefHeight="658.0" prefWidth="839.0">
               <content>
