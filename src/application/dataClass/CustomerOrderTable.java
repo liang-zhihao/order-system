@@ -1,13 +1,11 @@
 package application.dataClass;
 
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class OrderTable {
+public class CustomerOrderTable {
 
 	private IntegerProperty salesOrderNumber;
 	private IntegerProperty quantity;
@@ -17,17 +15,6 @@ public class OrderTable {
 	private IntegerProperty subTotal;
 	private StringProperty itemName;
 	private StringProperty Business;
-	// private CheckBoxTCell checkbox;
-	private BooleanProperty isCheck;
-	// public checkbox cb = new checkbox();
-
-	public void setIsCheck(boolean isCheck) {
-		this.isCheck = new SimpleBooleanProperty(isCheck);
-	}
-
-	public Boolean getIsCheck() {
-		return isCheck.getValue();
-	}
 
 	public void setBusiness(String business) {
 		this.Business = new SimpleStringProperty(business);

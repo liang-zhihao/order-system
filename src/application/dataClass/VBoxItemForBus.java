@@ -1,13 +1,18 @@
 package application.dataClass;
 
 import java.io.File;
+import java.sql.SQLException;
+
+import org.apache.commons.dbutils.QueryRunner;
 
 import com.jfoenix.controls.JFXButton;
 
+import application.frameClass.ChangeItemFrame;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -72,15 +77,29 @@ public class VBoxItemForBus extends VBox {
 		hb2.getChildren().addAll(btUpdate, btDel);
 		this.getChildren().addAll(im, lbItem, hb1, hb2);
 		btUpdate.setOnAction(e -> {
-
+			new ChangeItemFrame(itemId);
 		});
 		btDel.setOnAction(e -> {
-			String srcPicName = im.getImage().getUrl();
-			System.out.println(srcPicName.substring(srcPicName.indexOf("/bin/application/fxml/img/")));
-
-			File pic1 = new File(im.getImage().getUrl());
-			System.out.println(im.getImage().getUrl());
-			// File pic2 = new File();
+			// del picture
+			String srcPicPath = im.getImage().impl_getUrl();
+			srcPicPath = srcPicPath.replace("/bin/", "/src/");
+			File pic1 = new File(im.getImage().impl_getUrl());
+			File pic2 = new File(srcPicPath);
+			pic1.delete();
+			pic2.delete();
+			// del data
+			Db db = new Db();
+			QueryRunner qr = new QueryRunner();
+			String sql = "delete from product where productid=" + itemId;
+			try {
+				qr.update(db.getConnection(), sql);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			// del vbox
+			FlowPane t = (FlowPane) this.getParent();
+			t.getChildren().remove(this);
+			System.out.println("Del Successfully");
 		});
 
 	}

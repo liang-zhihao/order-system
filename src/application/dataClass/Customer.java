@@ -8,6 +8,15 @@ public class Customer {
 	private int phoneNumber;
 	private String email;
 	private String bio;
+	private String PictureName;
+
+	public void setPictureName(String pictureName) {
+		PictureName = pictureName;
+	}
+
+	public String getPictureName() {
+		return PictureName;
+	}
 
 	public String getBio() {
 		return bio;

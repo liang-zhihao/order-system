@@ -65,8 +65,8 @@ public class AddAItemController {
 		Stage stage = (Stage) btAddPic.getScene().getWindow();
 		pic = fc.showOpenDialog(stage);
 		id = randomID.nextInt(99999) - 10;
-		picname = "Business-" + NowInf.business.getBusinessId() + "-" + id + "-"
-				+ pic.getName().substring(pic.getName().lastIndexOf(".") + 1);
+		picname = "Business-" + NowInf.business.getBusinessId() + "-" + id + "."
+				+ NowInf.getPicAttributeFromFile(pic.getName());
 		Image t = NowInf.copyPictureToProject(pic, picname, "i");
 		imgAddItem.setImage(t);
 	}
@@ -75,9 +75,11 @@ public class AddAItemController {
 		String name = txItemName.getText();
 		int cost = Integer.valueOf(txCost.getText());
 		String productnum = txProductNumber.getText();
-		double weight = Double.valueOf(txWeight.getText());
+		double weight = 0;
+		if (txWeight.getText() != null) {
+			weight = Double.valueOf(txWeight.getText());
+		}
 		String Detail = txDetail.getText();
-
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 		try {
@@ -86,6 +88,8 @@ public class AddAItemController {
 							+ "values(?, ?, ?, ?, ?, ?, ?,?)",
 					id, productnum, name, cost, Detail, weight, NowInf.business.getBusinessId(), picname);
 			System.out.println("Successfully");
+			Stage stage = (Stage) btAddItem.getScene().getWindow();
+			stage.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
