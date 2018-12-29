@@ -1,8 +1,6 @@
 package application.dataClass;
 
-import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -18,7 +16,7 @@ public class SalesOrder {
 	private StringProperty status;
 	private StringProperty orderDate;
 	private StringProperty comment;
-	private DoubleProperty subTotal = new SimpleDoubleProperty(0);
+	private IntegerProperty subTotal;
 
 	public void setBusinessId(int businessId) {
 		this.businessId = businessId;
@@ -60,8 +58,8 @@ public class SalesOrder {
 		this.status = new SimpleStringProperty(status);
 	}
 
-	public void setSubTotal(double subTotal) {
-		this.subTotal = new SimpleDoubleProperty(subTotal);
+	public void setSubTotal(int subTotal) {
+		this.subTotal = new SimpleIntegerProperty(subTotal);
 	}
 
 	public int getBusinessId() {
@@ -104,7 +102,7 @@ public class SalesOrder {
 		return status.get();
 	}
 
-	public Double getSubTotal() {
+	public int getSubTotal() {
 		return subTotal.get();
 	}
 }

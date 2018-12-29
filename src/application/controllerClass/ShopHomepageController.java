@@ -31,7 +31,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -180,9 +179,6 @@ public class ShopHomepageController {
 	ObservableList<OrderTable> cellData = FXCollections.observableArrayList();
 
 	public void initialize() throws SQLException {
-		final ToggleGroup ordergroup = new ToggleGroup();
-		orderItemRad.setToggleGroup(ordergroup);
-		orderCustomerRad.setToggleGroup(ordergroup);
 		lbItemGreeting.setText(NowInf.getGreetingWords());
 		openOrder();
 		// img.setImage(new Image("application/fxml/img/ga.png"));

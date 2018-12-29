@@ -37,7 +37,7 @@ public class VBoxItemForCus extends VBox {
 	public VBoxItemForCus() {
 	}
 
-	public VBoxItemForCus(String path, String name, String business, double price) {
+	public VBoxItemForCus(String path, String name, String business, int price) {
 		DropShadow ds1 = new DropShadow();
 		ds1.setOffsetY(4.0f);
 		ds1.setOffsetX(4.0f);
@@ -54,7 +54,7 @@ public class VBoxItemForCus extends VBox {
 		this.setStyle("-fx-background-color:white;");
 		im.setFitWidth(190);
 		im.setFitHeight(184);
-		NowInf.setPicView(im, "item/" + path);
+		NowInf.setPicView(im, path);
 		// lbItem.setFont(Font.font("Verdana", 15));
 		lbItem.setAlignment(Pos.CENTER_LEFT);
 		lbItem.setPrefWidth(191);

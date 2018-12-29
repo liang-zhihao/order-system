@@ -14,7 +14,7 @@
    <children>
       <AnchorPane layoutX="111.0" layoutY="65.0" prefHeight="405.0" prefWidth="380.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;">
          <children>
-            <JFXRadioButton fx:id="raBus" layoutX="44.0" layoutY="243.0" onAction="#selectRaBus" prefWidth="92.0" text="Business" textFill="#8d8d8d">
+            <JFXRadioButton fx:id="raBus" layoutX="44.0" layoutY="243.0" onAction="#selectRaBus" prefWidth="92.0" selected="true" text="Business" textFill="#8d8d8d">
                <font>
                   <Font name="Verdana" size="13.0" />
                </font>
@@ -25,7 +25,7 @@
                </font>
             </JFXButton>
             <Label fx:id="labError" layoutX="53.0" layoutY="280.0" prefHeight="24.0" prefWidth="88.0" text="Login error" textFill="#f50f0f" visible="false" />
-            <JFXRadioButton fx:id="raCus" layoutX="44.0" layoutY="214.0" onAction="#selectRaCus" selected="true" text="Customer" textFill="#8d8d8d">
+            <JFXRadioButton fx:id="raCus" layoutX="44.0" layoutY="214.0" onAction="#selectRaCus" text="Customer" textFill="#8d8d8d">
                <font>
                   <Font name="Verdana" size="13.0" />
                </font>
@@ -40,7 +40,7 @@
                   <HBox alignment="CENTER" prefHeight="32.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <ImageView fx:id="imgUser" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
-                        <JFXTextField fx:id="txID" focusColor="#0a3f32" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="32.0" prefWidth="295.0" promptText="Username" text="xhy" unFocusColor="#d9d9d9">
+                        <JFXTextField fx:id="txID" focusColor="#0a3f32" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="32.0" prefWidth="295.0" promptText="Username" text="ff14" unFocusColor="#d9d9d9">
                            <font>
                               <Font name="Verdana" size="15.0" />
                            </font>

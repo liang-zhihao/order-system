@@ -73,7 +73,7 @@ public class AddAItemController {
 
 	public void addItem() {
 		String name = txItemName.getText();
-		double cost = Double.valueOf(txCost.getText());
+		int cost = Integer.valueOf(txCost.getText());
 		String productnum = txProductNumber.getText();
 		double weight = 0;
 		if (txWeight.getText() != null) {
