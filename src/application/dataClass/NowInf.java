@@ -74,7 +74,7 @@ public class NowInf {
 		return g;
 	}
 
-	public static void addItemToPane(FlowPane p, ArrayList<Product> productlist) {
+	public static void addItemToPane(FlowPane p, ArrayList<Product> productlist, String type) {
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 
@@ -92,9 +92,16 @@ public class NowInf {
 				e.printStackTrace();
 			}
 			String picname = t.getPictureName();
-			VBoxItemForBus tmp = new VBoxItemForBus("item/" + picname, t.getName(), busname, t.getStandardcost());
-			tmp.setItemId(t.getProductid());
-			p.getChildren().add(tmp);
+			if (type.equals("b")) {
+				VBoxItemForBus tmp = new VBoxItemForBus("item/" + picname, t.getName(), busname, t.getStandardcost());
+				tmp.setItemId(t.getProductid());
+				p.getChildren().add(tmp);
+			} else {
+				VBoxItemForCus tmp = new VBoxItemForCus("item/" + picname, t.getName(), busname, t.getStandardcost());
+				tmp.setItemId(t.getProductid());
+				p.getChildren().add(tmp);
+			}
+
 		}
 		System.out.println("successfully");
 	}

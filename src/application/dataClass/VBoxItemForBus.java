@@ -52,7 +52,7 @@ public class VBoxItemForBus extends VBox {
 		this.setPrefWidth(190);
 		this.setMaxWidth(190);
 		this.setSpacing(10);
-		this.getStyleClass().add("VBox-item");
+		this.getStyleClass().add("itemFont");
 		// this.setMargin(getParent(), new Insets(0, 10, 0, 10));
 		this.setStyle("-fx-background-color:white;");
 		im.setFitWidth(190);
