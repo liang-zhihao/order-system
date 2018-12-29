@@ -81,9 +81,9 @@ public class VBoxItemForBus extends VBox {
 		});
 		btDel.setOnAction(e -> {
 			// del picture
-			String srcPicPath = im.getImage().getUrl();
+			String srcPicPath = im.getImage().impl_getUrl();
 			srcPicPath = srcPicPath.replace("/bin/", "/src/");
-			File pic1 = new File(im.getImage().getUrl());
+			File pic1 = new File(im.getImage().impl_getUrl());
 			File pic2 = new File(srcPicPath);
 			pic1.delete();
 			pic2.delete();

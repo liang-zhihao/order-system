@@ -218,7 +218,7 @@
                   </JFXTextField>
                </children>
             </Pane>
-            <FlowPane fx:id="fpItem" layoutX="14.0" layoutY="176.0" prefHeight="358.0" prefWidth="641.0" />
+            <FlowPane fx:id="fpItem" layoutX="25.0" layoutY="177.0" prefHeight="358.0" prefWidth="641.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="cusOrderPane" layoutX="251.0" layoutY="18.0" prefHeight="740.0" prefWidth="817.0" style="-fx-background-color: #ffffff;" visible="false">
@@ -257,11 +257,11 @@
             <JFXButton fx:id="btConfirmreceipt" layoutX="605.0" layoutY="677.0" onAction="#confirmReceipt" prefHeight="47.0" prefWidth="119.0" text="Confirm receipt" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="cartPane" layoutX="221.0" layoutY="15.0" prefHeight="612.0" prefWidth="839.0" visible="false">
+      <AnchorPane fx:id="cartPane" layoutX="221.0" layoutY="11.0" visible="false">
          <children>
             <ScrollPane layoutX="-4.0" layoutY="78.0" prefHeight="658.0" prefWidth="839.0">
               <content>
-                  <VBox fx:id="cartVBox" prefHeight="653.0" prefWidth="830.0">
+                  <VBox fx:id="cartVBox" prefHeight="677.0" prefWidth="840.0">
                      <children>
                         <HBox alignment="CENTER_LEFT" layoutX="42.0" layoutY="26.0" prefHeight="100.0" prefWidth="830.0" spacing="10.0" style="-fx-border-color: white white #BDC0BA white;">
                            <children>

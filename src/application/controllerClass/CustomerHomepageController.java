@@ -49,14 +49,7 @@ import javafx.util.Callback;
 
 public class CustomerHomepageController {
 
-	@FXML
-	private FlowPane fpItem;
-	@FXML
-	private JFXCheckBox cartSelectAll;
-	@FXML
-	private VBox cartVBox;
-	@FXML
-	private AnchorPane cartPane;
+	
 	@FXML
 	private TableColumn<OrderTable, Boolean> btOrderCol;
 	@FXML
@@ -202,9 +195,15 @@ public class CustomerHomepageController {
 
     @FXML
     private JFXButton btSearch;
+    
+    @FXML
+	private FlowPane fpItem;
+	@FXML
+	private JFXCheckBox cartSelectAll;
+	@FXML
+	private VBox cartVBox;
 
 	public void initialize() throws SQLException {
-		showUserInf();
 		txGreeting.setText(NowInf.getGreetingWords());
 		// OrderTablePane
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("salesOrderNumber"));
@@ -246,6 +245,7 @@ public class CustomerHomepageController {
 	}
 
 	public void openOrder() {
+		OrderGteeting.setText(NowInf.getGreetingWords());
 		cusItemPane.setVisible(false);
 		cusOrderPane.setVisible(true);
 		addAdrPane.setVisible(false);
@@ -254,6 +254,7 @@ public class CustomerHomepageController {
 	}
 
 	public void openItem() {
+		txGreeting1.setText(NowInf.getGreetingWords());
 		cusItemPane.setVisible(true);
 		cusOrderPane.setVisible(false);
 		addAdrPane.setVisible(false);
@@ -267,7 +268,7 @@ public class CustomerHomepageController {
 		addAdrPane.setVisible(false);
 		UserPane.setVisible(false);
 		cartPane.setVisible(true);
-		cartPane.setVisible(false);
+		//cartPane.setVisible(false);
 		initCartPane();
 	}
 
@@ -390,11 +391,6 @@ public class CustomerHomepageController {
 
 	public void showUserInf() throws SQLException {
 		openUserInf();
-		//showAvatar();
-		//btChangeAvatar();
-		
-		// btChangeAvatar();
-
 		Customer t = NowInf.customer;
 		txUserName.setText(t.getUsername());
 		txNickName.setText(t.getNickname());
