@@ -13,68 +13,68 @@ import com.jfoenix.controls.JFXTextField;
 
 import application.dataClass.Db;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 public class CusRegisterController {
 
-    @FXML
-    private Label lbPsw;
+	@FXML
+	private Label lbPsw;
 
-    @FXML
-    private JFXButton btRegister;
+	@FXML
+	private JFXButton btRegister;
 
-    @FXML
-    private AnchorPane RegisterAsCustomer;
+	@FXML
+	private AnchorPane RegisterAsCustomer;
 
-    @FXML
-    private JFXPasswordField txPswConfirm;
+	@FXML
+	private JFXPasswordField txPswConfirm;
 
-    @FXML
-    private Label lbErrorUserName;
+	@FXML
+	private Label lbErrorUserName;
 
-    @FXML
-    private JFXPasswordField txPsw;
+	@FXML
+	private JFXPasswordField txPsw;
 
-    @FXML
-    private JFXTextField txUserName;
+	@FXML
+	private JFXTextField txUserName;
 
-    @FXML
-    private Label lbBio;
+	@FXML
+	private Label lbBio;
 
-    @FXML
-    private Label lbUserName;
+	@FXML
+	private Label lbUserName;
 
-    @FXML
-    private JFXTextField txEmail;
+	@FXML
+	private JFXTextField txEmail;
 
-    @FXML
-    private Label lbConfirm;
+	@FXML
+	private Label lbConfirm;
 
-    @FXML
-    private Label lbErrorUserName2;
+	@FXML
+	private Label lbErrorUserName2;
 
-    @FXML
-    private JFXTextField txPhoneNum;
+	@FXML
+	private JFXTextField txPhoneNum;
 
-    @FXML
-    private Label lbPhoneNum;
+	@FXML
+	private Label lbPhoneNum;
 
-    @FXML
-    private Label lbNickname;
+	@FXML
+	private Label lbNickname;
 
-    @FXML
-    private Label lbErrorPassword;
+	@FXML
+	private Label lbErrorPassword;
 
-    @FXML
-    private Label lbEmail;
+	@FXML
+	private Label lbEmail;
 
-    @FXML
-    private JFXTextArea txBio;
+	@FXML
+	private JFXTextArea txBio;
 
-    @FXML
-    private JFXTextField txNickname;
-
+	@FXML
+	private JFXTextField txNickname;
 
 	public void initialize() {
 		// NowInf.setPicView(imgUser, "icon/user.png");
@@ -87,42 +87,56 @@ public class CusRegisterController {
 	}
 
 	public void btRegister() throws SQLException {
-		String UserName = txUserName.getText();
-		String Psw = txPsw.getText();
-		String PswConfirm = txPswConfirm.getText();
-		String Nickname = txNickname.getText();
-		String PhoneNum = txPhoneNum.getText();
-		String Email = txEmail.getText();
-		String Bio = txBio.getText();
+		String UserName = "";
+		String Psw = "";
+		String PswConfirm = "";
+		String Nickname = "";
+		String PhoneNum = "";
+		String Email = "";
+		String Bio = "";
 		Random randomID = new Random();
 		int ID = randomID.nextInt(99999) - 10;
-		
-		if(UserName.equals(null)) {
+		UserName = txUserName.getText();
+		Psw = txPsw.getText();
+		PswConfirm = txPswConfirm.getText();
+		Nickname = txNickname.getText();
+		PhoneNum = txPhoneNum.getText();
+		Email = txEmail.getText();
+		Bio = txBio.getText();
+		if (UserName.equals(null) || Psw.equals(null) || PswConfirm.equals(null)) {
 			lbErrorUserName.setVisible(true);
-		}
-		
-		Db db = new Db();
-		Object[] result = null;
-		String sql1 = "Select count(*) from Customer where UserName = ?";
-		QueryRunner qr = new QueryRunner();
-		result = qr.query(db.getConnection(), sql1, UserName, new ArrayHandler());
-		int a = Integer.parseInt(result[0].toString());
-		if(a == 0) {
-			if(Psw.equals(PswConfirm)) {
-				//result = qr.query(db.getConnection(), sql2, para, new ArrayHandler());
-				qr.update(db.getConnection(), "Insert into Customer (CustomerID, UserName, Password, Nickname, PhoneNumber, Email, Bio) "
-						+ "values(?, ?, ?, ?, ?, ?, ?)", ID, UserName, Psw, Nickname, PhoneNum, Email, Bio);
-				
-				System.out.println("Registration Successful");
-				lbErrorPassword.setVisible(false);
-				lbErrorUserName2.setVisible(false);
-			}else {
-				lbErrorPassword.setVisible(true);
+			Alert error = new Alert(Alert.AlertType.ERROR, "Please enter required information");
+			error.showAndWait();
+		} else {
+			Db db = new Db();
+			Object[] result = null;
+			String sql1 = "Select count(*) from Customer where UserName = ?";
+			QueryRunner qr = new QueryRunner();
+			result = qr.query(db.getConnection(), sql1, UserName, new ArrayHandler());
+			int a = Integer.parseInt(result[0].toString());
+			if (a == 0) {
+				if (Psw.equals(PswConfirm)) {
+					// result = qr.query(db.getConnection(), sql2, para, new ArrayHandler());
+
+					qr.update(db.getConnection(),
+							"Insert into Customer (CustomerID, UserName, Password, Nickname, PhoneNumber, Email, Bio) "
+									+ "values(?, ?, ?, ?, ?, ?, ?)",
+							ID, UserName, Psw, Nickname, PhoneNum, Email, Bio);
+
+					System.out.println("Registration Successful");
+					// lbErrorPassword.setVisible(false);
+					// lbErrorUserName2.setVisible(false);
+				} else {
+					// lbErrorPassword.setVisible(true);
+
+				}
+			} else {
+				// lbErrorUserName2.setVisible(true);
+				Alert error = new Alert(Alert.AlertType.ERROR, "Please change a username");
+				error.showAndWait();
 			}
-		}else {
-			lbErrorUserName2.setVisible(true);
 		}
+
 	}
 
 }
-

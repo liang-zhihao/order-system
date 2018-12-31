@@ -17,6 +17,7 @@ import application.dataClass.Db;
 import application.dataClass.NowInf;
 import application.frameClass.CustomerHomepageFrame;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -104,7 +105,8 @@ public class SignInController {
 					stage.close();
 					labError.setVisible(false);
 				} else {
-					labError.setVisible(true);
+					Alert error = new Alert(Alert.AlertType.ERROR, "Username or password is not existed");
+					error.showAndWait();
 				}
 
 			} else {
@@ -118,15 +120,13 @@ public class SignInController {
 					new CustomerHomepageFrame();
 					Stage stage = (Stage) btSignIn.getScene().getWindow();
 					stage.close();
-					labError.setVisible(false);
 				} else {
-					labError.setVisible(true);
-
+					Alert error = new Alert(Alert.AlertType.ERROR, "Username or password is not existed");
+					error.showAndWait();
 				}
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

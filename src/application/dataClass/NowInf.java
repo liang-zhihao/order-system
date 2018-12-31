@@ -9,17 +9,24 @@ import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ArrayHandler;
 
+import com.jfoenix.controls.JFXButton.ButtonType;
+
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 
 public class NowInf {
 	public static Customer customer = null;
 	public static Business business = null;
+	public static int customerAddressid = 0;
 
 	public static Image copyPictureToProject(File source, String name, String type) throws IOException {
 		Path t = Paths.get(source.getAbsolutePath());
@@ -171,6 +178,25 @@ public class NowInf {
 		}
 
 		return table;
+	}
+
+	public static void closeWindow(Button t) {
+		Stage stage = (Stage) t.getScene().getWindow();
+		stage.close();
+	}
+
+	public static Optional<javafx.scene.control.ButtonType> showAlert(String t, String type) {
+		Alert alert = null;
+		Optional<ButtonType> s = null;
+		if (type.equals("error")) {
+			alert = new Alert(Alert.AlertType.ERROR, t);
+		} else if (type.equals("information")) {
+			alert = new Alert(Alert.AlertType.INFORMATION, t);
+		} else {
+			alert = new Alert(Alert.AlertType.CONFIRMATION, t);
+		}
+		// alert.showAndWait();
+		return alert.showAndWait();
 	}
 
 }

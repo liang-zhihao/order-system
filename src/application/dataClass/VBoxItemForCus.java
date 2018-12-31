@@ -3,6 +3,7 @@ package application.dataClass;
 import java.sql.SQLException;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.ArrayHandler;
 
 import com.jfoenix.controls.JFXButton;
 
@@ -79,8 +80,15 @@ public class VBoxItemForCus extends VBox {
 			Object[] p = new Object[2];
 			p[0] = NowInf.customer.getCustomerId();
 			p[1] = itemId;
-			String sql = "insert into cart (customerid,productid) VALUES(?,?)";
 			try {
+				String sql1 = "select count(*)from cart where customerid=? and productid=?";
+				Object[] result = qr.query(db.getConnection(), sql1, p, new ArrayHandler());
+				int a = Integer.parseInt(result[0].toString());
+				if (a == 1) {
+					NowInf.showAlert("Item has been added", "information");
+					return;
+				}
+				String sql = "insert into cart (customerid,productid) VALUES(?,?)";
 				qr.update(Db.getConnection(), sql, p);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block

@@ -26,6 +26,7 @@ import application.frameClass.AddAItemFrame;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableCell;
@@ -101,6 +102,8 @@ public class ShopHomepageController {
 
 	@FXML
 	private Label LabText;
+	@FXML
+	private Label lbUserGreeting;
 
 	@FXML
 	private JFXTextField tfSearch;
@@ -179,7 +182,13 @@ public class ShopHomepageController {
 	ObservableList<OrderTable> cellData = FXCollections.observableArrayList();
 
 	public void initialize() throws SQLException {
+
+		btLogout.setOnAction(e -> {
+			if (NowInf.showAlert("Do you want to close the window?", "confirmation").get() == ButtonType.OK)
+				NowInf.closeWindow(btLogout);
+		});
 		lbItemGreeting.setText(NowInf.getGreetingWords());
+		lbUserGreeting.setText(NowInf.getGreetingWords());
 		openOrder();
 		// img.setImage(new Image("application/fxml/img/ga.png"));
 		// imgHead.setImage(new Image());

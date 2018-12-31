@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ArrayHandler;
@@ -28,9 +27,11 @@ import application.dataClass.NowInf;
 import application.dataClass.OrderTable;
 import application.dataClass.Product;
 import application.dataClass.SalesOrder;
+import application.frameClass.SelectAddressFrame;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -281,7 +282,6 @@ public class CustomerHomepageController {
 				new BeanListHandler<SalesOrder>(SalesOrder.class));
 		System.out.println(list.get(0).getOrderDate());
 		// initOrderSearch();
-
 	}
 
 	public void initOrderSearch() {
@@ -424,8 +424,10 @@ public class CustomerHomepageController {
 	}
 
 	public void btLogout() {
-		Stage stage = (Stage) btLogout.getScene().getWindow();
-		stage.close();
+		if (NowInf.showAlert("Do you want to close the window?", "confirmation").get() == ButtonType.OK) {
+			Stage stage = (Stage) btLogout.getScene().getWindow();
+			stage.close();
+		}
 	}
 
 	// public void showAvatar() {
@@ -495,12 +497,16 @@ public class CustomerHomepageController {
 						+ "  AND cart.ProductID=product.ProductID AND business.BusinessID =product.BusinessID";
 				// String item, String business, int cost, int num, String picname
 				Object[] t = qr.query(db.getConnection(), sql1, new ArrayHandler());
-				HBoxForCart ht = new HBoxForCart(t[0].toString(), t[1].toString(), Double.valueOf(t[2].toString()),
-						Integer.valueOf(t[3].toString()), t[4].toString());
+
+				int num = 1;
+				if (!t[3].toString().equals("")) {
+					num = Integer.valueOf(t[3].toString());
+				}
+				HBoxForCart ht = new HBoxForCart(t[0].toString(), t[1].toString(), Double.valueOf(t[2].toString()), num,
+						t[4].toString());
 				ht.setCartId(cartlist.get(i).getCartId());
 				ht.setProductId(cartlist.get(i).getProductId());
 				cartVBox.getChildren().add(ht);
-				System.out.println(cartVBox.getChildren().get(0));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -509,40 +515,37 @@ public class CustomerHomepageController {
 	}
 
 	public void cartSelectAl() {
-		for (int i = 1; i < cartVBox.getChildren().size(); i++) {
-			HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
-			t.setCheck(true);
+
+		if (cartSelectAll.isSelected()) {
+			for (int i = 1; i < cartVBox.getChildren().size(); i++) {
+				HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
+				t.setCheck(true);
+			}
+		} else {
+			for (int i = 1; i < cartVBox.getChildren().size(); i++) {
+				HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
+				t.setCheck(false);
+			}
 		}
 
 	}
 
 	public void buyBuyBuy() {
-		Db db = new Db();
-		QueryRunner qr = new QueryRunner();
+		String inf = "Do you confirm your order?\n";
+		double all = 0;
 		for (int i = 1; i < cartVBox.getChildren().size(); i++) {
-			try {
-				HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
-				t.getCartId();
-				t.getProductId();
-				String sql = "INSERT into salesorder (BusinessID,ProductID,CustomerID,DeliveryAddressID,SalesOrderNumber,Quantity,`Status`,OrderDate,`Comment`,SubTotal) VALUES(?,?,?,?,?,?,?,?,?,?)";
-				Object[] p = new Object[10];
-				String sql1 = "select * from product where productid =" + t.getProductId();
-				Product ptmp = qr.query(db.getConnection(), sql1, new BeanHandler<Product>(Product.class));
-				p[0] = ptmp.getBusinessiD();
-				p[1] = t.getProductId();
-				p[2] = NowInf.customer.getCustomerId();
-				p[3] = 1;
-				p[4] = ptmp.getProductnumber();
-				p[5] = Integer.valueOf(t.getTfNum().getText());
-				p[6] = "weifahuo";
-				p[7] = new Date();
-				p[8] = " ";
-				p[9] = Integer.valueOf(t.getTfNum().getText()) * ptmp.getStandardcost();
-				qr.update(db.getConnection(), sql, p);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
+			if (t.getCheck() == true) {
+				double pri = Integer.valueOf(t.getTfNum().getText()) * Double.valueOf(t.getLbCost().getText());
+				inf += String.format("%-10s:   %-5sX%5s---$%.2f", t.getLbItem().getText(), t.getTfNum().getText(),
+						"$" + t.getLbCost().getText(), pri);
+				inf += "\n";
+				all += pri;
 			}
+		}
+		inf += "Overall:$" + all;
+		if (NowInf.showAlert(inf, "confirmation").get() == ButtonType.OK) {
+			new SelectAddressFrame(cartVBox);
 		}
 
 	}

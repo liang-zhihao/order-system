@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="465.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.SelectAddressController">
+   <children>
+      <ScrollPane prefHeight="413.0" prefWidth="605.0">
+         <content>
+            <VBox fx:id="mainVbox" prefHeight="397.0" prefWidth="603.0" />
+         </content>
+      </ScrollPane>
+      <JFXButton fx:id="btConfirm" layoutX="522.0" layoutY="426.0" onAction="#confirm" style="-fx-border-color: black;" text="Confrim">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

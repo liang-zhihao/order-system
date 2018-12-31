@@ -119,27 +119,30 @@ public class ChangeItemController {
 
 	public void changeItem() {
 		Object para[] = new Object[6];
-		txItemName.setText(p.getName());
-		txCost.setText("" + p.getStandardcost());
-		txProductNumber.setText(p.getProductnumber());
-		txWeight.setText("" + p.getWeight());
-		txDetail.setText(p.getDetail());
+		// txItemName.setText(p.getName());
+		// txCost.setText("" + p.getStandardcost());
+		// txProductNumber.setText(p.getProductnumber());
+		// txWeight.setText("" + p.getWeight());
+		// txDetail.setText(p.getDetail());
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 		String sql = "update product set name =?,standardcost=?,detail=?,weight=?,productnumber=? where productid =?";
-		para[0] = txItemName.getText();
-		para[1] = Integer.valueOf(txCost.getText());
-		para[2] = txDetail.getText();
-		para[3] = Double.valueOf(txWeight.getText());
-		para[4] = txProductNumber.getText();
-		para[5] = p.getProductid();
-
+		try {
+			para[0] = txItemName.getText();
+			para[1] = Integer.valueOf(txCost.getText());
+			para[2] = txDetail.getText();
+			para[3] = Double.valueOf(txWeight.getText());
+			para[4] = txProductNumber.getText();
+			para[5] = p.getProductid();
+		} catch (Exception e) {
+			NowInf.showAlert("Please check item's information", "error");
+		}
 		try {
 			qr.update(db.getConnection(), sql, para);
 			System.out.println("change item successfully");
 			Stage stage = (Stage) btChangeItem.getScene().getWindow();
 			stage.close();
-
+			NowInf.showAlert("Change item successfully", "information");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
