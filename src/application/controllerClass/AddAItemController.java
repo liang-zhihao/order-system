@@ -86,6 +86,9 @@ public class AddAItemController {
 		} catch (Exception e) {
 			NowInf.showAlert("Please confirm your cost", "error");
 		}
+<<<<<<< HEAD
+>>>>>>> parent of 4f28f38... 我最后更新了
+=======
 >>>>>>> parent of 4f28f38... 我最后更新了
 		String productnum = txProductNumber.getText();
 		double weight = 0;
@@ -96,11 +99,17 @@ public class AddAItemController {
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 4f28f38... 我最后更新了
 		if (name.equals("") || productnum.equals("") || Detail.equals("")) {
 			NowInf.showAlert("Please enter required information", "error");
 			return;
 		}
+<<<<<<< HEAD
+>>>>>>> parent of 4f28f38... 我最后更新了
+=======
 >>>>>>> parent of 4f28f38... 我最后更新了
 		try {
 			qr.update(db.getConnection(),

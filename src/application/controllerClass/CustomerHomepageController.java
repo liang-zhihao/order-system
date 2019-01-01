@@ -99,6 +99,24 @@ public class CustomerHomepageController {
 =======
 	@FXML
 	private Label OrderGteeting;
+<<<<<<< HEAD
+=======
+
+	@FXML
+	private JFXButton btBuy;
+
+	@FXML
+	private Label lbTime;
+
+	@FXML
+	private AnchorPane cusItemPane;
+
+	@FXML
+	private JFXTextField tfSearchOrder;
+
+	@FXML
+	private JFXButton btOrder;
+>>>>>>> parent of 4f28f38... 我最后更新了
 
 	@FXML
 	private JFXButton btBuy;
@@ -143,8 +161,13 @@ public class CustomerHomepageController {
 	    @FXML
 	    private JFXTextField txEmail;
 
+<<<<<<< HEAD
 	    @FXML
 	    private JFXButton btCart;
+=======
+	@FXML
+	private JFXTextField txGreeting1;
+>>>>>>> parent of 4f28f38... 我最后更新了
 
 <<<<<<< HEAD
 	    @FXML

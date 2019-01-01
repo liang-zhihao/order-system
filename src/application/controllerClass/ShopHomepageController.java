@@ -180,7 +180,10 @@ public class ShopHomepageController {
 
 	public void initialize() throws SQLException {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 4f28f38... 我最后更新了
 
 		btLogout.setOnAction(e -> {
 			if (NowInf.showAlert("Do you want to close the window?", "confirmation").get() == ButtonType.OK)

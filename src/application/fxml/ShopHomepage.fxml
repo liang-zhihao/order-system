@@ -12,10 +12,13 @@
 <?import javafx.scene.text.*?>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <AnchorPane fx:id="parentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.ShopHomepageController">
    <children>
       <AnchorPane prefHeight="768.0" prefWidth="167.0">
 =======
+=======
+>>>>>>> parent of 4f28f38... 我最后更新了
 
 <ScrollPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.ShopHomepageController">
    <content>
@@ -125,6 +128,7 @@
                </effect>
             </AnchorPane>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <JFXButton fx:id="btConfirmshipment" layoutX="638.0" layoutY="714.0" prefHeight="47.0" prefWidth="180.0" style="-fx-background-color: #39C164;" text="Confirm shipment" textFill="#f8f8f8">
                <font>
                   <Font name="Verdana" size="16.0" />
@@ -145,6 +149,9 @@
               </columns>
             </TableView>
             <AnchorPane layoutX="35.0" prefHeight="150.0" prefWidth="800.0" style="-fx-background-color: white;">
+=======
+            <AnchorPane fx:id="OrderPane" layoutX="167.0" prefHeight="768.0" prefWidth="859.0" visible="false">
+>>>>>>> parent of 4f28f38... 我最后更新了
 =======
             <AnchorPane fx:id="OrderPane" layoutX="167.0" prefHeight="768.0" prefWidth="859.0" visible="false">
 >>>>>>> parent of 4f28f38... 我最后更新了
@@ -241,6 +248,9 @@
                            </font>
                         </JFXRadioButton>
                         <JFXButton fx:id="btSearchOrder" layoutX="660.0" layoutY="107.0" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #35B4E3;" text="Search" textFill="WHITE">
+<<<<<<< HEAD
+>>>>>>> parent of 4f28f38... 我最后更新了
+=======
 >>>>>>> parent of 4f28f38... 我最后更新了
                            <font>
                               <Font name="Verdana" size="15.0" />
@@ -345,6 +355,9 @@
 =======
             </AnchorPane>
             <AnchorPane fx:id="userInfPane" layoutX="167.0" layoutY="2.0" prefHeight="768.0" prefWidth="859.0" style="-fx-background-color: #F2F2F2;">
+<<<<<<< HEAD
+>>>>>>> parent of 4f28f38... 我最后更新了
+=======
 >>>>>>> parent of 4f28f38... 我最后更新了
                <children>
                   <Label fx:id="lbUserGreeting" layoutX="6.0" prefHeight="84.0" prefWidth="852.0" style="-fx-border-color: white; -fx-border-color: white  white #E2E2E2  white;" text="Username/Item(wait to css)">

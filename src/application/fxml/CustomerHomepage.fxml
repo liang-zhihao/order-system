@@ -13,9 +13,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <AnchorPane fx:id="CustomerHomepagePane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="805.0" prefWidth="1081.0" style="-fx-background-color: #BDC0BA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.CustomerHomepageController">
    <children>
       <AnchorPane fx:id="UserPane" layoutX="254.0" layoutY="35.0" prefHeight="716.0" prefWidth="691.0" style="-fx-border-color: #947A6D; -fx-background-color: #ffffff;">
+=======
+<ScrollPane prefHeight="805.0" prefWidth="1081.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.CustomerHomepageController">
+   <content>
+      <AnchorPane fx:id="CustomerHomepagePane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="805.0" prefWidth="1081.0" style="-fx-background-color: #BDC0BA;">
+>>>>>>> parent of 4f28f38... 我最后更新了
 =======
 <ScrollPane prefHeight="805.0" prefWidth="1081.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.CustomerHomepageController">
    <content>
@@ -106,6 +112,9 @@
                      </padding>
                   </VBox>
                   <VBox fx:id="txInformation" layoutX="218.0" layoutY="293.0" prefHeight="384.0" prefWidth="390.0" spacing="6.0">
+<<<<<<< HEAD
+>>>>>>> parent of 4f28f38... 我最后更新了
+=======
 >>>>>>> parent of 4f28f38... 我最后更新了
                      <children>
                         <ImageView fitHeight="20.0" pickOnBounds="true" preserveRatio="true" />
@@ -344,10 +353,13 @@
                         </HBox>
                      </children>
                   </VBox>
+<<<<<<< HEAD
               </content>
             </ScrollPane>
 =======
                   </VBox>
+=======
+>>>>>>> parent of 4f28f38... 我最后更新了
                   <JFXTextField fx:id="txGreeting" focusColor="#723535" layoutX="42.0" layoutY="7.0" prefHeight="51.0" prefWidth="641.0" unFocusColor="#723535">
                      <font>
                         <Font size="18.0" />
@@ -531,6 +543,9 @@
                   <Font name="Verdana" size="15.0" />
                </font>
             </JFXButton>
+<<<<<<< HEAD
+>>>>>>> parent of 4f28f38... 我最后更新了
+=======
 >>>>>>> parent of 4f28f38... 我最后更新了
          </children>
       </AnchorPane>
