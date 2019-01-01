@@ -183,7 +183,7 @@ public class CustomerHomepageController {
 	private VBox cartVBox;
 
 	public void initialize() throws SQLException {
-<<<<<<< HEAD
+
 		// ToggleGroup t = new ToggleGroup();
 		// itemBusiness.setToggleGroup(t);
 		// itemName.setToggleGroup(t);
@@ -196,9 +196,9 @@ public class CustomerHomepageController {
 		// OrderGteeting.setText(NowInf.getGreetingWords());
 		// userGreeting.setText(NowInf.getGreetingWords() + " " +
 		// userGreeting.getText());
-=======
-		txGreeting.setText(NowInf.getGreetingWords());
->>>>>>> parent of f864927... Merge branch 'fffff'
+
+		// txGreeting.setText(NowInf.getGreetingWords());
+
 		// OrderTablePane
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("salesOrderNumber"));
 		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("quantity"));
@@ -246,7 +246,7 @@ public class CustomerHomepageController {
 	}
 
 	public void openItem() {
-		txGreeting1.setText(NowInf.getGreetingWords());
+		// txGreeting1.setText(NowInf.getGreetingWords());
 		cusItemPane.setVisible(true);
 		cusOrderPane.setVisible(false);
 		UserPane.setVisible(false);
@@ -481,7 +481,6 @@ public class CustomerHomepageController {
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 		for (int i = 1; i < cartVBox.getChildren().size(); i++) {
-<<<<<<< HEAD
 
 			HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
 			String sql = "delete from cart where cartid = " + t.getCartId();
@@ -492,30 +491,7 @@ public class CustomerHomepageController {
 					e.printStackTrace();
 				}
 				cartVBox.getChildren().remove(t);
-=======
-			try {
-				HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
-				t.getCartId();
-				t.getProductId();
-				String sql = "INSERT into salesorder (BusinessID,ProductID,CustomerID,DeliveryAddressID,SalesOrderNumber,Quantity,`Status`,OrderDate,`Comment`,SubTotal) VALUES(?,?,?,?,?,?,?,?,?,?)";
-				Object[] p = new Object[10];
-				String sql1 = "select * from product where productid =" + t.getProductId();
-				Product ptmp = qr.query(db.getConnection(), sql1, new BeanHandler<Product>(Product.class));
-				p[0] = ptmp.getBusinessiD();
-				p[1] = t.getProductId();
-				p[2] = NowInf.customer.getCustomerId();
-				p[3] = 1;
-				p[4] = ptmp.getProductnumber();
-				p[5] = Integer.valueOf(t.getTfNum().getText());
-				p[6] = "weifahuo";
-				p[7] = new Date();
-				p[8] = " ";
-				p[9] = Integer.valueOf(t.getTfNum().getText()) * ptmp.getStandardcost();
-				qr.update(db.getConnection(), sql, p);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
->>>>>>> parent of f864927... Merge branch 'fffff'
+
 			}
 
 		}
@@ -530,6 +506,27 @@ public class CustomerHomepageController {
 			ArrayList<Product> plist = (ArrayList<Product>) qr.query(db.getConnection(), sql,
 					new BeanListHandler<Product>(Product.class));
 			NowInf.addItemToPane(fpItem, plist, "c");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void searchItem() {
+
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		String key = "%" + tfSearch.getText() + "%";
+
+		String sql = "select * from product where  name like ?";
+		fpItem.getChildren().clear();
+		Object[] p = new Object[1];
+		p[0] = key;
+		ArrayList<Product> productlist = null;
+		try {
+			productlist = (ArrayList<Product>) qr.query(db.getConnection(), sql, p,
+					new BeanListHandler<Product>(Product.class));
+			NowInf.addItemToPane(fpItem, productlist, "c");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
