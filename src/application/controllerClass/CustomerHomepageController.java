@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ArrayHandler;
@@ -15,7 +14,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
 import application.dataClass.Cart;
@@ -36,7 +34,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -73,111 +70,110 @@ public class CustomerHomepageController {
 	@FXML
 	private TableColumn<OrderTable, String> orderCommentCol;
 
-	    @FXML
-	    private JFXPasswordField txConformNewPsw;
+	@FXML
+	private JFXPasswordField txConformNewPsw;
 
-	    @FXML
-	    private AnchorPane UserPane;
+	@FXML
+	private AnchorPane UserPane;
 
-	    @FXML
-	    private JFXButton btItem;
+	@FXML
+	private JFXButton btItem;
 
-	    @FXML
-	    private JFXPasswordField txOriPsw;
+	@FXML
+	private JFXPasswordField txOriPsw;
 
-	    @FXML
-	    private AnchorPane CustomerHomepagePane;
+	@FXML
+	private AnchorPane CustomerHomepagePane;
 
-	    @FXML
-	    private AnchorPane cartPane;
+	@FXML
+	private AnchorPane cartPane;
 
-	    @FXML
-	    private JFXTextField txUserName;
+	@FXML
+	private JFXTextField txUserName;
 
-	    @FXML
-	    private JFXButton btShowAddress;
+	@FXML
+	private JFXButton btShowAddress;
 
-	    @FXML
-	    private JFXRadioButton orderBusinessRad;
+	@FXML
+	private JFXRadioButton orderBusinessRad;
 
-	    @FXML
-	    private JFXTextField tfSearch;
+	@FXML
+	private JFXTextField tfSearch;
 
-	    @FXML
-	    private JFXButton btAddCart;
+	@FXML
+	private JFXButton btAddCart;
 
-	    @FXML
-	    private AnchorPane cusOrderPane;
+	@FXML
+	private AnchorPane cusOrderPane;
 
-	    @FXML
-	    private JFXButton btSearchOrder;
+	@FXML
+	private JFXButton btSearchOrder;
 
-	    @FXML
-	    private JFXButton btConfirmreceipt;
+	@FXML
+	private JFXButton btConfirmreceipt;
 
-	    @FXML
-	    private JFXTextField txGreeting1;
+	@FXML
+	private JFXTextField txGreeting1;
 
-	    @FXML
-	    private JFXTextField txGreeting;
+	@FXML
+	private JFXTextField txGreeting;
 
-	    @FXML
-	    private ImageView avatar;
+	@FXML
+	private ImageView avatar;
 
-	    @FXML
-	    private VBox txInformation;
+	@FXML
+	private VBox txInformation;
 
-	    @FXML
-	    private JFXPasswordField txNewPsw;
+	@FXML
+	private JFXPasswordField txNewPsw;
 
-	    @FXML
-	    private JFXTextField txNickName;
+	@FXML
+	private JFXTextField txNickName;
 
-	    @FXML
-	    private JFXTextField txEmail;
+	@FXML
+	private JFXTextField txEmail;
 
-	    @FXML
-	    private JFXButton btCart;
+	@FXML
+	private JFXButton btCart;
 
-	    @FXML
-	    private Label OrderGteeting;
+	@FXML
+	private Label OrderGteeting;
 
-	    @FXML
-	    private JFXButton btChangeIfo;
+	@FXML
+	private JFXButton btChangeIfo;
 
-	    @FXML
-	    private JFXButton btChangeAvatar;
+	@FXML
+	private JFXButton btChangeAvatar;
 
-	    @FXML
-	    private JFXButton btUser;
+	@FXML
+	private JFXButton btUser;
 
-	    @FXML
-	    private JFXTextField txPhone;
+	@FXML
+	private JFXTextField txPhone;
 
-	    @FXML
-	    private Label lbTime;
+	@FXML
+	private Label lbTime;
 
-	    @FXML
-	    private AnchorPane cusItemPane;
+	@FXML
+	private AnchorPane cusItemPane;
 
-	    @FXML
-	    private JFXRadioButton orderItemRad;
+	@FXML
+	private JFXRadioButton orderItemRad;
 
-	    @FXML
-	    private JFXTextField tfSearchOrder;
+	@FXML
+	private JFXTextField tfSearchOrder;
 
-	    @FXML
-	    private JFXTextField txBio;
+	@FXML
+	private JFXTextField txBio;
 
-	    @FXML
-	    private JFXButton btOrder;
+	@FXML
+	private JFXButton btOrder;
 
-	    @FXML
-	    private JFXButton btLogout;
+	@FXML
+	private JFXButton btLogout;
 
-	    @FXML
-	    private JFXButton btSearch;
-
+	@FXML
+	private JFXButton btSearch;
 
 	@FXML
 	private FlowPane fpItem;
@@ -187,17 +183,18 @@ public class CustomerHomepageController {
 	private VBox cartVBox;
 
 	public void initialize() throws SQLException {
-		ToggleGroup t = new ToggleGroup();
-		itemBusiness.setToggleGroup(t);
-		itemName.setToggleGroup(t);
+		// ToggleGroup t = new ToggleGroup();
+		// itemBusiness.setToggleGroup(t);
+		// itemName.setToggleGroup(t);
 
 		fpItem.setHgap(10);
 		fpItem.setVgap(10);
-		NowInf.setPicView(imgSearch, "icon/search.png");
-		NowInf.setPicView(imgSearch2, "icon/search.png");
-		txGreeting1.setText(NowInf.getGreetingWords());
-		OrderGteeting.setText(NowInf.getGreetingWords());
-		userGreeting.setText(NowInf.getGreetingWords() + "  " + userGreeting.getText());
+		// NowInf.setPicView(imgSearch, "icon/search.png");
+		// NowInf.setPicView(imgSearch2, "icon/search.png");
+		// txGreeting1.setText(NowInf.getGreetingWords());
+		// OrderGteeting.setText(NowInf.getGreetingWords());
+		// userGreeting.setText(NowInf.getGreetingWords() + " " +
+		// userGreeting.getText());
 		// OrderTablePane
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("salesOrderNumber"));
 		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("quantity"));
@@ -475,20 +472,18 @@ public class CustomerHomepageController {
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 		for (int i = 1; i < cartVBox.getChildren().size(); i++) {
-			try {
-				HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
-				Db db = new Db();
-				QueryRunner qr = new QueryRunner();
-				String sql = "delete from cart where cartid = " + t.getCartId();
-				if (t.getCheck() == true) {
-					try {
-						qr.update(db.getConnection(), sql);
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-					cartVBox.getChildren().remove(t);
+
+			HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
+			String sql = "delete from cart where cartid = " + t.getCartId();
+			if (t.getCheck() == true) {
+				try {
+					qr.update(db.getConnection(), sql);
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
+				cartVBox.getChildren().remove(t);
 			}
+
 		}
 
 	}
