@@ -87,6 +87,9 @@ public class AddAItemController {
 			NowInf.showAlert("Please confirm your cost", "error");
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4f28f38... 我最后更新了
+=======
 >>>>>>> parent of 4f28f38... 我最后更新了
 =======
 >>>>>>> parent of 4f28f38... 我最后更新了
@@ -100,7 +103,10 @@ public class AddAItemController {
 		QueryRunner qr = new QueryRunner();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 4f28f38... 我最后更新了
 =======
 >>>>>>> parent of 4f28f38... 我最后更新了
 		if (name.equals("") || productnum.equals("") || Detail.equals("")) {
@@ -108,6 +114,9 @@ public class AddAItemController {
 			return;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4f28f38... 我最后更新了
+=======
 >>>>>>> parent of 4f28f38... 我最后更新了
 =======
 >>>>>>> parent of 4f28f38... 我最后更新了

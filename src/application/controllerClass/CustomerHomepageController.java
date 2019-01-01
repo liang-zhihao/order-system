@@ -100,7 +100,10 @@ public class CustomerHomepageController {
 	@FXML
 	private Label OrderGteeting;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 4f28f38... 我最后更新了
 
 	@FXML
 	private JFXButton btBuy;
@@ -167,6 +170,9 @@ public class CustomerHomepageController {
 =======
 	@FXML
 	private JFXTextField txGreeting1;
+<<<<<<< HEAD
+>>>>>>> parent of 4f28f38... 我最后更新了
+=======
 >>>>>>> parent of 4f28f38... 我最后更新了
 
 <<<<<<< HEAD

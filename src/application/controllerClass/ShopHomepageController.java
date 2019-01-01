@@ -181,7 +181,10 @@ public class ShopHomepageController {
 	public void initialize() throws SQLException {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 4f28f38... 我最后更新了
 =======
 >>>>>>> parent of 4f28f38... 我最后更新了
 
