@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.ChangeAddressController">
+   <children>
+      <AnchorPane fx:id="changeAddress" layoutX="-4.0" prefHeight="424.0" prefWidth="572.0" style="-fx-border-color: #7c5858; -fx-background-color: #ffffff;">
+         <children>
+            <JFXButton fx:id="btChangeAddress" layoutX="237.0" layoutY="346.0" onAction="#btChangeTOSQL" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #77969A;" text="change" textFill="#fcfcfc" />
+            <VBox layoutX="46.0" layoutY="67.0" prefHeight="229.0" prefWidth="164.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="174.0" text="consignee" textFill="#7c5858" />
+                  <ImageView fitHeight="10.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="174.0" text="contact phone" textFill="#7c5858" />
+                  <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="174.0" text="complete  address" textFill="#7c5858" />
+               </children>
+            </VBox>
+            <VBox layoutX="258.0" layoutY="67.0" prefHeight="248.0" prefWidth="265.0" spacing="10.0">
+               <children>
+                  <HBox prefWidth="200.0" style="-fx-border-color: #2b5f75;">
+                     <children>
+                        <JFXTextField fx:id="txCntPerson" focusColor="#2b5f75" prefHeight="41.0" prefWidth="260.0" unFocusColor="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="43.0" prefWidth="255.0" style="-fx-border-color: #2b5f75;">
+                     <children>
+                        <JFXTextField fx:id="txCntPhone" focusColor="#2b5f75" prefHeight="41.0" prefWidth="260.0" unFocusColor="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: #2b5f75;">
+                     <children>
+                        <JFXTextArea fx:id="txAddress" focusColor="#2b5f75" unFocusColor="WHITE" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

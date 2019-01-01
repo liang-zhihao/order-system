@@ -17,7 +17,7 @@ public class CheckBoxTCell<S, T> extends TableCell<S, T> {
 
 	@Override
 	public void updateItem(T item, boolean empty) {
-		// System.out.println("empty：" + empty);
+		System.out.println("empty：" + empty);
 		super.updateItem(item, empty);
 		if (empty) {
 			// 如果此列为空默认不添加元素

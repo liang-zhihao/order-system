@@ -24,7 +24,7 @@
             <HBox alignment="CENTER_LEFT" style="-fx-border-color: #484D53;">
                <children>
                   <ImageView fx:id="imgUser" fitHeight="32.0" pickOnBounds="true" preserveRatio="true" />
-                  <JFXTextField fx:id="txUserName" focusColor="LIGHTGRAY" prefHeight="50.0" prefWidth="257.0" promptText="*Username" style="-fx-border-radius: 0;" unFocusColor="WHITE">
+                  <JFXTextField fx:id="txUserName" focusColor="LIGHTGRAY" prefHeight="50.0" prefWidth="257.0" promptText="Username" style="-fx-border-radius: 0;" unFocusColor="WHITE">
                      <font>
                         <Font name="Verdana" size="15.0" />
                      </font>
@@ -34,7 +34,7 @@
             <HBox alignment="CENTER_LEFT" style="-fx-border-color: #484D53;">
                <children>
                   <ImageView fx:id="imgNick" fitHeight="32.0" pickOnBounds="true" preserveRatio="true" />
-                  <JFXTextField fx:id="txNickname" focusColor="LIGHTGRAY" prefHeight="50.0" prefWidth="257.0" promptText="*Nickname" unFocusColor="WHITE">
+                  <JFXTextField fx:id="txNickname" focusColor="LIGHTGRAY" prefHeight="50.0" prefWidth="257.0" promptText="Nickname" unFocusColor="WHITE">
                      <font>
                         <Font name="Verdana" size="15.0" />
                      </font>
@@ -44,7 +44,7 @@
             <HBox alignment="CENTER_LEFT" style="-fx-border-color: #484D53;">
                <children>
                   <ImageView fx:id="imgPass" fitHeight="32.0" pickOnBounds="true" preserveRatio="true" />
-                  <JFXPasswordField fx:id="txPsw" focusColor="LIGHTGRAY" prefHeight="47.0" prefWidth="258.0" promptText="*Password" unFocusColor="WHITE">
+                  <JFXPasswordField fx:id="txPsw" focusColor="LIGHTGRAY" prefHeight="47.0" prefWidth="258.0" promptText="Password" unFocusColor="WHITE">
                      <font>
                         <Font name="Verdana" size="15.0" />
                      </font>
@@ -54,7 +54,7 @@
             <HBox alignment="CENTER_LEFT" style="-fx-border-color: #484D53;">
                <children>
                   <ImageView fx:id="imgCon" fitHeight="32.0" pickOnBounds="true" preserveRatio="true" />
-                  <JFXPasswordField fx:id="txPswConfirm" focusColor="LIGHTGRAY" prefHeight="50.0" prefWidth="257.0" promptText="*Confirm your password" unFocusColor="WHITE">
+                  <JFXPasswordField fx:id="txPswConfirm" focusColor="LIGHTGRAY" prefHeight="50.0" prefWidth="257.0" promptText="Confirm your password" unFocusColor="WHITE">
                      <font>
                         <Font name="Verdana" size="15.0" />
                      </font>

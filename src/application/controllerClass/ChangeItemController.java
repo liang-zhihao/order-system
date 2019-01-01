@@ -89,9 +89,9 @@ public class ChangeItemController {
 				Image t = NowInf.copyPictureToProject(pic, p.getPictureName(), "i");
 				imgChangeItem.setImage(t);
 			} else {
-				String srcPicPath = imgChangeItem.getImage().getUrl();
+				String srcPicPath = imgChangeItem.getImage().impl_getUrl();
 				srcPicPath = srcPicPath.replace("/bin/", "/src/");
-				File pic1 = new File(imgChangeItem.getImage().getUrl());
+				File pic1 = new File(imgChangeItem.getImage().impl_getUrl());
 				File pic2 = new File(srcPicPath);
 				Db db = new Db();
 				QueryRunner qr = new QueryRunner();
@@ -119,30 +119,27 @@ public class ChangeItemController {
 
 	public void changeItem() {
 		Object para[] = new Object[6];
-		// txItemName.setText(p.getName());
-		// txCost.setText("" + p.getStandardcost());
-		// txProductNumber.setText(p.getProductnumber());
-		// txWeight.setText("" + p.getWeight());
-		// txDetail.setText(p.getDetail());
+		txItemName.setText(p.getName());
+		txCost.setText("" + p.getStandardcost());
+		txProductNumber.setText(p.getProductnumber());
+		txWeight.setText("" + p.getWeight());
+		txDetail.setText(p.getDetail());
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 		String sql = "update product set name =?,standardcost=?,detail=?,weight=?,productnumber=? where productid =?";
-		try {
-			para[0] = txItemName.getText();
-			para[1] = Integer.valueOf(txCost.getText());
-			para[2] = txDetail.getText();
-			para[3] = Double.valueOf(txWeight.getText());
-			para[4] = txProductNumber.getText();
-			para[5] = p.getProductid();
-		} catch (Exception e) {
-			NowInf.showAlert("Please check item's information", "error");
-		}
+		para[0] = txItemName.getText();
+		para[1] = Integer.valueOf(txCost.getText());
+		para[2] = txDetail.getText();
+		para[3] = Double.valueOf(txWeight.getText());
+		para[4] = txProductNumber.getText();
+		para[5] = p.getProductid();
+
 		try {
 			qr.update(db.getConnection(), sql, para);
 			System.out.println("change item successfully");
 			Stage stage = (Stage) btChangeItem.getScene().getWindow();
 			stage.close();
-			NowInf.showAlert("Change item successfully", "information");
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

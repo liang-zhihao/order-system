@@ -14,7 +14,6 @@ import com.jfoenix.controls.JFXTextField;
 import application.dataClass.Db;
 import application.dataClass.NowInf;
 import javafx.fxml.FXML;
-import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -73,40 +72,27 @@ public class AddAItemController {
 	}
 
 	public void addItem() {
-		if (ButtonType.OK == NowInf.showAlert("Do you want to add this item?", "confirmation").get()) {
-			String name = txItemName.getText();
-			double cost = 0;
-			try {
-				cost = Double.valueOf(txCost.getText());
-			} catch (Exception e) {
-				NowInf.showAlert("Please confirm your cost", "error");
-			}
-			String productnum = txProductNumber.getText();
-			double weight = 0;
-			if (txWeight.getText() != null) {
-				weight = Double.valueOf(txWeight.getText());
-			}
-			String Detail = txDetail.getText();
-			Db db = new Db();
-			QueryRunner qr = new QueryRunner();
-			if (name.equals("") || productnum.equals("") || Detail.equals("")) {
-				NowInf.showAlert("Please enter required information", "error");
-				return;
-			}
-			try {
-				qr.update(db.getConnection(),
-						"Insert into product (ProductID, ProductNumber, Name, StandardCost, Detail, Weight, BusinessID,PictureName) "
-								+ "values(?, ?, ?, ?, ?, ?, ?,?)",
-						id, productnum, name, cost, Detail, weight, NowInf.business.getBusinessId(), picname);
-				System.out.println("Successfully");
-				Stage stage = (Stage) btAddItem.getScene().getWindow();
-				stage.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
+		String name = txItemName.getText();
+		int cost = Integer.valueOf(txCost.getText());
+		String productnum = txProductNumber.getText();
+		double weight = 0;
+		if (txWeight.getText() != null) {
+			weight = Double.valueOf(txWeight.getText());
 		}
-
+		String Detail = txDetail.getText();
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		try {
+			qr.update(db.getConnection(),
+					"Insert into product (ProductID, ProductNumber, Name, StandardCost, Detail, Weight, BusinessID,PictureName) "
+							+ "values(?, ?, ?, ?, ?, ?, ?,?)",
+					id, productnum, name, cost, Detail, weight, NowInf.business.getBusinessId(), picname);
+			System.out.println("Successfully");
+			Stage stage = (Stage) btAddItem.getScene().getWindow();
+			stage.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
