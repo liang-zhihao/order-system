@@ -36,6 +36,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -48,6 +49,11 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class CustomerHomepageController {
+
+	@FXML
+	private JFXRadioButton itemBusiness;
+	@FXML
+	private JFXRadioButton itemName;
 	@FXML
 	private ImageView imgSearch;
 	@FXML
@@ -210,6 +216,10 @@ public class CustomerHomepageController {
 	private VBox cartVBox;
 
 	public void initialize() throws SQLException {
+		ToggleGroup t = new ToggleGroup();
+		itemBusiness.setToggleGroup(t);
+		itemName.setToggleGroup(t);
+
 		fpItem.setHgap(10);
 		fpItem.setVgap(10);
 		NowInf.setPicView(imgSearch, "icon/search.png");
@@ -346,6 +356,7 @@ public class CustomerHomepageController {
 	}
 
 	public void OOrderItemRad() {
+
 		orderBusinessRad.setSelected(false);
 	}
 
@@ -442,12 +453,6 @@ public class CustomerHomepageController {
 			stage.close();
 		}
 	}
-
-	// public void showAvatar() {
-	// String name = "Customer" + NowInf.customer.getCustomerId();
-	// String n = "/src/application/fxml/img/item" + name;
-	// avatar.setImage(new Image(n));
-	// }
 
 	public void btChangeAvatar() throws IOException {
 		final FileChooser fc = new FileChooser();
@@ -579,7 +584,7 @@ public class CustomerHomepageController {
 				HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
 				Db db = new Db();
 				QueryRunner qr = new QueryRunner();
-				String sql = "delete from where cartid = " + t.getCartId();
+				String sql = "delete from cart where cartid = " + t.getCartId();
 				if (t.getCheck() == true) {
 					try {
 						qr.update(db.getConnection(), sql);
@@ -610,6 +615,23 @@ public class CustomerHomepageController {
 
 	public void searchItem() {
 
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		String key = "%" + tfSearch.getText() + "%";
+
+		String sql = "select * from product where  name like ?";
+		fpItem.getChildren().clear();
+		Object[] p = new Object[1];
+		p[0] = key;
+		ArrayList<Product> productlist = null;
+		try {
+			productlist = (ArrayList<Product>) qr.query(db.getConnection(), sql, p,
+					new BeanListHandler<Product>(Product.class));
+			NowInf.addItemToPane(fpItem, productlist, "c");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

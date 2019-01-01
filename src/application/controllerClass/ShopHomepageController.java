@@ -464,4 +464,26 @@ public class ShopHomepageController {
 		}
 	}
 
+	public void searchItem() {
+
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		String key = "%" + tfSearch.getText() + "%";
+		String sql = "select * from product where businessid =? and name like ?";
+		// System.out.println(NowInf.business.getBusinessId());
+		fpItems.getChildren().clear();
+		Object[] p = new Object[2];
+		p[0] = NowInf.business.getBusinessId();
+		p[1] = key;
+		ArrayList<Product> productlist = null;
+		try {
+			productlist = (ArrayList<Product>) qr.query(db.getConnection(), sql, p,
+					new BeanListHandler<Product>(Product.class));
+			NowInf.addItemToPane(fpItems, productlist, "b");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }
