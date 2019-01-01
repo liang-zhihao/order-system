@@ -93,8 +93,16 @@ public class CustomerHomepageController {
 	    @FXML
 	    private JFXTextField txUserName;
 
+<<<<<<< HEAD
 	    @FXML
 	    private JFXButton btShowAddress;
+=======
+	@FXML
+	private Label OrderGteeting;
+
+	@FXML
+	private JFXButton btBuy;
+>>>>>>> parent of 4f28f38... 我最后更新了
 
 	    @FXML
 	    private JFXRadioButton orderBusinessRad;
@@ -138,8 +146,13 @@ public class CustomerHomepageController {
 	    @FXML
 	    private JFXButton btCart;
 
+<<<<<<< HEAD
 	    @FXML
 	    private Label OrderGteeting;
+=======
+	@FXML
+	private JFXTextField txGreeting1;
+>>>>>>> parent of 4f28f38... 我最后更新了
 
 	    @FXML
 	    private JFXButton btChangeIfo;
@@ -469,6 +482,7 @@ public class CustomerHomepageController {
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 		for (int i = 1; i < cartVBox.getChildren().size(); i++) {
+<<<<<<< HEAD
 			try {
 				HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
 				t.getCartId();
@@ -492,6 +506,20 @@ public class CustomerHomepageController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+=======
+			HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
+			if (t.getCheck() == true) {
+				double pri = Integer.valueOf(t.getTfNum().getText()) * Double.valueOf(t.getLbCost().getText());
+				inf += String.format("%-10s:   %-5sX%5s---$%.2f", t.getLbItem().getText(), t.getTfNum().getText(),
+						"$" + t.getLbCost().getText(), pri);
+				inf += "\n";
+				all += pri;
+			}
+		}
+		inf += "Overall:$" + all;
+		if (NowInf.showAlert(inf, "confirmation").get() == ButtonType.OK) {
+			new SelectAddressFrame(cartVBox);
+>>>>>>> parent of 4f28f38... 我最后更新了
 		}
 
 	}

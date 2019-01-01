@@ -72,8 +72,21 @@ public class AddAItemController {
 	}
 
 	public void addItem() {
+<<<<<<< HEAD
 		String name = txItemName.getText();
 		int cost = Integer.valueOf(txCost.getText());
+=======
+		if (ButtonType.OK == NowInf.showAlert("Do you want to add this item?", "confirmation").get()) {
+			return;
+		}
+		String name = txItemName.getText();
+		double cost = 0;
+		try {
+			cost = Double.valueOf(txCost.getText());
+		} catch (Exception e) {
+			NowInf.showAlert("Please confirm your cost", "error");
+		}
+>>>>>>> parent of 4f28f38... 我最后更新了
 		String productnum = txProductNumber.getText();
 		double weight = 0;
 		if (txWeight.getText() != null) {
@@ -82,6 +95,13 @@ public class AddAItemController {
 		String Detail = txDetail.getText();
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
+<<<<<<< HEAD
+=======
+		if (name.equals("") || productnum.equals("") || Detail.equals("")) {
+			NowInf.showAlert("Please enter required information", "error");
+			return;
+		}
+>>>>>>> parent of 4f28f38... 我最后更新了
 		try {
 			qr.update(db.getConnection(),
 					"Insert into product (ProductID, ProductNumber, Name, StandardCost, Detail, Weight, BusinessID,PictureName) "

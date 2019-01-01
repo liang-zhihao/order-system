@@ -179,6 +179,14 @@ public class ShopHomepageController {
 	ObservableList<OrderTable> cellData = FXCollections.observableArrayList();
 
 	public void initialize() throws SQLException {
+<<<<<<< HEAD
+=======
+
+		btLogout.setOnAction(e -> {
+			if (NowInf.showAlert("Do you want to close the window?", "confirmation").get() == ButtonType.OK)
+				NowInf.closeWindow(btLogout);
+		});
+>>>>>>> parent of 4f28f38... 我最后更新了
 		lbItemGreeting.setText(NowInf.getGreetingWords());
 		openOrder();
 		// img.setImage(new Image("application/fxml/img/ga.png"));

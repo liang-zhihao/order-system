@@ -11,9 +11,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<<<<<<< HEAD
 <AnchorPane fx:id="parentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.ShopHomepageController">
    <children>
       <AnchorPane prefHeight="768.0" prefWidth="167.0">
+=======
+
+<ScrollPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.ShopHomepageController">
+   <content>
+      <AnchorPane fx:id="parentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #FFFFFF;">
+>>>>>>> parent of 4f28f38... 我最后更新了
          <children>
             <VBox alignment="TOP_CENTER" layoutX="2.0" layoutY="81.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="687.0" prefWidth="167.0" spacing="11.0" style="-fx-background-color: #2E3539;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0">
                <children>
@@ -117,6 +124,7 @@
                   <DropShadow blurType="ONE_PASS_BOX" color="#c9afaf" offsetX="2.0" offsetY="2.0" />
                </effect>
             </AnchorPane>
+<<<<<<< HEAD
             <JFXButton fx:id="btConfirmshipment" layoutX="638.0" layoutY="714.0" prefHeight="47.0" prefWidth="180.0" style="-fx-background-color: #39C164;" text="Confirm shipment" textFill="#f8f8f8">
                <font>
                   <Font name="Verdana" size="16.0" />
@@ -137,6 +145,9 @@
               </columns>
             </TableView>
             <AnchorPane layoutX="35.0" prefHeight="150.0" prefWidth="800.0" style="-fx-background-color: white;">
+=======
+            <AnchorPane fx:id="OrderPane" layoutX="167.0" prefHeight="768.0" prefWidth="859.0" visible="false">
+>>>>>>> parent of 4f28f38... 我最后更新了
                <children>
                   <JFXTextField fx:id="tfSearch" layoutX="148.0" layoutY="115.0" prefHeight="25.0" prefWidth="382.0" />
                   <Label fx:id="lbItemGreeting" layoutX="6.0" prefHeight="84.0" prefWidth="705.0" style="-fx-border-color: white; -fx-border-color: white  white #E2E2E2  white;" text="Username/Item(wait to css)">
@@ -215,6 +226,7 @@
                         <Label alignment="CENTER" prefHeight="107.0" prefWidth="174.0" text="New Password">
                            <font>
                               <Font name="Verdana" size="15.0" />
+<<<<<<< HEAD
                            </font></Label>
                         <JFXTextField fx:id="newpwd" prefHeight="95.0" prefWidth="233.0" />
                      </children>
@@ -225,16 +237,48 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="11.0" style="-fx-border-color: #F2F2F2;" VBox.vgrow="ALWAYS">
                      <children>
                         <Label alignment="CENTER" prefHeight="53.0" prefWidth="184.0" text="Confirm New Password">
+=======
+                           </font>
+                        </JFXRadioButton>
+                        <JFXButton fx:id="btSearchOrder" layoutX="660.0" layoutY="107.0" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #35B4E3;" text="Search" textFill="WHITE">
+>>>>>>> parent of 4f28f38... 我最后更新了
                            <font>
                               <Font name="Verdana" size="15.0" />
                            </font></Label>
                         <JFXTextField fx:id="confirmpwd" prefHeight="118.0" prefWidth="233.0" />
                      </children>
+<<<<<<< HEAD
                      <padding>
                         <Insets bottom="11.0" left="11.0" right="11.0" top="11.0" />
                      </padding>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="11.0" style="-fx-border-color: #F2F2F2;" VBox.vgrow="ALWAYS">
+=======
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" color="#c9afaf" offsetX="2.0" offsetY="2.0" />
+                     </effect>
+                  </AnchorPane>
+                  <JFXButton fx:id="btConfirmshipment" layoutX="638.0" layoutY="714.0" prefHeight="47.0" prefWidth="180.0" style="-fx-background-color: #39C164;" text="Confirm shipment" textFill="#f8f8f8">
+                     <font>
+                        <Font name="Verdana" size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="ItemPane" layoutX="167.0" layoutY="2.0" prefHeight="768.0" prefWidth="859.0" visible="false">
+               <children>
+                  <TableView fx:id="ItemTableView" layoutX="15.0" layoutY="140.0" prefHeight="515.0" prefWidth="705.0" visible="false">
+                    <columns>
+                      <TableColumn fx:id="itemProductnumCol" prefWidth="106.0" text="ProductNumber" />
+                      <TableColumn fx:id="itemNameCol" prefWidth="88.0" text="Name" />
+                        <TableColumn fx:id="itemCostCol" prefWidth="88.0" text="StandardCost" />
+                        <TableColumn fx:id="itemDetailCol" prefWidth="230.0" text="Detail" />
+                        <TableColumn fx:id="itemWeightCol" prefWidth="124.0" text="weight" />
+                        <TableColumn prefWidth="75.0" text="Select" />
+                    </columns>
+                  </TableView>
+                  <AnchorPane layoutX="35.0" prefHeight="150.0" prefWidth="800.0" style="-fx-background-color: white;">
+>>>>>>> parent of 4f28f38... 我最后更新了
                      <children>
                         <Label alignment="CENTER" prefHeight="92.0" prefWidth="174.0" text="Phone">
                            <font>
@@ -283,6 +327,7 @@
                      </padding>
                   </HBox>
                </children>
+<<<<<<< HEAD
                <effect>
                   <DropShadow color="#e8b1b1" offsetX="2.0" offsetY="2.0" />
                </effect>
@@ -297,6 +342,10 @@
                   <Font name="Verdana" size="15.0" />
                </font></JFXButton>
             <AnchorPane prefHeight="150.0" prefWidth="859.0" style="-fx-background-color: white;">
+=======
+            </AnchorPane>
+            <AnchorPane fx:id="userInfPane" layoutX="167.0" layoutY="2.0" prefHeight="768.0" prefWidth="859.0" style="-fx-background-color: #F2F2F2;">
+>>>>>>> parent of 4f28f38... 我最后更新了
                <children>
                   <Label fx:id="lbUserGreeting" layoutX="6.0" prefHeight="84.0" prefWidth="852.0" style="-fx-border-color: white; -fx-border-color: white  white #E2E2E2  white;" text="Username/Item(wait to css)">
                      <font>
