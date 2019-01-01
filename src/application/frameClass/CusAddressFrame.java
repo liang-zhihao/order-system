@@ -10,7 +10,7 @@ public class CusAddressFrame {
 		try {
 			Parent root = FXMLLoader
 					.load(getClass().getClassLoader().getResource("application//fxml//Address.fxml"));
-			Scene scene = new Scene(root, 784, 598);
+			Scene scene = new Scene(root, 692, 666);
 			scene.getStylesheets()
 					.add(getClass().getClassLoader().getResource("application//application.css").toExternalForm());
 			Stage stage = new Stage();
