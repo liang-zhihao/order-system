@@ -48,7 +48,10 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class CustomerHomepageController {
-
+	@FXML
+	private ImageView imgSearch;
+	@FXML
+	private ImageView imgSearch2;
 	@FXML
 	private TableColumn<OrderTable, Boolean> btOrderCol;
 	@FXML
@@ -95,7 +98,8 @@ public class CustomerHomepageController {
 
 	@FXML
 	private Label OrderGteeting;
-
+	@FXML
+	private Label userGreeting;
 	@FXML
 	private JFXButton btBuy;
 
@@ -154,7 +158,7 @@ public class CustomerHomepageController {
 	private JFXButton btConfirmreceipt;
 
 	@FXML
-	private JFXTextField txGreeting1;
+	private Label txGreeting1;
 
 	@FXML
 	private JFXTextField txCntPhone;
@@ -206,7 +210,13 @@ public class CustomerHomepageController {
 	private VBox cartVBox;
 
 	public void initialize() throws SQLException {
-		txGreeting.setText(NowInf.getGreetingWords());
+		fpItem.setHgap(10);
+		fpItem.setVgap(10);
+		NowInf.setPicView(imgSearch, "icon/search.png");
+		NowInf.setPicView(imgSearch2, "icon/search.png");
+		txGreeting1.setText(NowInf.getGreetingWords());
+		OrderGteeting.setText(NowInf.getGreetingWords());
+		userGreeting.setText(NowInf.getGreetingWords() + "  " + userGreeting.getText());
 		// OrderTablePane
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("salesOrderNumber"));
 		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("quantity"));
@@ -239,6 +249,10 @@ public class CustomerHomepageController {
 	ObservableList<CartTable> cellDataCart = FXCollections.observableArrayList();
 
 	public void openUserInf() {
+		if (NowInf.customer.getPictureName() != null) {
+			String path = "avatar/" + NowInf.customer.getPictureName();
+			NowInf.setPicView(avatar, path);
+		}
 		cusItemPane.setVisible(false);
 		cusOrderPane.setVisible(false);
 		addAdrPane.setVisible(false);
@@ -247,7 +261,6 @@ public class CustomerHomepageController {
 	}
 
 	public void openOrder() {
-		OrderGteeting.setText(NowInf.getGreetingWords());
 		cusItemPane.setVisible(false);
 		cusOrderPane.setVisible(true);
 		addAdrPane.setVisible(false);
@@ -437,14 +450,27 @@ public class CustomerHomepageController {
 	// }
 
 	public void btChangeAvatar() throws IOException {
-		FileChooser fileChooser = new FileChooser();
-		Stage mainStage = (Stage) btChangeAvatar.getScene().getWindow();
-		File selectedFile = fileChooser.showOpenDialog(mainStage);
-		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("*.jpg", "*.jpeg", "*.png"));
-		String name = "Customer" + "-" + NowInf.customer.getCustomerId() + "."
-				+ NowInf.getPicAttributeFromFile(selectedFile.getName());
-		Image n = NowInf.copyPictureToProject(selectedFile, name, "a");
-		avatar.setImage(n);
+		final FileChooser fc = new FileChooser();
+		fc.getExtensionFilters().addAll(new ExtensionFilter("*.jpg", "*.jpeg", "*.png"));
+		Stage stage = (Stage) btChangeAvatar.getScene().getWindow();
+		File pic = fc.showOpenDialog(stage);
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		String sql = "update customer set picturename =? where customerid =?";
+		Object[] p = new Object[2];
+		String name = "Customer-" + NowInf.customer.getCustomerId() + "."
+				+ NowInf.getPicAttributeFromFile(pic.getName());
+		Image t = NowInf.copyPictureToProject(pic, name, "a");
+		p[0] = name;
+		p[1] = NowInf.customer.getCustomerId();
+		try {
+			qr.update(db.getConnection(), sql, p);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("set avatar successfully");
+		avatar.setImage(t);
 	}
 
 	public void btAddAddress() {
@@ -485,6 +511,10 @@ public class CustomerHomepageController {
 	}
 
 	public void initCartPane() {
+		for (int i = 1; i < cartVBox.getChildren().size(); i++) {
+			cartVBox.getChildren().remove(cartVBox.getChildren().get(i));
+		}
+
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
 		String sql = "select * from cart where customerid =" + NowInf.customer.getCustomerId();
@@ -545,6 +575,20 @@ public class CustomerHomepageController {
 		}
 		inf += "Overall:$" + all;
 		if (NowInf.showAlert(inf, "confirmation").get() == ButtonType.OK) {
+			for (int i = 1; i < cartVBox.getChildren().size(); i++) {
+				HBoxForCart t = (HBoxForCart) cartVBox.getChildren().get(i);
+				Db db = new Db();
+				QueryRunner qr = new QueryRunner();
+				String sql = "delete from where cartid = " + t.getCartId();
+				if (t.getCheck() == true) {
+					try {
+						qr.update(db.getConnection(), sql);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					cartVBox.getChildren().remove(t);
+				}
+			}
 			new SelectAddressFrame(cartVBox);
 		}
 
@@ -562,6 +606,10 @@ public class CustomerHomepageController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void searchItem() {
+
 	}
 
 }

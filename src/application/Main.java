@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -17,15 +16,10 @@ public class Main extends Application {
 			// scene.getStylesheets().add(getClass().getResource("//application.css").toExternalForm());
 			scene.getStylesheets()
 					.add(getClass().getClassLoader().getResource("application//application.css").toExternalForm());
-
 			primaryStage.setScene(scene);
-
 			primaryStage.setTitle("Sign In");
-
 			primaryStage.getIcons().add(new Image("application/fxml/img/233.jpg"));
-
 			primaryStage.setTitle("Sign In");
-
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

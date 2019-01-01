@@ -7,6 +7,7 @@ import org.apache.commons.dbutils.handlers.ArrayHandler;
 
 import com.jfoenix.controls.JFXButton;
 
+import application.frameClass.ShowItemDetailFrame;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -21,7 +22,7 @@ public class VBoxItemForCus extends VBox {
 	private Label lbItem = new Label();
 	private Label lbBusiness = new Label();
 	private JFXButton btAddToCart = new JFXButton("AddtoCart");
-	private JFXButton btBuy = new JFXButton("Buy");
+	private JFXButton btDetail = new JFXButton("View Detail");
 	private HBox hb1 = new HBox();
 	private HBox hb2 = new HBox();
 	private Label lbPrice = new Label();
@@ -69,10 +70,10 @@ public class VBoxItemForCus extends VBox {
 		lbPrice.setText("$" + price);
 		btAddToCart.setPrefSize(95, 33);
 		btAddToCart.setStyle("-fx-background-color:#39C164");
-		btBuy.setStyle("-fx-background-color:#39C164");
-		btBuy.setPrefSize(95, 33);
+		btDetail.setStyle("-fx-background-color:#39C164");
+		btDetail.setPrefSize(95, 33);
 		hb1.getChildren().addAll(lbBusiness, lbPrice);
-		hb2.getChildren().addAll(btAddToCart, btBuy);
+		hb2.getChildren().addAll(btAddToCart, btDetail);
 		this.getChildren().addAll(im, lbItem, hb1, hb2);
 		btAddToCart.setOnAction(e -> {
 			Db db = new Db();
@@ -95,8 +96,8 @@ public class VBoxItemForCus extends VBox {
 				e1.printStackTrace();
 			}
 		});
-		btBuy.setOnAction(e -> {
-
+		btDetail.setOnAction(e -> {
+			new ShowItemDetailFrame(itemId);
 		});
 
 	}

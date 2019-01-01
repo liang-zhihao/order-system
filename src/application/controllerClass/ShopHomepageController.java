@@ -32,6 +32,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -182,7 +183,9 @@ public class ShopHomepageController {
 	ObservableList<OrderTable> cellData = FXCollections.observableArrayList();
 
 	public void initialize() throws SQLException {
-
+		ToggleGroup t = new ToggleGroup();
+		orderItemRad.setToggleGroup(t);
+		orderCustomerRad.setToggleGroup(t);
 		btLogout.setOnAction(e -> {
 			if (NowInf.showAlert("Do you want to close the window?", "confirmation").get() == ButtonType.OK)
 				NowInf.closeWindow(btLogout);
@@ -196,7 +199,7 @@ public class ShopHomepageController {
 		orderQuantityCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("quantity"));
 		orderStatusCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("status"));
 		orderDateCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("orderDate"));
-		orderCommentCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("comment"));
+		orderCommentCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("address"));
 		orderSubCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Integer>("subTotal"));
 		orderItemCol.setCellValueFactory(new PropertyValueFactory<OrderTable, String>("itemName"));
 		btOrderCol.setCellValueFactory(new PropertyValueFactory<OrderTable, Boolean>("isCheck"));
@@ -217,7 +220,7 @@ public class ShopHomepageController {
 		});
 		// btOrderCol.setCellValueFactory(cellData ->
 		// cellData.getValue().cb.getCheckBox());
-
+		initOrderSearch();
 	}
 
 	public void openUserInf() {
@@ -322,6 +325,7 @@ public class ShopHomepageController {
 		QueryRunner qr = new QueryRunner();
 		String sql1 = "select BusinessName from business where businessId=?";
 		String sql2 = "select Name from Product where ProductId=?";
+		String sql3 = "select Consignee, phonenumber,detail from deliveryaddress where deliveryaddressId=?";
 		Object[] para = new Object[1];
 		Object[] tmp = null;
 		try {
@@ -331,6 +335,10 @@ public class ShopHomepageController {
 				t[i].setBusiness(tmp[0].toString());
 				para[0] = orderlist.get(i).getProductId();
 				tmp = qr.query(db.getConnection(), sql2, para, new ArrayHandler());
+				para[0] = orderlist.get(i).getDeliveryAddressId();
+				tmp = qr.query(db.getConnection(), sql3, para, new ArrayHandler());
+				String add = tmp[0].toString() + " " + Integer.valueOf(tmp[1].toString()) + " " + tmp[2].toString();
+				t[i].setAddress(add);
 				t[i].setItemName(tmp[0].toString());
 				t[i].setComment(orderlist.get(i).getComment());
 				t[i].setOrderDate(orderlist.get(i).getOrderDate());
@@ -431,6 +439,29 @@ public class ShopHomepageController {
 			e.printStackTrace();
 		}
 
+	}
+
+	public void confirmshipment() {
+		Db db = new Db();
+		QueryRunner qr = new QueryRunner();
+		String sql = "update salesorder set status = ? where SalesOrderNumber = ?";
+		Object[] para = new Object[2];
+		para[0] = "Shipped";
+		try {
+
+			for (int i = 0; i < cellData.size(); i++) {
+				OrderTable t = cellData.get(i);
+				if (t.getIsCheck()) {
+					t.setStatus("Shipped");
+					para[1] = t.getSalesOrderNumber();
+					qr.update(db.getConnection(), sql, para);
+				}
+			}
+			orderTable.refresh();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

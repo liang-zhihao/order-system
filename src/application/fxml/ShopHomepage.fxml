@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <ScrollPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.ShopHomepageController">
    <content>
       <AnchorPane fx:id="parentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #FFFFFF;">
@@ -70,7 +69,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="OrderPane" layoutX="167.0" prefHeight="768.0" prefWidth="859.0" visible="false">
+            <AnchorPane fx:id="OrderPane" layoutX="167.0" prefHeight="768.0" prefWidth="859.0">
                <children>
                   <TableView fx:id="orderTable" layoutX="25.0" layoutY="192.0" prefHeight="515.0" prefWidth="793.0" style="-fx-background-radius: 10;" AnchorPane.leftAnchor="25.0">
                      <columns>
@@ -110,7 +109,7 @@
                               <Font name="Verdana" size="15.0" />
                            </font>
                         </JFXRadioButton>
-                        <JFXButton fx:id="btSearchOrder" layoutX="660.0" layoutY="107.0" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #35B4E3;" text="Search" textFill="WHITE">
+                        <JFXButton fx:id="btSearchOrder" layoutX="660.0" layoutY="107.0" onAction="#orderSearch" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #35B4E3;" text="Search" textFill="WHITE">
                            <font>
                               <Font name="Verdana" size="19.0" />
                            </font>
@@ -120,7 +119,7 @@
                         <DropShadow blurType="ONE_PASS_BOX" color="#c9afaf" offsetX="2.0" offsetY="2.0" />
                      </effect>
                   </AnchorPane>
-                  <JFXButton fx:id="btConfirmshipment" layoutX="638.0" layoutY="714.0" prefHeight="47.0" prefWidth="180.0" style="-fx-background-color: #39C164;" text="Confirm shipment" textFill="#f8f8f8">
+                  <JFXButton fx:id="btConfirmshipment" layoutX="638.0" layoutY="714.0" onAction="#confirmshipment" prefHeight="47.0" prefWidth="180.0" style="-fx-background-color: #39C164;" text="Confirm shipment" textFill="#f8f8f8">
                      <font>
                         <Font name="Verdana" size="16.0" />
                      </font>
@@ -181,7 +180,7 @@
                   </ScrollPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="userInfPane" layoutX="167.0" layoutY="2.0" prefHeight="768.0" prefWidth="859.0" style="-fx-background-color: #F2F2F2;">
+            <AnchorPane fx:id="userInfPane" layoutX="167.0" layoutY="2.0" prefHeight="768.0" prefWidth="859.0" style="-fx-background-color: #F2F2F2;" visible="false">
                <children>
                   <VBox alignment="CENTER_LEFT" layoutY="148.0" prefHeight="614.0" prefWidth="437.0" style="-fx-background-color: #FFFFFF;">
                      <children>
