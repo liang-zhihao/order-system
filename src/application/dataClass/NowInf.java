@@ -9,18 +9,24 @@ import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ArrayHandler;
 
+import com.jfoenix.controls.JFXButton.ButtonType;
+
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 
 public class NowInf {
 	public static Customer customer = null;
 	public static Business business = null;
+	public static int customerAddressid = 0;
 
 	public static Image copyPictureToProject(File source, String name, String type) throws IOException {
 		Path t = Paths.get(source.getAbsolutePath());
@@ -77,7 +83,7 @@ public class NowInf {
 	public static void addItemToPane(FlowPane p, ArrayList<Product> productlist, String type) {
 		Db db = new Db();
 		QueryRunner qr = new QueryRunner();
-
+		p.getChildren().clear();
 		for (int i = 0; i < productlist.size(); i++) {
 			Product t = productlist.get(i);
 			String sql = "select DISTINCT businessname from business,product where product.businessid =business.businessid and product.businessid="
@@ -93,11 +99,11 @@ public class NowInf {
 			}
 			String picname = t.getPictureName();
 			if (type.equals("b")) {
-				VBoxItemForBus tmp = new VBoxItemForBus("item/" + picname, t.getName(), busname, t.getStandardcost());
+				VBoxItemForBus tmp = new VBoxItemForBus(picname, t.getName(), busname, t.getStandardcost());
 				tmp.setItemId(t.getProductid());
 				p.getChildren().add(tmp);
 			} else {
-				VBoxItemForCus tmp = new VBoxItemForCus("item/" + picname, t.getName(), busname, t.getStandardcost());
+				VBoxItemForCus tmp = new VBoxItemForCus(picname, t.getName(), busname, t.getStandardcost());
 				tmp.setItemId(t.getProductid());
 				p.getChildren().add(tmp);
 			}
@@ -143,22 +149,54 @@ public class NowInf {
 		}
 		return t;
 	}
-	
+
 	public static AddressTable[] convertToAddressTable(ArrayList<DeliveryAddress> Addresslist) {
 		AddressTable[] table = new AddressTable[Addresslist.size()];
 		for (int i = 0; i < Addresslist.size(); i++) {
 			table[i] = new AddressTable();
-		}			
+		}
+		// Db db = new Db();
+		// QueryRunner qr = new QueryRunner();
+		// String sql1 = "select DeliveryAddressID from deliveryaddress where CustomerID
+		// = " + NowInf.customer.getCustomerId();
+		// //String sql2 = "select * from deliveryaddress where CustomerID = " +
+		// NowInf.customer.getCustomerId();
+		// //Object[] para = new Object[1];
+		// List<Object[]> tmp = null;
 		for (int i = 0; i < Addresslist.size(); i++) {
-				table[i].setSelect(false);
-				table[i].setDeliveryAddressID(Addresslist.get(i).getDeliveryAddressId());
-				
-				table[i].setConsignee(Addresslist.get(i).getConsignee().toString());
-				table[i].setContactPhone(Addresslist.get(i).getPhoneNumber());
-				table[i].setDetail(Addresslist.get(i).getDetail().toString());
-			}		
-			
+			// tmp = qr.query(db.getConnection(), sql1, new ArrayListHandler());
+			// for(int j = 0; j < tmp.size(); j++) {
+			table[i].setSelect(false);
+			// Object[] t = tmp.get(i);
+			table[i].setDeliveryAddressID(Addresslist.get(i).getDeliveryAddressId());
+			// table[i].setDeliveryAddressID(Addresslist.get(i).getDeliveryAddressID());
+
+			table[i].setConsignee(Addresslist.get(i).getConsignee().toString());
+			table[i].setContactPhone(Addresslist.get(i).getPhoneNumber());
+			table[i].setDetail(Addresslist.get(i).getDetail().toString());
+			table[i].setChange(false);
+		}
+
 		return table;
+	}
+
+	public static void closeWindow(Button t) {
+		Stage stage = (Stage) t.getScene().getWindow();
+		stage.close();
+	}
+
+	public static Optional<javafx.scene.control.ButtonType> showAlert(String t, String type) {
+		Alert alert = null;
+		Optional<ButtonType> s = null;
+		if (type.equals("error")) {
+			alert = new Alert(Alert.AlertType.ERROR, t);
+		} else if (type.equals("information")) {
+			alert = new Alert(Alert.AlertType.INFORMATION, t);
+		} else {
+			alert = new Alert(Alert.AlertType.CONFIRMATION, t);
+		}
+		// alert.showAndWait();
+		return alert.showAndWait();
 	}
 
 }

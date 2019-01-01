@@ -6,15 +6,15 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.control.Button;
 
 public class AddressTable {
 	private BooleanProperty select;
-	//private JFXCheckBox select = new JFXCheckBox();
 	private IntegerProperty deliveryAddressID;
 	private StringProperty consignee;
 	private IntegerProperty contactPhone;
 	private StringProperty detail;
-	
+	private BooleanProperty change;
 	
 	public void setDeliveryAddressID(int deliveryAddressID) {
 		this.deliveryAddressID = new SimpleIntegerProperty(deliveryAddressID);
@@ -32,6 +32,10 @@ public class AddressTable {
 		this.detail = new SimpleStringProperty(detail);
 	}
 	
+	public void setChange(Boolean change) {
+		this.change = new SimpleBooleanProperty(change);
+	}
+	
 	public void setSelect(Boolean select) {
 		this.select = new SimpleBooleanProperty(select);
 	}
@@ -39,14 +43,6 @@ public class AddressTable {
 	public Boolean getSelect() {
 		return select.getValue();
 	}
-	
-//	public void setSelect(JFXCheckBox select) {
-//		this.select = select;
-//	}
-//
-//	public Boolean getSelect() {
-//		return select.?
-//	}
 	
 	public int getDeliveryAddressID() {
 		return deliveryAddressID.get();
@@ -62,6 +58,10 @@ public class AddressTable {
 	
 	public String getDetail() {
 		return detail.get();
+	}
+	
+	public BooleanProperty getChange() {
+		return change;
 	}
 		
 }

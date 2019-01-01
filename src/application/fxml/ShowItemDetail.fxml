@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="662.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.ShowItemDetailController">
+   <children>
+      <VBox alignment="CENTER" layoutX="33.0" layoutY="36.0" prefHeight="590.0" prefWidth="334.0" spacing="10.0" style="-fx-background-color: white;">
+         <children>
+            <VBox alignment="CENTER" prefHeight="27.0" prefWidth="314.0">
+               <children>
+                  <ImageView fx:id="imgItem" fitHeight="184.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER_LEFT" style="-fx-border-color: #484D53;">
+               <children>
+                  <ImageView fx:id="imgItem2" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
+                  <JFXTextField fx:id="txItemName" editable="false" focusColor="LIGHTGRAY" prefHeight="50.0" prefWidth="257.0" promptText="ItemName" style="-fx-border-radius: 0;" unFocusColor="WHITE">
+                     <font>
+                        <Font name="Verdana" size="15.0" />
+                     </font>
+                  </JFXTextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" style="-fx-border-color: #484D53;">
+               <children>
+                  <ImageView fx:id="imgCost" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
+                  <JFXTextField fx:id="txCost" editable="false" focusColor="LIGHTGRAY" prefHeight="50.0" prefWidth="257.0" promptText="Standard Cost" style="-fx-border-radius: 0;" unFocusColor="WHITE">
+                     <font>
+                        <Font name="Verdana" size="15.0" />
+                     </font>
+                  </JFXTextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" style="-fx-border-color: #484D53;">
+               <children>
+                  <ImageView fx:id="imgPn" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
+                  <JFXTextField fx:id="txProductNumber" editable="false" focusColor="LIGHTGRAY" prefHeight="50.0" prefWidth="257.0" promptText="ProductNumber" unFocusColor="WHITE">
+                     <font>
+                        <Font name="Verdana" size="15.0" />
+                     </font>
+                  </JFXTextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" style="-fx-border-color: #484D53;">
+               <children>
+                  <ImageView fx:id="imgwei" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
+                  <JFXTextField fx:id="txWeight" editable="false" focusColor="LIGHTGRAY" prefHeight="50.0" prefWidth="257.0" promptText="Weight" unFocusColor="WHITE">
+                     <font>
+                        <Font name="Verdana" size="15.0" />
+                     </font>
+                  </JFXTextField>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <JFXTextArea fx:id="txDetail" editable="false" focusColor="LIGHTGRAY" prefHeight="181.0" prefWidth="314.0" style="-fx-border-color: #484D53;" text="*Detail&#10;" unFocusColor="WHITE">
+                     <font>
+                        <Font name="Verdana" size="15.0" />
+                     </font>
+                  </JFXTextArea>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <effect>
+            <DropShadow color="#e1adad" offsetX="2.0" offsetY="2.0" />
+         </effect>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

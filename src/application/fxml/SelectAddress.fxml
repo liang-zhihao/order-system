@@ -8,18 +8,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="465.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllerClass.SelectAddressController">
    <children>
-      <ScrollPane prefHeight="413.0" prefWidth="605.0">
+      <ScrollPane layoutY="52.0" prefHeight="413.0" prefWidth="605.0">
          <content>
             <VBox fx:id="mainVbox" prefHeight="397.0" prefWidth="603.0" />
          </content>
       </ScrollPane>
-      <JFXButton fx:id="btConfirm" layoutX="522.0" layoutY="426.0" onAction="#confirm" style="-fx-border-color: black;" text="Confrim">
+      <JFXButton fx:id="btConfirm" layoutX="519.0" layoutY="14.0" onAction="#confirm" style="-fx-border-color: black;" text="Confrim">
          <font>
             <Font name="Verdana" size="13.0" />
          </font>
       </JFXButton>
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="28.0" prefWidth="327.0" text="Please chose your shipping address">
+         <font>
+            <Font name="Verdana" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

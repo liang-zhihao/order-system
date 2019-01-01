@@ -19,7 +19,16 @@ public class OrderTable {
 	private StringProperty Business;
 	// private CheckBoxTCell checkbox;
 	private BooleanProperty isCheck;
+	private StringProperty address;
+
 	// public checkbox cb = new checkbox();
+	public void setAddress(String address) {
+		this.address = new SimpleStringProperty(address);
+	}
+
+	public String getAddress() {
+		return address.get();
+	}
 
 	public void setIsCheck(boolean isCheck) {
 		this.isCheck = new SimpleBooleanProperty(isCheck);

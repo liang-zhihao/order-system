@@ -40,7 +40,7 @@ public class VBoxItemForBus extends VBox {
 		return itemId;
 	}
 
-	public VBoxItemForBus(String path, String name, String business, double price) {
+	public VBoxItemForBus(String picname, String name, String business, double price) {
 		DropShadow ds1 = new DropShadow();
 		ds1.setOffsetY(4.0f);
 		ds1.setOffsetX(4.0f);
@@ -57,7 +57,7 @@ public class VBoxItemForBus extends VBox {
 		this.setStyle("-fx-background-color:white;");
 		im.setFitWidth(190);
 		im.setFitHeight(184);
-		NowInf.setPicView(im, "item/" + path);
+		NowInf.setPicView(im, "item/" + picname);
 		// lbItem.setFont(Font.font("Verdana", 15));
 		lbItem.setAlignment(Pos.CENTER_LEFT);
 		lbItem.setPrefWidth(191);
@@ -81,9 +81,9 @@ public class VBoxItemForBus extends VBox {
 		});
 		btDel.setOnAction(e -> {
 			// del picture
-			String srcPicPath = im.getImage().impl_getUrl();
+			String srcPicPath = im.getImage().getUrl();
 			srcPicPath = srcPicPath.replace("/bin/", "/src/");
-			File pic1 = new File(im.getImage().impl_getUrl());
+			File pic1 = new File(im.getImage().getUrl());
 			File pic2 = new File(srcPicPath);
 			pic1.delete();
 			pic2.delete();

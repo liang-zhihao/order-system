@@ -17,7 +17,7 @@ import javafx.scene.layout.VBox;
 
 public class HBoxForCart extends HBox {
 	private JFXCheckBox check = new JFXCheckBox();
-	private ImageView img;
+	private ImageView img = new ImageView();
 	private Label lbItem = new Label();
 	private Label lbBus = new Label();
 	private Label lbCost = new Label();
@@ -56,6 +56,18 @@ public class HBoxForCart extends HBox {
 
 	public boolean getCheck() {
 		return check.isSelected();
+	}
+
+	public Label getLbItem() {
+		return lbItem;
+	}
+
+	public Label getLbBus() {
+		return lbBus;
+	}
+
+	public Label getLbCost() {
+		return lbCost;
 	}
 
 	public HBoxForCart(String item, String business, double cost, int num, String picname) {
@@ -106,6 +118,7 @@ public class HBoxForCart extends HBox {
 			VBox vb = (VBox) this.getParent();
 			vb.getChildren().remove(this);
 		});
+
 		this.getChildren().addAll(check, img, lbItem, lbBus, lbCost, tfNum, btDel);// Dont forget to add node to vbox!!
 	}
 
